@@ -31,53 +31,48 @@ namespace rp3_caffeBar
 
             try
             {
+                //select
+                //koristeno https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/retrieving-data-using-a-datareader
                 using (SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\Anamaria\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True"))
                 {
                     connection.Open();
-                    //SqlCommand command = new SqlCommand("INSERT INTO [USER](USERNAME, PASSWORD)  VALUES(@username, @password)", connection);
-                    SqlCommand command = new SqlCommand("SELECT * FROM [USER]", connection);
+                    string query = "SELECT * FROM [USER] WHERE USERNAME=@username AND PASSWORD=@password";
+                    SqlCommand command = new SqlCommand(query, connection);
 
 
+                    //hashiranje passworda //TO DO u fju
                     byte[] data = Encoding.UTF8.GetBytes(textBox_password.Text.ToString());
                     byte[] result;
-
-                    using (SHA256 sha256Hash = SHA256.Create())
+                    using (SHA256 sha256Hash = SHA256.Create()) //generia char(64)
                     {
                         result = sha256Hash.ComputeHash(data);
                     }
-
                     string hash = BitConverter.ToString(result).Replace("-", "");
-                   
 
-
+                    //parametri
                     command.Parameters.AddWithValue("@username", textBox_username.Text.ToString());
                     command.Parameters.AddWithValue("@password", hash);
 
-                    command.ExecuteNonQuery();
-
-                    var dataReader = command.ExecuteReader();
-                    dataReader.Read();
-                    var id = dataReader.GetInt32(0);
-                    MessageBox.Show(id.ToString());
-
-                    /*try
+                    //command.ExecuteNonQuery();
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.HasRows)
                     {
-                        command.ExecuteNonQuery();
-                    }*/
-                    //using (SqlCommand command = new SqlCommand("SELECT * FROM [dbo].[LOGIN]", connection))
-                    //{
-                    /*using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
+                        //prikaz glavne forme
+                        /*while (reader.Read())
                         {
-                            int id = reader.GetInt32(0);
-                            string username = reader.GetString(1);
-                            int password = reader.GetInt32(2);
-                            Console.WriteLine("ID: {0}, USERNAME: {1}, PASSWORD: {2}", id, username, password);
-                        }
-                    }*/
-                    //}
+                            MessageBox.Show("id: " + reader.GetInt32(0).ToString() + " username: " + reader.GetString(1).ToString() + " password: " + reader.GetString(2).ToString());
+                         
+                        }*/
+                    }
+                    else
+                    {
+                        MessageBox.Show("Neispravno uneseni podaci!");
+                    }
+                   
+                    reader.Close();
                 }
+
+                
 
             }
             catch (Exception ex) 

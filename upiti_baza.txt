@@ -1,0 +1,81 @@
+*select: //koristeno https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/retrieving-data-using-a-datareader
+ 
+				try{
+					//koristeno https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/retrieving-data-using-a-datareader
+					using (SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\Anamaria\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True"))
+					{
+						connection.Open();
+						string query="SELECT * FROM [USER] WHERE USERNAME=@username AND PASSWORD=@password";
+						SqlCommand command = new SqlCommand(query, connection);
+					   
+						//hashiranje passworda - sa chatgpt
+						byte[] data = Encoding.UTF8.GetBytes(textBox_password.Text.ToString());
+						byte[] result;
+						using (SHA256 sha256Hash = SHA256.Create()) //generia char(64)
+						{
+							result = sha256Hash.ComputeHash(data);
+						}
+						string hash = BitConverter.ToString(result).Replace("-", "");
+
+						//parametri
+						command.Parameters.AddWithValue("@username", textBox_username.Text.ToString());
+						command.Parameters.AddWithValue("@password", hash); //username: vlasnik password: vlasnik
+
+						//command.ExecuteNonQuery();
+						SqlDataReader reader = command.ExecuteReader();
+						if (reader.HasRows)
+						{
+							while (reader.Read())
+							{
+								MessageBox.Show("id: " + reader.GetInt32(0).ToString() + " username: " + reader.GetString(1).ToString() + " password: " + reader.GetString(2).ToString());
+							 
+							}
+						}
+					   
+						reader.Close();
+					}
+				}
+				catch (Exception ex) 
+				{
+					MessageBox.Show(ex.ToString());
+				}
+					
+					
+*inser into: https://stackoverflow.com/questions/19956533/sql-insert-query-using-c-sharp/19956944
+//insert into
+                try{
+					using (SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\Anamaria\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True"))
+					{
+						String query = "INSERT INTO [USER] (USERNAME,PASSWORD) VALUES (@username,@password)";
+						connection.Open();
+						using (SqlCommand command = new SqlCommand(query, connection))
+						{
+
+							//hashiranje passworda
+							byte[] data = Encoding.UTF8.GetBytes(textBox_password.Text.ToString());
+							byte[] result;
+							using (SHA256 sha256Hash = SHA256.Create()) //generia char(64)
+							{
+								result = sha256Hash.ComputeHash(data);
+							}
+							string hash = BitConverter.ToString(result).Replace("-", "");
+
+							//parametri
+							//command.Parameters.AddWithValue("@ID", 10);
+							command.Parameters.AddWithValue("@username", textBox_username.Text.ToString());
+							command.Parameters.AddWithValue("@password", hash); //username: vlasnik password: vlasnik
+
+
+							//int result2 = command.ExecuteNonQuery();
+							command.ExecuteNonQuery();
+
+							// Check Error
+							//if (result2 < 0)
+							//Console.WriteLine("Error inserting data into Database!");
+						}
+					}
+				}
+				catch (Exception ex) 
+				{
+					MessageBox.Show(ex.ToString());
+				}
