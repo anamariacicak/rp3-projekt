@@ -32,3 +32,6 @@ C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.al
 C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.Blagajna.resources
 F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.alatnaTraka.resources
 F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.Blagajna.resources
+F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.CashBackCalculator.resources
+F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.recepitItem.resources
+F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.Receipt.resources
