@@ -49,7 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System">
-      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -63,6 +63,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="alatnaTraka.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="alatnaTraka.Designer.cs">
+      <DependentUpon>alatnaTraka.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Blagajna.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Blagajna.Designer.cs">
+      <DependentUpon>Blagajna.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +95,12 @@
     <Compile Include="WaiterMain.Designer.cs">
       <DependentUpon>WaiterMain.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="alatnaTraka.resx">
+      <DependentUpon>alatnaTraka.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Blagajna.resx">
+      <DependentUpon>Blagajna.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
