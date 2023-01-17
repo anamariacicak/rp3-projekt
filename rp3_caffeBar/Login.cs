@@ -57,6 +57,8 @@ namespace rp3_caffeBar
                     SqlDataReader reader = command.ExecuteReader();
                     if (reader.HasRows)
                     {
+                        this.Hide(); //sakrij ovu formu
+                                    //prikazi glavnu formu
                         //prikaz glavne forme
                         /*while (reader.Read())
                         {
