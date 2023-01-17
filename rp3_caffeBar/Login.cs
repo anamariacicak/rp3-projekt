@@ -31,12 +31,12 @@ namespace rp3_caffeBar
 
             try
             {
-                //select
+                //select iz baze
                 //koristeno https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/retrieving-data-using-a-datareader
                 using (SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\Anamaria\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True"))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM [USER] WHERE USERNAME=@username AND PASSWORD=@password";
+                    string query = "SELECT IS_OWNER FROM [USER] WHERE USERNAME=@username AND PASSWORD=@password";
                     SqlCommand command = new SqlCommand(query, connection);
 
 
@@ -53,12 +53,23 @@ namespace rp3_caffeBar
                     command.Parameters.AddWithValue("@username", textBox_username.Text.ToString());
                     command.Parameters.AddWithValue("@password", hash);
 
-                    //command.ExecuteNonQuery();
+                    
                     SqlDataReader reader = command.ExecuteReader();
                     if (reader.HasRows)
                     {
                         this.Hide(); //sakrij ovu formu
-                                    //prikazi glavnu formu
+                       //prikazi glavnu formu
+                       reader.Read(); //procitaj
+                       if(reader.GetInt32(0) == 0) //konobar
+                        {
+                            var waiterForm=new WaiterMain();
+                            waiterForm.Show();
+                        }
+                        else //vlasnik
+                        {
+                            var ownerForm = new OwnerMain();
+                            ownerForm.Show();
+                        }
                         //prikaz glavne forme
                         /*while (reader.Read())
                         {

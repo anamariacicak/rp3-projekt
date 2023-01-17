@@ -11,3 +11,5 @@ F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.exe
 F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.pdb
 F:\Anamaria\rp3-projekt\rp3_caffeBar\bin\Debug\caffeBar.mdf
 F:\Anamaria\rp3-projekt\rp3_caffeBar\bin\Debug\caffeBar_log.ldf
+F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.OwnerMain.resources
+F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.WaiterMain.resources
