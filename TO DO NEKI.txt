@@ -1,0 +1,29 @@
+//kada se naplati nesto mice se iz hlasnjaka
+//kad je u hladnjaku dva pica mora puniti z skladista
+//upozori konobara ga ako je malo artikala -> dodaj jos kave  -> ako imas dva pica u hladnjaku 
+
+
+//izgled sucelja skladiste -> jedna tablica .tri stupca
+gumbici napuni hladnjaku -> prozorcic -> oboje
+		naruci-> naziv proizvoda i koliko -> ooje
+		obrisi proizvodi -> samo vlasnik
+		uredi -> prozorcic koji proizvoda -> vlasnik
+		
+		
+//NE pokazivati ono na cemu je ili to obojati drugom bojom
+
+
+//to do close ili hide
+
+//to do staviti iskakanje kalkulatora na show dialog ?
+// to do dodati tko je mijnjao proizvod u hladnjaku, stupac
+//TO DO PROCI SVE EXCEPTIONE
+
+//OBRISATI IZ STORAGE NA KLIK GUMBA DODAJ
+
+//NE RADI REFRESH button_hladnjak_Clic U STORAGE.CS
+
+//TO DO LAST MOSIF USER I LAST MODIFY TIME DODATI NA PRIKAZ SKLADISTA U DATA GRID
+
+
+///glumi refresh button u storage.cs gumb button_skladiste_Click
