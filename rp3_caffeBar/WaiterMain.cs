@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,11 +15,12 @@ namespace rp3_caffeBar
 {
     public partial class WaiterMain : Form
     {
-        public WaiterMain()
+        int userId;
+        public WaiterMain(int user_id)
         {
             InitializeComponent();
 
-
+            userId= user_id;
             //dodavanje buttona pica-> na blagajna1.flowLayout1
             SuspendLayout();
             try
@@ -89,7 +91,7 @@ namespace rp3_caffeBar
 
                 /***********************RAČUN FORMA***********************/
                 
-                //napravit cemo 4 liste za 4 stupca naseg racuna
+                //napravit cemo 4 liste za 4 stupca naseg racuna koje cemo poslati formi racun
                 List<string> naziv = new List<string>();
                 List<string> kolicina = new List<string>();
                 List<string> cijena = new List<string>();
@@ -102,19 +104,131 @@ namespace rp3_caffeBar
                     ukupno.Add(dataGridView1[3, i].Value.ToString());
                 }
 
+                //radimo insert u tablicu RECEIPT i RECEIPT ITEM kako bismo dodali stavke racuna
+                //insert into RECEIPT
+                SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\Anamaria\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True");
+                try
+                {
+                    connection.Open();
 
-                Receipt racun=new Receipt(naziv, kolicina,cijena, ukupno, iznos_racuna);
-                racun.ShowDialog();
+                    //unesi u tablicu
+                    String query = "INSERT INTO [RECEIPT] (USER_ID,TOTAL_AMOUNT) VALUES (@userId,@totalAmount)";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        //parametri
+                        command.Parameters.AddWithValue("@userId", userId);
+                        command.Parameters.AddWithValue("@totalAmount", iznos_racuna); //username: vlasnik password: vlasnik
 
-                dataGridView1.DataSource = null;
-                dataGridView1.Rows.Clear();
+                        //execute
+                        command.ExecuteNonQuery();
+                    }
+                    
+                    connection.Close();
+                    
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("prvi upit - INSERT INTO [RECEIPT]: " + ex.Message);
+                }
 
+                //dohvati id upravo uneseno racuna -> treba nam za insert u RECEIPT_ITEM
+                int receiptId = -1;
+                try
+                {
+                    String query = "SELECT MAX(RECEIPT_ID) FROM [RECEIPT]";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
 
-                //na kraju ocisti sve iz dataGrid
-                
+                        SqlDataReader reader = command.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            receiptId = reader.GetInt32(0);
+                        }
+                        reader.Close();
+
+                        connection.Close();
+                     }                   
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("select from receipt: " + ex.Message);
+                }
+
+                if (receiptId != -1)
+                {
+                    for (int i = 0; i < naziv.Count; i++)
+                    {
+                        int productId = -1;
+
+                        //product id -> za insert u RECEIPT_ITEM
+                        try
+                        {
+                            String query = "SELECT PRODUCT_ID FROM [PRODUCT] WHERE PRODUCT_NAME=@productName";
+                            using (SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                connection.Open();
+                                //parametri
+                                //MessageBox.Show("naziv: " + naziv[i]);
+                                command.Parameters.AddWithValue("@productName", naziv[i]); //dohvati iz baze 
+                                SqlDataReader reader = command.ExecuteReader();
+                                //MessageBox.Show("naziv: " + productId);
+                                if (reader.HasRows)
+                                {
+                                    reader.Read();
+                                    productId = reader.GetInt32(0);
+                                    
+                                }
+                                reader.Close();
+
+                                connection.Close();
+                            }
+                        }
+                        catch (Exception exx)
+                        {
+                            MessageBox.Show("greska select product");
+                        }
+
+                        try
+                        {
+                            String query = "INSERT INTO [RECEIPT_ITEM] (RECEIPT_ID,PRODUCT_ID, ITEM_QUANTITY, ITEM_AMOUNT) VALUES (@receiptId,@productId, @itemQuantity, @itemAmount)";
+                            using (SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                connection.Open();
+                                //parametri
+                                command.Parameters.AddWithValue("@receiptId", receiptId); //dohvati iz baze 
+                                command.Parameters.AddWithValue("@productId", productId); //dohvati iz baze
+                                command.Parameters.AddWithValue("@itemQuantity", int.Parse(kolicina[i]));
+                                command.Parameters.AddWithValue("@itemAmount", int.Parse(ukupno[i])); //username: vlasnik password: vlasnik
+
+                                command.ExecuteNonQuery();
+
+                                connection.Close();
+
+                            }
+                        }
+                        catch
+                        {
+                            MessageBox.Show("gresak insert receipt");
+                        }
+
+                    }
+                    //poziv forme
+                    Receipt racun = new Receipt(receiptId, naziv, kolicina, cijena, ukupno, iznos_racuna, userId);
+                    racun.ShowDialog();
+
+                    //na kraju ocisti sve iz dataGrid
+                    dataGridView1.DataSource = null;
+                    dataGridView1.Rows.Clear();
+                }
+
+                else
+                {
+                    MessageBox.Show("greska u dohvatu receipt id else");
+                }
+
             }
-            
-
             
         }
 
@@ -141,4 +255,8 @@ namespace rp3_caffeBar
 
 //TO DO 
 // postaviti neke stupce u dataGridView na read only
+//connection string
+//connection open
+//try exceptione
+//postaviti neke texboxove na formi na readonly samo
 

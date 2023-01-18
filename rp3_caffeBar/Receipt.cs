@@ -16,16 +16,24 @@ namespace rp3_caffeBar
         List<string> kolicina = new List<string>();
         List<string> cijena = new List<string>();
         List<string> ukupno = new List<string>();
-        //int iznos_racuna;
-        public Receipt(List<string> naziv_konstruktor, List<string> kolicina_konstruktor, List<string> cijena_konstruktor, List<string> ukupno_konstruktor, int iznos_racuna_konstruktor)
+        int receiptId, userId;
+        public Receipt(int receip_id, List<string> naziv_konstruktor, List<string> kolicina_konstruktor, List<string> cijena_konstruktor, List<string> ukupno_konstruktor, int iznos_racuna_konstruktor, int user_id)
         {
             InitializeComponent();
             naziv = naziv_konstruktor;
             kolicina = kolicina_konstruktor;
             cijena = cijena_konstruktor;
             ukupno = ukupno_konstruktor;
-            //iznos_racuna = iznos_racuna_konstruktor;
+            receiptId= receip_id;
+            userId = user_id;
+
             SuspendLayout();
+
+            //postavljamo vrijednost textboxa za broj racuna -> textBox_idRacuna 
+            
+
+
+            //dodajemo stavke racuna kao user controlu recepitItem
             for(int i=0;i<naziv.Count;i++) 
             {
                 var item = new recepitItem();
@@ -34,11 +42,14 @@ namespace rp3_caffeBar
                 item.cijena= cijena[i];
                 item.ukupno= ukupno[i];
 
-                flowLayoutPanel1.Controls.Add(item);
-            
+                //add
+                flowLayoutPanel1.Controls.Add(item);    
             }
 
+            //postavljamo vrijednost textboxa za iznos racuna
             textBox_ukupno.Text=iznos_racuna_konstruktor.ToString();
+            textBox_idRacuna.Text = receiptId.ToString();
+            textBox_blagajnikId.Text = userId.ToString();
             ResumeLayout();
 
         }
