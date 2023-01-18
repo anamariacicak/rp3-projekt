@@ -62,10 +62,14 @@ namespace rp3_caffeBar
                         this.Hide(); //sakrij ovu formu
                        //prikazi glavnu formu
                        reader.Read(); //procitaj
-                       if(reader.GetInt32(0) == 0) //konobar
+                        int isOwner = reader.GetInt32(0);
+                        int userId = reader.GetInt32(1);
+                        var ownerForm = new MainScreen(userId, isOwner);
+                        ownerForm.Show();
+                        /*if(reader.GetInt32(0) == 0) //konobar
                         {
                             int userId = reader.GetInt32(1);
-                            var waiterForm=new WaiterMain(userId);
+                            var waiterForm=new WaiterMain(userId, isOwner);
                             waiterForm.Show();
                         }
                         else //vlasnik
@@ -73,7 +77,7 @@ namespace rp3_caffeBar
                             int userId = reader.GetInt32(1);
                             var ownerForm = new OwnerMain(userId); //OwnerMain(userId);
                             ownerForm.Show();
-                        }
+                        }*/
                         //prikaz glavne forme
                         /*while (reader.Read())
                         {
