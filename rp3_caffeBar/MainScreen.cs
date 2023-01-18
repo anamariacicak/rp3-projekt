@@ -52,7 +52,7 @@ namespace rp3_caffeBar
                                 btn.Margin = new Padding(5, 5, 5, 5);
                                 var naziv = reader.GetString(1).ToString();
                                 var cijena = reader.GetDecimal(2).ToString();
-
+                                btn.Width = 210;
                                 btn.Click += (_sender, _e) =>
                                 {
 
