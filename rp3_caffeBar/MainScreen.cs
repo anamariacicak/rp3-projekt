@@ -18,18 +18,17 @@ namespace rp3_caffeBar
     {
         String connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\Anamaria\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True";
 
-        int userId, isOwner;
-        public MainScreen(int user_id, int is_owner)
+   
+        public MainScreen()
         {
             InitializeComponent();
-
-            userId = user_id;
-            isOwner = is_owner;
-            if(isOwner == 0 ) { 
+           
+            if(User.isOwner == 0 ) { 
                 Administracija.Visible= false;
             
             }
             //dodavanje buttona pica-> na blagajna1.flowLayout1
+            
             SuspendLayout();
             try
             {
@@ -45,6 +44,7 @@ namespace rp3_caffeBar
                     {
                         while (reader.Read())
                         {
+<<<<<<< Updated upstream
                             for (int i = 0; i < 10; i++)
                             {
                                 var btn = new Button();
@@ -55,11 +55,22 @@ namespace rp3_caffeBar
                                 btn.Width = 210;
                                 btn.Click += (_sender, _e) =>
                                 {
+=======
 
-                                    dataGridView1.Rows.Add(naziv, 1, cijena, cijena);
-                                };
-                                flowLayoutPanel1.Controls.Add(btn);
-                            }
+                            var btn = new Button();
+                            btn.Text = reader.GetString(1).ToString();
+                            btn.Width = 210;
+                            btn.Margin = new Padding(5, 5, 5, 5);
+                            var naziv = reader.GetString(1).ToString();
+                            var cijena = reader.GetDecimal(2).ToString();
+
+                            btn.Click += (_sender, _e) =>
+                            { 
+                                dataGridView1.Rows.Add(naziv, 1, cijena, cijena);
+                            };
+                            flowLayoutPanel1.Controls.Add(btn);
+>>>>>>> Stashed changes
+
                         }
                     }
                     reader.Close();
@@ -124,7 +135,7 @@ namespace rp3_caffeBar
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         //parametri
-                        command.Parameters.AddWithValue("@userId", userId);
+                        command.Parameters.AddWithValue("@userId", User.userId);
                         command.Parameters.AddWithValue("@totalAmount", iznos_racuna); //username: vlasnik password: vlasnik
 
                         //execute
@@ -223,7 +234,7 @@ namespace rp3_caffeBar
 
                     }
                     //poziv forme
-                    Receipt racun = new Receipt(receiptId, naziv, kolicina, cijena, ukupno, iznos_racuna, userId);
+                    Receipt racun = new Receipt(receiptId, naziv, kolicina, cijena, ukupno, iznos_racuna);
                     racun.ShowDialog();
 
                     //na kraju ocisti sve iz dataGrid

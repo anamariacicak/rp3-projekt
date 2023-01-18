@@ -16,8 +16,8 @@ namespace rp3_caffeBar
         List<string> kolicina = new List<string>();
         List<string> cijena = new List<string>();
         List<string> ukupno = new List<string>();
-        int receiptId, userId;
-        public Receipt(int receip_id, List<string> naziv_konstruktor, List<string> kolicina_konstruktor, List<string> cijena_konstruktor, List<string> ukupno_konstruktor, int iznos_racuna_konstruktor, int user_id)
+        int receiptId;
+        public Receipt(int receip_id, List<string> naziv_konstruktor, List<string> kolicina_konstruktor, List<string> cijena_konstruktor, List<string> ukupno_konstruktor, int iznos_racuna_konstruktor)
         {
             InitializeComponent();
             naziv = naziv_konstruktor;
@@ -25,7 +25,7 @@ namespace rp3_caffeBar
             cijena = cijena_konstruktor;
             ukupno = ukupno_konstruktor;
             receiptId= receip_id;
-            userId = user_id;
+      
 
             SuspendLayout();
 
@@ -49,14 +49,16 @@ namespace rp3_caffeBar
             //postavljamo vrijednost textboxa za iznos racuna
             textBox_ukupno.Text=iznos_racuna_konstruktor.ToString();
             textBox_idRacuna.Text = receiptId.ToString();
-            textBox_blagajnikId.Text = userId.ToString();
+            textBox_blagajnikId.Text = User.username.ToString();
             ResumeLayout();
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close(); //to do koja je razlika izmedu hide i close
         }
+
+      
     }
 }

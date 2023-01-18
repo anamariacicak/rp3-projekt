@@ -107,6 +107,7 @@
     <Compile Include="recepitItem.Designer.cs">
       <DependentUpon>recepitItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
     <EmbeddedResource Include="alatnaTraka.resx">
       <DependentUpon>alatnaTraka.cs</DependentUpon>
     </EmbeddedResource>

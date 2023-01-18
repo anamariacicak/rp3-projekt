@@ -79,7 +79,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(382, 300);
+            this.button1.Location = new System.Drawing.Point(357, 300);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
@@ -92,9 +92,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(28, 320);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 13);
+            this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Blagajnik id: ";
+            this.label3.Text = "Konobar:";
             // 
             // textBox_blagajnikId
             // 
