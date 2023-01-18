@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< Updated upstream
             this.components = new System.ComponentModel.Container();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -161,6 +162,10 @@
             this.alatnaTraka1.Size = new System.Drawing.Size(800, 26);
             this.alatnaTraka1.TabIndex = 1;
             // 
+=======
+            this.SuspendLayout();
+            // 
+>>>>>>> Stashed changes
             // WaiterMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,6 +175,7 @@
             this.Controls.Add(this.alatnaTraka1);
             this.Name = "WaiterMain";
             this.Text = "WaiterMain";
+<<<<<<< Updated upstream
             this.Load += new System.EventHandler(this.WaiterMain_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -177,11 +183,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+=======
+>>>>>>> Stashed changes
             this.ResumeLayout(false);
 
         }
 
         #endregion
+<<<<<<< Updated upstream
 
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
@@ -196,5 +205,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Količina;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cijena;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ukupno;
+=======
+>>>>>>> Stashed changes
     }
 }
