@@ -40,7 +40,7 @@ namespace rp3_caffeBar
                 using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT PRODUCT_NAME, PRICE, COOLER_QUANTITY, STORAGE_QUANTITY, USERNAME, LAST_MODIFY_TIME FROM [PRODUCT] JOIN [USER] ON LAST_MODIFY_USER=USER_ID";
+                    string query = "SELECT PRODUCT_NAME, PRICE, COOLER_QUANTITY, STORAGE_QUANTITY, COALESCE(USERNAME,'NEPOZNATO'), LAST_MODIFY_TIME FROM [PRODUCT] LEFT JOIN [USER] ON LAST_MODIFY_USER=USER_ID";
                     SqlCommand command = new SqlCommand(query, connection);
 
                     SqlDataReader reader = command.ExecuteReader();
@@ -48,6 +48,8 @@ namespace rp3_caffeBar
                     {
                         while (reader.Read())
                         {
+                          
+
                             dataGridView1.Rows.Add(reader.GetString(0).ToString(), reader.GetDecimal(1).ToString(), reader.GetInt32(2).ToString(), reader.GetInt32(3).ToString(), reader.GetString(4).ToString(), reader.GetDateTime(5).ToString()); //n,c,h,s, user, vrijeme
                         }
                     }
