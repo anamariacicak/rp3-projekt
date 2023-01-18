@@ -24,7 +24,9 @@ namespace rp3_caffeBar
             try
             {
                 //prvo selectirajmo sva pica iz baze
-                using (SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\Anamaria\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True"))
+                //using (SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\Anamaria\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True"))
+
+               using (SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Dea\\Documents\\GitHub\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True"))
                 {
                     connection.Open();
                     string query = "SELECT * FROM [PRODUCT]";
