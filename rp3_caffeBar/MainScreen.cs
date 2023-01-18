@@ -17,8 +17,8 @@ namespace rp3_caffeBar
     public partial class MainScreen : Form
     {
         String connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\Anamaria\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True";
+        //String connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Dea\\Documents\\GitHub\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True";
 
-   
         public MainScreen()
         {
             InitializeComponent();
