@@ -13,8 +13,10 @@ using System.Windows.Forms;
 
 namespace rp3_caffeBar
 {
+    
     public partial class Login : Form
     {
+        String connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\Anamaria\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True";
         public Login()
         {
             InitializeComponent();
@@ -33,7 +35,7 @@ namespace rp3_caffeBar
             {
                 //select iz baze
                 //koristeno https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/retrieving-data-using-a-datareader
-                using (SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\Anamaria\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True"))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
                     string query = "SELECT IS_OWNER, USER_ID FROM [USER] WHERE USERNAME=@username AND PASSWORD=@password";

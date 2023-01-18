@@ -13,8 +13,11 @@ using System.Windows.Forms;
 
 namespace rp3_caffeBar
 {
+
     public partial class WaiterMain : Form
     {
+        String connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\Anamaria\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True";
+
         int userId;
         public WaiterMain(int user_id)
         {
@@ -26,7 +29,7 @@ namespace rp3_caffeBar
             try
             {
                 //prvo selectirajmo sva pica iz baze
-                using (SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\Anamaria\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True"))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
                     string query = "SELECT * FROM [PRODUCT]";
@@ -106,7 +109,7 @@ namespace rp3_caffeBar
 
                 //radimo insert u tablicu RECEIPT i RECEIPT ITEM kako bismo dodali stavke racuna
                 //insert into RECEIPT
-                SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\Anamaria\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True");
+                SqlConnection connection = new SqlConnection(connectionString);
                 try
                 {
                     connection.Open();

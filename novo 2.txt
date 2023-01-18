@@ -289,3 +289,5 @@ namespace rp3_caffeBar
 
 "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\Anamaria\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True"
 EXEC sp_rename 'PRODUCT.oldcolumn', 'newcolumn', 'COLUMN';
+
+//connection strin -> logincs i waitermain.cs
