@@ -44,5 +44,6 @@ C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.No
 F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.Administracija.resources
 F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.NoviKorisnik.resources
 F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.StorageRestore.resources
-F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.ProductRestore.resources
 F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.ChangeNamePrice.resources
+F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.DeleteProduct.resources
+F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.RestoreProduct.resources

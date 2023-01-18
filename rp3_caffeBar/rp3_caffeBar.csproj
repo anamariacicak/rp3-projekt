@@ -94,11 +94,17 @@
       <DependentUpon>ChangeNamePrice.cs</DependentUpon>
     </Compile>
     <Compile Include="ConnectionString.cs" />
-    <Compile Include="ProductRestore.cs">
+    <Compile Include="DeleteProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProductRestore.Designer.cs">
-      <DependentUpon>ProductRestore.cs</DependentUpon>
+    <Compile Include="DeleteProduct.Designer.cs">
+      <DependentUpon>DeleteProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestoreProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RestoreProduct.Designer.cs">
+      <DependentUpon>RestoreProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -160,8 +166,11 @@
     <EmbeddedResource Include="ChangeNamePrice.resx">
       <DependentUpon>ChangeNamePrice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductRestore.resx">
-      <DependentUpon>ProductRestore.cs</DependentUpon>
+    <EmbeddedResource Include="DeleteProduct.resx">
+      <DependentUpon>DeleteProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestoreProduct.resx">
+      <DependentUpon>RestoreProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

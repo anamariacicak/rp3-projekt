@@ -23,7 +23,7 @@ namespace rp3_caffeBar
         }
 
 
-        private void refresh_storage()
+        private void refresh_storage() //to do treba li nam ova fja
         {
             SuspendLayout();
             if (User.isOwner == 0) //konobar -> ne moze vidjeti gumbe button_edit i button_delete
@@ -59,6 +59,7 @@ namespace rp3_caffeBar
             ResumeLayout();
         }
 
+        //buttoni na toolStripu i njihovi eventi
         private void Blagajna_Click(object sender, EventArgs e)
         {
             this.Close(); //TOD close ili hide
@@ -67,6 +68,29 @@ namespace rp3_caffeBar
             
         }
 
+        private void button_skladiste_Click(object sender, EventArgs e)
+        {
+            ///glumi refresh button
+            this.Hide();
+            var storage = new Storage();
+            storage.Show();
+        }
+
+        private void button_administracija_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var administration = new Administracija();
+            administration.Show();
+        }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            var login = new Login();
+            login.Show();
+        }
+
+        //buttoni na desnom panelu
 
         private void button_hladnjak_Click(object sender, EventArgs e)
         {
@@ -74,7 +98,7 @@ namespace rp3_caffeBar
             //potvrdom na tu formu treba provjeriti da li postoje ti proizvodi u stanju na skladistu u toj kolicini
             //ako ne postoje, izlazi mu message box diaol da  ne postoji dani proizvod ili dana kolicina te da ponovno unese
            // this.Hide();
-            var restoreCooler = new ProductRestore("cooler");
+            var restoreCooler = new RestoreProduct("cooler");
             restoreCooler.Show();
            // refresh_storage(); //TO DO TREBALI MI OVO U FJI
 
@@ -83,7 +107,7 @@ namespace rp3_caffeBar
 
         private void button_storage_Click(object sender, EventArgs e)
         {
-            var restoreStorage = new ProductRestore("storage");
+            var restoreStorage = new RestoreProduct("storage");
             restoreStorage.Show();
            // refresh_storage(); //TO DO TREBALI MI OVO U FJI
         }
@@ -96,13 +120,10 @@ namespace rp3_caffeBar
            // refresh_storage(); //TO DO TREBALI MI OVO U FJI
         }
 
-
-        private void button_skladiste_Click(object sender, EventArgs e)
+        private void button_delete_Click(object sender, EventArgs e)
         {
-            ///glumi refresh button
-            this.Hide();
-            var storage = new Storage();
-            storage.Show();
+            var deleteProduct = new DeleteProduct();
+            deleteProduct.Show();
         }
 
         private void button_refresh_Click(object sender, EventArgs e)
@@ -112,6 +133,6 @@ namespace rp3_caffeBar
             storage.Show();
         }
 
-       
+        
     }
 }

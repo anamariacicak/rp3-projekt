@@ -115,6 +115,7 @@
             this.button_administracija.Name = "button_administracija";
             this.button_administracija.Size = new System.Drawing.Size(87, 19);
             this.button_administracija.Text = "Administracija";
+            this.button_administracija.Click += new System.EventHandler(this.button_administracija_Click);
             // 
             // Logout
             // 
@@ -127,6 +128,7 @@
             this.Logout.Name = "Logout";
             this.Logout.Size = new System.Drawing.Size(49, 19);
             this.Logout.Text = "Logout";
+            this.Logout.Click += new System.EventHandler(this.Logout_Click);
             // 
             // splitContainer1
             // 
@@ -137,12 +139,12 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.splitContainer1.Panel1.Controls.Add(this.button_refresh);
             this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.splitContainer1.Panel2.Controls.Add(this.button_refresh);
             this.splitContainer1.Panel2.Controls.Add(this.button_edit);
             this.splitContainer1.Panel2.Controls.Add(this.button_delete);
             this.splitContainer1.Panel2.Controls.Add(this.button_storage);
@@ -211,7 +213,7 @@
             // 
             // button_refresh
             // 
-            this.button_refresh.Location = new System.Drawing.Point(13, 12);
+            this.button_refresh.Location = new System.Drawing.Point(3, 13);
             this.button_refresh.Name = "button_refresh";
             this.button_refresh.Size = new System.Drawing.Size(43, 27);
             this.button_refresh.TabIndex = 1;
@@ -221,7 +223,7 @@
             // 
             // button_edit
             // 
-            this.button_edit.Location = new System.Drawing.Point(13, 221);
+            this.button_edit.Location = new System.Drawing.Point(13, 173);
             this.button_edit.Name = "button_edit";
             this.button_edit.Size = new System.Drawing.Size(101, 41);
             this.button_edit.TabIndex = 3;
@@ -231,16 +233,17 @@
             // 
             // button_delete
             // 
-            this.button_delete.Location = new System.Drawing.Point(14, 277);
+            this.button_delete.Location = new System.Drawing.Point(14, 231);
             this.button_delete.Name = "button_delete";
             this.button_delete.Size = new System.Drawing.Size(100, 45);
             this.button_delete.TabIndex = 2;
             this.button_delete.Text = "Obriši proizvod";
             this.button_delete.UseVisualStyleBackColor = true;
+            this.button_delete.Click += new System.EventHandler(this.button_delete_Click);
             // 
             // button_storage
             // 
-            this.button_storage.Location = new System.Drawing.Point(13, 159);
+            this.button_storage.Location = new System.Drawing.Point(13, 110);
             this.button_storage.Name = "button_storage";
             this.button_storage.Size = new System.Drawing.Size(101, 45);
             this.button_storage.TabIndex = 1;
@@ -250,7 +253,7 @@
             // 
             // button_hladnjak
             // 
-            this.button_hladnjak.Location = new System.Drawing.Point(13, 87);
+            this.button_hladnjak.Location = new System.Drawing.Point(13, 36);
             this.button_hladnjak.Name = "button_hladnjak";
             this.button_hladnjak.Size = new System.Drawing.Size(101, 49);
             this.button_hladnjak.TabIndex = 0;
@@ -266,7 +269,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "Storage";
-            this.Text = "Storage";
+            this.Text = "Skladište";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
