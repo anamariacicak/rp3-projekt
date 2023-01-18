@@ -13,8 +13,10 @@ using System.Windows.Forms;
 
 namespace rp3_caffeBar
 {
+    
     public partial class Login : Form
     {
+        
         public Login()
         {
             InitializeComponent();
@@ -28,15 +30,14 @@ namespace rp3_caffeBar
                 MessageBox.Show("Unesi sve potrebne podatke!"); 
             }
 
-
             try
             {
                 //select iz baze
                 //koristeno https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/retrieving-data-using-a-datareader
-                using (SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\Anamaria\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True"))
+                using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT IS_OWNER, USER_ID FROM [USER] WHERE USERNAME=@username AND PASSWORD=@password";
+                    string query = "SELECT USER_ID, USERNAME, IS_OWNER FROM [USER] WHERE USERNAME=@username AND PASSWORD=@password";
                     SqlCommand command = new SqlCommand(query, connection);
 
 
@@ -57,27 +58,19 @@ namespace rp3_caffeBar
                     SqlDataReader reader = command.ExecuteReader();
                     if (reader.HasRows)
                     {
-                        this.Hide(); //sakrij ovu formu
-                       //prikazi glavnu formu
-                       reader.Read(); //procitaj
-                       if(reader.GetInt32(0) == 0) //konobar
-                        {
-                            int userId = reader.GetInt32(1);
-                            var waiterForm=new WaiterMain(userId);
-                            waiterForm.Show();
-                        }
-                        else //vlasnik
-                        {
-                            int userId = reader.GetInt32(1);
-                            var ownerForm = new OwnerMain(); //OwnerMain(userId);
-                            ownerForm.Show();
-                        }
-                        //prikaz glavne forme
-                        /*while (reader.Read())
-                        {
-                            MessageBox.Show("id: " + reader.GetInt32(0).ToString() + " username: " + reader.GetString(1).ToString() + " password: " + reader.GetString(2).ToString());
-                         
-                        }*/
+                        this.Hide(); //sakrij ovu formu //TO DO 
+                        
+                        reader.Read(); //procitaj
+               
+                        //User
+                        User.userId = reader.GetInt32(0);
+                        User.username = reader.GetString(1);
+                        User.isOwner = reader.GetInt32(2);
+
+                        //main Screen Forma
+                        var mainScreen = new MainScreen();
+                        mainScreen.Show();
+                       
                     }
                     else
                     {
@@ -86,8 +79,6 @@ namespace rp3_caffeBar
                    
                     reader.Close();
                 }
-
-                
 
             }
             catch (Exception ex) 

@@ -81,6 +81,13 @@
     <Compile Include="CashBackCalculator.Designer.cs">
       <DependentUpon>CashBackCalculator.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConnectionString.cs" />
+    <Compile Include="CoolerRestore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CoolerRestore.Designer.cs">
+      <DependentUpon>CoolerRestore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +130,9 @@
     <EmbeddedResource Include="CashBackCalculator.resx">
       <DependentUpon>CashBackCalculator.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CoolerRestore.resx">
+      <DependentUpon>CoolerRestore.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="recepitItem.resx">
       <DependentUpon>recepitItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Storage.resx">
+      <DependentUpon>Storage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -11,8 +11,6 @@ F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.exe
 F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.pdb
 F:\Anamaria\rp3-projekt\rp3_caffeBar\bin\Debug\caffeBar.mdf
 F:\Anamaria\rp3-projekt\rp3_caffeBar\bin\Debug\caffeBar_log.ldf
-F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.OwnerMain.resources
-F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.WaiterMain.resources
 C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar\bin\Debug\caffeBar.mdf
 C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar\bin\Debug\caffeBar_log.ldf
 C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar\bin\Debug\rp3_caffeBar.exe.config
@@ -35,3 +33,9 @@ F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.Blagajna.resources
 F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.CashBackCalculator.resources
 F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.recepitItem.resources
 F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.Receipt.resources
+C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.CashBackCalculator.resources
+C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.Receipt.resources
+C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.recepitItem.resources
+F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.MainScreen.resources
+F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.Storage.resources
+F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.CoolerRestore.resources

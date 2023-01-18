@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripLabel();
-            this.Blagajna = new System.Windows.Forms.ToolStripButton();
-            this.Skladište = new System.Windows.Forms.ToolStripButton();
-            this.Administracija = new System.Windows.Forms.ToolStripButton();
+            this.button_blagajna = new System.Windows.Forms.ToolStripButton();
+            this.button_skladiste = new System.Windows.Forms.ToolStripButton();
+            this.button_administracija = new System.Windows.Forms.ToolStripButton();
             this.Logout = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.button_izdajRacun = new System.Windows.Forms.Button();
@@ -57,9 +57,9 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
-            this.Blagajna,
-            this.Skladište,
-            this.Administracija,
+            this.button_blagajna,
+            this.button_skladiste,
+            this.button_administracija,
             this.Logout});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -76,38 +76,39 @@
             this.toolStripButton1.Size = new System.Drawing.Size(63, 24);
             this.toolStripButton1.Text = "CaffeBar A";
             // 
-            // Blagajna
+            // button_blagajna
             // 
-            this.Blagajna.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Blagajna.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.Blagajna.Image = ((System.Drawing.Image)(resources.GetObject("Blagajna.Image")));
-            this.Blagajna.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Blagajna.Margin = new System.Windows.Forms.Padding(4);
-            this.Blagajna.Name = "Blagajna";
-            this.Blagajna.Size = new System.Drawing.Size(56, 19);
-            this.Blagajna.Text = "Blagajna";
+            this.button_blagajna.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button_blagajna.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.button_blagajna.Image = ((System.Drawing.Image)(resources.GetObject("button_blagajna.Image")));
+            this.button_blagajna.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.button_blagajna.Margin = new System.Windows.Forms.Padding(4);
+            this.button_blagajna.Name = "button_blagajna";
+            this.button_blagajna.Size = new System.Drawing.Size(56, 19);
+            this.button_blagajna.Text = "Blagajna";
             // 
-            // Skladište
+            // button_skladiste
             // 
-            this.Skladište.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Skladište.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.Skladište.Image = ((System.Drawing.Image)(resources.GetObject("Skladište.Image")));
-            this.Skladište.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Skladište.Margin = new System.Windows.Forms.Padding(4);
-            this.Skladište.Name = "Skladište";
-            this.Skladište.Size = new System.Drawing.Size(57, 19);
-            this.Skladište.Text = "Skladište";
+            this.button_skladiste.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button_skladiste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.button_skladiste.Image = ((System.Drawing.Image)(resources.GetObject("button_skladiste.Image")));
+            this.button_skladiste.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.button_skladiste.Margin = new System.Windows.Forms.Padding(4);
+            this.button_skladiste.Name = "button_skladiste";
+            this.button_skladiste.Size = new System.Drawing.Size(57, 19);
+            this.button_skladiste.Text = "Skladište";
+            this.button_skladiste.Click += new System.EventHandler(this.Skladište_Click);
             // 
-            // Administracija
+            // button_administracija
             // 
-            this.Administracija.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Administracija.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.Administracija.Image = ((System.Drawing.Image)(resources.GetObject("Administracija.Image")));
-            this.Administracija.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Administracija.Margin = new System.Windows.Forms.Padding(4);
-            this.Administracija.Name = "Administracija";
-            this.Administracija.Size = new System.Drawing.Size(87, 19);
-            this.Administracija.Text = "Administracija";
+            this.button_administracija.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button_administracija.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.button_administracija.Image = ((System.Drawing.Image)(resources.GetObject("button_administracija.Image")));
+            this.button_administracija.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.button_administracija.Margin = new System.Windows.Forms.Padding(4);
+            this.button_administracija.Name = "button_administracija";
+            this.button_administracija.Size = new System.Drawing.Size(87, 19);
+            this.button_administracija.Text = "Administracija";
             // 
             // Logout
             // 
@@ -235,9 +236,9 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton Blagajna;
-        private System.Windows.Forms.ToolStripButton Skladište;
-        private System.Windows.Forms.ToolStripButton Administracija;
+        private System.Windows.Forms.ToolStripButton button_blagajna;
+        private System.Windows.Forms.ToolStripButton button_skladiste;
+        private System.Windows.Forms.ToolStripButton button_administracija;
         private System.Windows.Forms.ToolStripButton Logout;
         private System.Windows.Forms.ToolStripLabel toolStripButton1;
         private System.Windows.Forms.SplitContainer splitContainer1;

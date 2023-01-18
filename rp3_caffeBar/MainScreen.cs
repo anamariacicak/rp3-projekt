@@ -16,15 +16,14 @@ namespace rp3_caffeBar
 
     public partial class MainScreen : Form
     {
-        String connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\Anamaria\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True";
-        //String connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Dea\\Documents\\GitHub\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True";
+        
 
         public MainScreen()
         {
             InitializeComponent();
            
             if(User.isOwner == 0 ) { 
-                Administracija.Visible= false;
+                button_administracija.Visible= false;
             
             }
             //dodavanje buttona pica-> na blagajna1.flowLayout1
@@ -33,7 +32,7 @@ namespace rp3_caffeBar
             try
             {
                 //prvo selectirajmo sva pica iz baze
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
                 {
                     connection.Open();
                     string query = "SELECT * FROM [PRODUCT]";
@@ -112,7 +111,7 @@ namespace rp3_caffeBar
 
                 //radimo insert u tablicu RECEIPT i RECEIPT ITEM kako bismo dodali stavke racuna
                 //insert into RECEIPT
-                SqlConnection connection = new SqlConnection(connectionString);
+                SqlConnection connection = new SqlConnection(ConnectionString.connectionString);
                 try
                 {
                     connection.Open();
@@ -259,6 +258,15 @@ namespace rp3_caffeBar
             var login=new Login();
             login.Show();
 
+        }
+
+        private void Skladište_Click(object sender, EventArgs e)
+        {
+            //TO DO treba li provjeriti je li iznos 0 racuna
+            this.Close();
+            //skladiste forma
+            var storage=new Storage();
+            storage.Show();
         }
     }
 }

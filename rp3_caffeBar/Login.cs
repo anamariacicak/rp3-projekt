@@ -16,8 +16,7 @@ namespace rp3_caffeBar
     
     public partial class Login : Form
     {
-        String connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\Anamaria\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True";
-        //String connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Dea\\Documents\\GitHub\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True";
+        
         public Login()
         {
             InitializeComponent();
@@ -35,7 +34,7 @@ namespace rp3_caffeBar
             {
                 //select iz baze
                 //koristeno https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/retrieving-data-using-a-datareader
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
                 {
                     connection.Open();
                     string query = "SELECT USER_ID, USERNAME, IS_OWNER FROM [USER] WHERE USERNAME=@username AND PASSWORD=@password";

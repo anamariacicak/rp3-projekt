@@ -81,17 +81,24 @@
     <Compile Include="CashBackCalculator.Designer.cs">
       <DependentUpon>CashBackCalculator.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConnectionString.cs" />
+    <Compile Include="CoolerRestore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CoolerRestore.Designer.cs">
+      <DependentUpon>CoolerRestore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="OwnerMain.cs">
+    <Compile Include="MainScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OwnerMain.Designer.cs">
-      <DependentUpon>OwnerMain.cs</DependentUpon>
+    <Compile Include="MainScreen.Designer.cs">
+      <DependentUpon>MainScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,12 +114,13 @@
     <Compile Include="recepitItem.Designer.cs">
       <DependentUpon>recepitItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="WaiterMain.cs">
+    <Compile Include="Storage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WaiterMain.Designer.cs">
-      <DependentUpon>WaiterMain.cs</DependentUpon>
+    <Compile Include="Storage.Designer.cs">
+      <DependentUpon>Storage.cs</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
     <EmbeddedResource Include="alatnaTraka.resx">
       <DependentUpon>alatnaTraka.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,11 +130,14 @@
     <EmbeddedResource Include="CashBackCalculator.resx">
       <DependentUpon>CashBackCalculator.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CoolerRestore.resx">
+      <DependentUpon>CoolerRestore.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OwnerMain.resx">
-      <DependentUpon>OwnerMain.cs</DependentUpon>
+    <EmbeddedResource Include="MainScreen.resx">
+      <DependentUpon>MainScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -143,9 +154,8 @@
     <EmbeddedResource Include="recepitItem.resx">
       <DependentUpon>recepitItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WaiterMain.resx">
-      <DependentUpon>WaiterMain.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Storage.resx">
+      <DependentUpon>Storage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -37,3 +37,5 @@ C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.Ca
 C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.Receipt.resources
 C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.recepitItem.resources
 F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.MainScreen.resources
+F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.Storage.resources
+F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.CoolerRestore.resources
