@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_izdajRacun = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Količina = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,7 +52,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.button1);
+            this.splitContainer1.Panel1.Controls.Add(this.button_izdajRacun);
             this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
             // 
             // splitContainer1.Panel2
@@ -62,15 +62,15 @@
             this.splitContainer1.SplitterDistance = 437;
             this.splitContainer1.TabIndex = 2;
             // 
-            // button1
+            // button_izdajRacun
             // 
-            this.button1.Location = new System.Drawing.Point(176, 350);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 28);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Izdaj Račun";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button_izdajRacun.Location = new System.Drawing.Point(176, 350);
+            this.button_izdajRacun.Name = "button_izdajRacun";
+            this.button_izdajRacun.Size = new System.Drawing.Size(97, 28);
+            this.button_izdajRacun.TabIndex = 1;
+            this.button_izdajRacun.Text = "Izdaj Račun";
+            this.button_izdajRacun.UseVisualStyleBackColor = true;
+            this.button_izdajRacun.Click += new System.EventHandler(this.button_izdajRacun_Click);
             // 
             // dataGridView1
             // 
@@ -149,7 +149,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_izdajRacun;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Količina;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cijena;
