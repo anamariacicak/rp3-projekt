@@ -42,3 +42,5 @@ C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.Ma
 C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.Storage.resources
 C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.Administracija.resources
 C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.NoviKorisnik.resources
+F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.Administracija.resources
+F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.NoviKorisnik.resources
