@@ -44,32 +44,19 @@ namespace rp3_caffeBar
                     {
                         while (reader.Read())
                         {
-<<<<<<< Updated upstream
-                            for (int i = 0; i < 10; i++)
-                            {
-                                var btn = new Button();
-                                btn.Text = reader.GetString(1).ToString();
-                                btn.Margin = new Padding(5, 5, 5, 5);
-                                var naziv = reader.GetString(1).ToString();
-                                var cijena = reader.GetDecimal(2).ToString();
-                                btn.Width = 210;
-                                btn.Click += (_sender, _e) =>
-                                {
-=======
-
                             var btn = new Button();
                             btn.Text = reader.GetString(1).ToString();
-                            btn.Width = 210;
                             btn.Margin = new Padding(5, 5, 5, 5);
+                            btn.Width = 210;
                             var naziv = reader.GetString(1).ToString();
                             var cijena = reader.GetDecimal(2).ToString();
 
                             btn.Click += (_sender, _e) =>
-                            { 
+                            {
+
                                 dataGridView1.Rows.Add(naziv, 1, cijena, cijena);
                             };
                             flowLayoutPanel1.Controls.Add(btn);
->>>>>>> Stashed changes
 
                         }
                     }
