@@ -87,12 +87,18 @@
     <Compile Include="CashBackCalculator.Designer.cs">
       <DependentUpon>CashBackCalculator.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConnectionString.cs" />
-    <Compile Include="CoolerRestore.cs">
+    <Compile Include="ChangeNamePrice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CoolerRestore.Designer.cs">
-      <DependentUpon>CoolerRestore.cs</DependentUpon>
+    <Compile Include="ChangeNamePrice.Designer.cs">
+      <DependentUpon>ChangeNamePrice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectionString.cs" />
+    <Compile Include="ProductRestore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductRestore.Designer.cs">
+      <DependentUpon>ProductRestore.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -132,6 +138,12 @@
     <Compile Include="Storage.Designer.cs">
       <DependentUpon>Storage.cs</DependentUpon>
     </Compile>
+    <Compile Include="StorageRestore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StorageRestore.Designer.cs">
+      <DependentUpon>StorageRestore.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
     <EmbeddedResource Include="Administracija.resx">
       <DependentUpon>Administracija.cs</DependentUpon>
@@ -145,8 +157,11 @@
     <EmbeddedResource Include="CashBackCalculator.resx">
       <DependentUpon>CashBackCalculator.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CoolerRestore.resx">
-      <DependentUpon>CoolerRestore.cs</DependentUpon>
+    <EmbeddedResource Include="ChangeNamePrice.resx">
+      <DependentUpon>ChangeNamePrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductRestore.resx">
+      <DependentUpon>ProductRestore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -174,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Storage.resx">
       <DependentUpon>Storage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StorageRestore.resx">
+      <DependentUpon>StorageRestore.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
