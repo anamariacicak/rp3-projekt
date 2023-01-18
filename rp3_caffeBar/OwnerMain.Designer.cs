@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OwnerMain));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripLabel();
             this.Blagajna = new System.Windows.Forms.ToolStripButton();
             this.Skladište = new System.Windows.Forms.ToolStripButton();
             this.Administracija = new System.Windows.Forms.ToolStripButton();
             this.Logout = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.button_izdajRacun = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -63,9 +63,18 @@
             this.Logout});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1067, 32);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(63, 24);
+            this.toolStripButton1.Text = "CaffeBar A";
             // 
             // Blagajna
             // 
@@ -75,7 +84,7 @@
             this.Blagajna.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Blagajna.Margin = new System.Windows.Forms.Padding(4);
             this.Blagajna.Name = "Blagajna";
-            this.Blagajna.Size = new System.Drawing.Size(71, 24);
+            this.Blagajna.Size = new System.Drawing.Size(56, 19);
             this.Blagajna.Text = "Blagajna";
             // 
             // Skladište
@@ -86,7 +95,7 @@
             this.Skladište.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Skladište.Margin = new System.Windows.Forms.Padding(4);
             this.Skladište.Name = "Skladište";
-            this.Skladište.Size = new System.Drawing.Size(72, 24);
+            this.Skladište.Size = new System.Drawing.Size(57, 19);
             this.Skladište.Text = "Skladište";
             // 
             // Administracija
@@ -97,7 +106,7 @@
             this.Administracija.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Administracija.Margin = new System.Windows.Forms.Padding(4);
             this.Administracija.Name = "Administracija";
-            this.Administracija.Size = new System.Drawing.Size(108, 24);
+            this.Administracija.Size = new System.Drawing.Size(87, 19);
             this.Administracija.Text = "Administracija";
             // 
             // Logout
@@ -109,23 +118,13 @@
             this.Logout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Logout.Margin = new System.Windows.Forms.Padding(4);
             this.Logout.Name = "Logout";
-            this.Logout.Size = new System.Drawing.Size(60, 24);
+            this.Logout.Size = new System.Drawing.Size(49, 19);
             this.Logout.Text = "Logout";
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(80, 29);
-            this.toolStripButton1.Text = "CaffeBar A";
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 32);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 27);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -137,22 +136,21 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1067, 522);
-            this.splitContainer1.SplitterDistance = 547;
-            this.splitContainer1.SplitterWidth = 5;
+            this.splitContainer1.Size = new System.Drawing.Size(800, 423);
+            this.splitContainer1.SplitterDistance = 551;
             this.splitContainer1.TabIndex = 3;
             // 
             // button_izdajRacun
             // 
             this.button_izdajRacun.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button_izdajRacun.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button_izdajRacun.Location = new System.Drawing.Point(0, 389);
-            this.button_izdajRacun.Margin = new System.Windows.Forms.Padding(4);
+            this.button_izdajRacun.Location = new System.Drawing.Point(0, 316);
             this.button_izdajRacun.Name = "button_izdajRacun";
-            this.button_izdajRacun.Size = new System.Drawing.Size(547, 35);
+            this.button_izdajRacun.Size = new System.Drawing.Size(551, 28);
             this.button_izdajRacun.TabIndex = 1;
             this.button_izdajRacun.Text = "Izdaj Račun";
             this.button_izdajRacun.UseVisualStyleBackColor = false;
+            this.button_izdajRacun.Click += new System.EventHandler(this.button_izdajRacun_Click);
             // 
             // dataGridView1
             // 
@@ -165,11 +163,11 @@
             this.Ukupno});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(547, 389);
+            this.dataGridView1.Size = new System.Drawing.Size(551, 316);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
             // Naziv
             // 
@@ -205,19 +203,17 @@
             this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(515, 522);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(245, 423);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // OwnerMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "OwnerMain";
             this.Text = "OwnerMain";
             this.toolStrip1.ResumeLayout(false);

@@ -71,7 +71,7 @@ namespace rp3_caffeBar
                         else //vlasnik
                         {
                             int userId = reader.GetInt32(1);
-                            var ownerForm = new OwnerMain(); //OwnerMain(userId);
+                            var ownerForm = new OwnerMain(userId); //OwnerMain(userId);
                             ownerForm.Show();
                         }
                         //prikaz glavne forme

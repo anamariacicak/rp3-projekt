@@ -36,7 +36,7 @@
             this.Cijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ukupno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.alatnaTraka1 = new rp3_caffeBar.alatnaTraka();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -46,7 +46,7 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.splitContainer1.Location = new System.Drawing.Point(0, 26);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -116,22 +116,21 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(359, 424);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // alatnaTraka1
+            // toolStrip1
             // 
-            this.alatnaTraka1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.alatnaTraka1.Location = new System.Drawing.Point(0, 0);
-            this.alatnaTraka1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.alatnaTraka1.Name = "alatnaTraka1";
-            this.alatnaTraka1.Size = new System.Drawing.Size(800, 26);
-            this.alatnaTraka1.TabIndex = 1;
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.TabIndex = 3;
+            this.toolStrip1.Text = "toolStrip1";
             // 
             // WaiterMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.alatnaTraka1);
             this.Name = "WaiterMain";
             this.Text = "WaiterMain";
             this.Load += new System.EventHandler(this.WaiterMain_Load);
@@ -141,11 +140,11 @@
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-        private alatnaTraka alatnaTraka1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
@@ -154,6 +153,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Količina;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cijena;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ukupno;
-
+        private System.Windows.Forms.ToolStrip toolStrip1;
     }
 }
