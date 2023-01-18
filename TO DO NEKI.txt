@@ -1,7 +1,18 @@
 //kada se naplati nesto mice se iz hlasnjaka
 //kad je u hladnjaku dva pica mora puniti z skladista
 //upozori konobara ga ako je malo artikala -> dodaj jos kave  -> ako imas dva pica u hladnjaku 
+MAIN SCREEN (BLAGAJNA)
 
+
+
+STORAGE
+- button dodavanje proizvoda
+- ikona forme
+- ikona za refresh
+- sta sa brisanjem usera
+
+
+ADMINISTRATION
 
 //izgled sucelja skladiste -> jedna tablica .tri stupca
 gumbici napuni hladnjaku -> prozorcic -> oboje
@@ -16,14 +27,29 @@ gumbici napuni hladnjaku -> prozorcic -> oboje
 //to do close ili hide
 
 //to do staviti iskakanje kalkulatora na show dialog ?
-// to do dodati tko je mijnjao proizvod u hladnjaku, stupac
+
 //TO DO PROCI SVE EXCEPTIONE
 
-//OBRISATI IZ STORAGE NA KLIK GUMBA DODAJ
+//to do kod change cijene dodati mozda da potvrdi svojom lozinkom
 
-//NE RADI REFRESH button_hladnjak_Clic U STORAGE.CS
+//PROVJERI SVE GUMBE NA SVIM FORMAMA
 
-//TO DO LAST MOSIF USER I LAST MODIFY TIME DODATI NA PRIKAZ SKLADISTA U DATA GRID
+//TO DO DECIMAL CIJENA I SVI PRICEOVI SA CIJENOM
 
+//provjeriti sve SA ENABLE GUMBOM I DODATI OVO else 
+                    if (reader.HasRows)
+					ELSE
+					{
+                        button_delete.Enabled = false;
+                    }
+					
+INSERT INTO [PRODUCT] (PRODUCT_NAME,PRICE,COOLER_QUANTITY,STORAGE_QUANTITY, LAST_MODIFY_USER) VALUES(TEST,1,10,10,10);
 
-///glumi refresh button u storage.cs gumb button_skladiste_Click
+//Deelte Productsto doati jos provjera kod brisanja
+//ne svida mi se svi gumbovi jer se ne vidi da je disable
+
+//formu administracija preimenovati u administration jer su sve forme na eng
+
+- svugdje na formi ikone promijeniti
+
+-- scenarij kada je obrisan user

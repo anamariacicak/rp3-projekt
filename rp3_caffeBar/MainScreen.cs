@@ -190,9 +190,9 @@ namespace rp3_caffeBar
                                 connection.Close();
                             }
                         }
-                        catch (Exception exx)
+                        catch (Exception ex)
                         {
-                            MessageBox.Show("greska select product");
+                            MessageBox.Show("greska select product: " + ex.ToString());
                         }
 
                         try
