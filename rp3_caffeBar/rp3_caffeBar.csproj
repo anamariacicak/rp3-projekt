@@ -107,6 +107,12 @@
     <Compile Include="recepitItem.Designer.cs">
       <DependentUpon>recepitItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Storage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Storage.Designer.cs">
+      <DependentUpon>Storage.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
     <EmbeddedResource Include="alatnaTraka.resx">
       <DependentUpon>alatnaTraka.cs</DependentUpon>
