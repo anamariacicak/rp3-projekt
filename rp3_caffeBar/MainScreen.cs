@@ -252,6 +252,14 @@ namespace rp3_caffeBar
 
             }
         }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            var login=new Login();
+            login.Show();
+
+        }
     }
 }
 

@@ -59,7 +59,7 @@ namespace rp3_caffeBar
                     if (reader.HasRows)
                     {
                         this.Hide(); //sakrij ovu formu //TO DO 
-
+                        
                         reader.Read(); //procitaj
                
                         //User
@@ -70,7 +70,7 @@ namespace rp3_caffeBar
                         //main Screen Forma
                         var mainScreen = new MainScreen();
                         mainScreen.Show();
-                        
+                       
                     }
                     else
                     {

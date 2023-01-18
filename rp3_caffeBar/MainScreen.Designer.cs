@@ -120,6 +120,7 @@
             this.Logout.Name = "Logout";
             this.Logout.Size = new System.Drawing.Size(49, 19);
             this.Logout.Text = "Logout";
+            this.Logout.Click += new System.EventHandler(this.Logout_Click);
             // 
             // splitContainer1
             // 
