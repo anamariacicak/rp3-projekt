@@ -20,7 +20,7 @@ namespace rp3_caffeBar
 
             SuspendLayout();
 
-            button_delete.Enabled = false;  
+            button_delete.Enabled = true;  
 
             //prikažimo sve zaposlenike  koji se nalaze u bazi
             using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
@@ -50,8 +50,16 @@ namespace rp3_caffeBar
         {
             button_delete.Enabled = true;
 
-                zaposlenik = dataGridView1.Rows[e.RowIndex].Cells[0].ToString();
-                indeks = e.RowIndex;
+            zaposlenik = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            MessageBox.Show(zaposlenik);
+            indeks = e.RowIndex;
+        }
+       private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            button_delete.Enabled = true;
+            zaposlenik = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            MessageBox.Show(zaposlenik);
+            indeks = e.RowIndex;
         }
 
         private void button_dodaj_Click(object sender, EventArgs e)
@@ -74,7 +82,7 @@ namespace rp3_caffeBar
             {
 
                 connection.Open();
-                string query = "DELETE * FROM [USER] WHERE USERNAME=@username";
+                string query = "DELETE FROM [USER] WHERE USERNAME=@username";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@username", zaposlenik);
@@ -85,5 +93,7 @@ namespace rp3_caffeBar
             }
             button_delete.Enabled=false;
         }
+
+        
     }
 }
