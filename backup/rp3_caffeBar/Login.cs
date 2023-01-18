@@ -33,10 +33,10 @@ namespace rp3_caffeBar
             {
                 //select iz baze
                 //koristeno https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/retrieving-data-using-a-datareader
-                using (SqlConnection connection = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = F:\Anamaria\rp3 - projekt\rp3_caffeBar\caffeBar.mdf; Integrated Security = True"))
+                using (SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\Anamaria\\rp3-projekt\\rp3_caffeBar\\caffeBar.mdf;Integrated Security=True"))
                 {
                     connection.Open();
-                    string query = "SELECT IS_OWNER FROM [USER] WHERE USERNAME=@username AND PASSWORD=@password";
+                    string query = "SELECT IS_OWNER, USER_ID FROM [USER] WHERE USERNAME=@username AND PASSWORD=@password";
                     SqlCommand command = new SqlCommand(query, connection);
 
 
@@ -62,12 +62,14 @@ namespace rp3_caffeBar
                        reader.Read(); //procitaj
                        if(reader.GetInt32(0) == 0) //konobar
                         {
-                            var waiterForm=new WaiterMain();
+                            int userId = reader.GetInt32(1);
+                            var waiterForm=new WaiterMain(userId);
                             waiterForm.Show();
                         }
                         else //vlasnik
                         {
-                            var ownerForm = new OwnerMain();
+                            int userId = reader.GetInt32(1);
+                            var ownerForm = new OwnerMain(); //OwnerMain(userId);
                             ownerForm.Show();
                         }
                         //prikaz glavne forme
@@ -90,7 +92,7 @@ namespace rp3_caffeBar
             }
             catch (Exception ex) 
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("greska: " + ex.ToString());
             }
 
         }
