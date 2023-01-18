@@ -182,6 +182,7 @@
             this.button_refresh.TabIndex = 1;
             this.button_refresh.Text = "REFRESH";
             this.button_refresh.UseVisualStyleBackColor = true;
+            this.button_refresh.Click += new System.EventHandler(this.button_refresh_Click);
             // 
             // button_delete
             // 
@@ -192,6 +193,7 @@
             this.button_delete.TabIndex = 2;
             this.button_delete.Text = "Obriši";
             this.button_delete.UseVisualStyleBackColor = true;
+            this.button_delete.Click += new System.EventHandler(this.button_delete_Click);
             // 
             // button_dodaj
             // 
