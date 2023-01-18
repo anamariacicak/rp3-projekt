@@ -268,6 +268,19 @@ namespace rp3_caffeBar
             var storage=new Storage();
             storage.Show();
         }
+
+        private void button_administracija_Click(object sender, EventArgs e)
+        {
+            // ulaz u novu formu administracija
+            this.Close();
+            var administracija = new Administracija();
+            administracija.Show();
+        }
+
+        private void MainScreen_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
@@ -276,5 +289,5 @@ namespace rp3_caffeBar
 //connection string
 //connection open
 //try exceptione
-//for petlja za dodavanje na flowlayout kada andrea doda proizvode
+
 
