@@ -228,7 +228,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainScreen";
             this.Text = "OwnerMain";
-            this.Load += new System.EventHandler(this.MainScreen_Load);
+         
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
