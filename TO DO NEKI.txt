@@ -1,10 +1,11 @@
 MAIN SCREEN (BLAGAJNA)
-- ISPIS PROMETA -> ispod izdaj racuna - ana 
 - tip kupca -> checkbox: konobar ili obicni -> dvije kave, jedan sok, nakon toga 20% - andrea?
 
 //nice2have
 - zavrsi // TO DO i ako ga ima dovoljno u hladnjaku -> smije dodavati na racun samo onoliko koliko ga ima u hladnjaku
 - ukloniti stavku racuna - andrea
+- ISPIS PROMETA -> timepicker? 
+
 
 STORAGE
 - button dodavanje proizvoda - andrea 
@@ -54,6 +55,11 @@ OPCENITO
 
 /////////////////////////////////////////////////////////////
 INSERT INTO [PRODUCT] (PRODUCT_NAME,PRICE,COOLER_QUANTITY,STORAGE_QUANTITY, LAST_MODIFY_USER) VALUES(TEST,1,10,10,10);
+
+ /*dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "dd-MM-yyyy HH:mm:ss";
+            dateTimePicker2.Format = DateTimePickerFormat.Custom;
+            dateTimePicker2.CustomFormat = "dd-MM-yyyy HH:mm:ss";*/
 
 
 

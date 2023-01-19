@@ -317,7 +317,11 @@ namespace rp3_caffeBar
             administracija.Show();
         }
 
-        
+        private void button_ispisPrometa_Click(object sender, EventArgs e)
+        {
+            var promet = new Promet();
+            promet.Show();
+        }
     }
 }
 
