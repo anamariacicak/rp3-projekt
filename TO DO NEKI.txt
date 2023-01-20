@@ -7,12 +7,6 @@ MAIN SCREEN (BLAGAJNA)
 - ISPIS PROMETA -> timepicker? 
 
 
-STORAGE
-- button dodavanje proizvoda - andrea 
-- ikona forme - andrea
-- ikona za refresh - andrea
-
-
 //nice2have
 - statistika odredenog artikla u odrednemo vremenu -> najvise i najmanje narucuju - skupa
 - kod change cijene dodati mozda da potvrdi svojom lozinkom - anamaria
@@ -27,8 +21,6 @@ gumbici napuni hladnjaku -> prozorcic -> oboje
 
 
 ADMINISTRATION 
-- preimenovati u Administration jer su sve forme na eng - preimenuje sve forme - andrea
-- is_owner u insert i na textbox - andrea
 - provjeriti try catch - andrea
 
 

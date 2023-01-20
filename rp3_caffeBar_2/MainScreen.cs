@@ -338,7 +338,7 @@ namespace rp3_caffeBar
         {
             // ulaz u novu formu administracija
             this.Close();
-            var administracija = new Administracija();
+            var administracija = new Administration();
             administracija.Show();
         }
 

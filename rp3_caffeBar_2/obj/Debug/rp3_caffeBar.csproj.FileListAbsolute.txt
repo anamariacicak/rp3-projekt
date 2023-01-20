@@ -84,7 +84,6 @@ C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar_2\bin\Debug\rp3_caffeBar.
 C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar_2\bin\Debug\rp3_caffeBar.pdb
 C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar_2\obj\Debug\rp3_caffeBar.csproj.AssemblyReference.cache
 C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar_2\obj\Debug\rp3_caffeBar.csproj.SuggestedBindingRedirects.cache
-C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar_2\obj\Debug\rp3_caffeBar.Administracija.resources
 C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar_2\obj\Debug\rp3_caffeBar.alatnaTraka.resources
 C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar_2\obj\Debug\rp3_caffeBar.Blagajna.resources
 C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar_2\obj\Debug\rp3_caffeBar.CashBackCalculator.resources
@@ -107,3 +106,4 @@ C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar_2\obj\Debug\rp3_caffeBar.
 C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar_2\obj\Debug\rp3_caffeBar.pdb
 C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar_2\obj\Debug\rp3_caffeBar.NoviProizvod.resources
 F:\Anamaria\rp3-projekt\rp3_caffeBar_2\obj\Debug\rp3_caffeBar.NoviProizvod.resources
+C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar_2\obj\Debug\rp3_caffeBar.Administration.resources

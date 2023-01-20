@@ -63,11 +63,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administracija.cs">
+    <Compile Include="Administration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Administracija.Designer.cs">
-      <DependentUpon>Administracija.cs</DependentUpon>
+    <Compile Include="Administration.Designer.cs">
+      <DependentUpon>Administration.cs</DependentUpon>
     </Compile>
     <Compile Include="alatnaTraka.cs">
       <SubType>UserControl</SubType>
@@ -169,8 +169,8 @@
       <DependentUpon>Storage.cs</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
-    <EmbeddedResource Include="Administracija.resx">
-      <DependentUpon>Administracija.cs</DependentUpon>
+    <EmbeddedResource Include="Administration.resx">
+      <DependentUpon>Administration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="alatnaTraka.resx">
       <DependentUpon>alatnaTraka.cs</DependentUpon>

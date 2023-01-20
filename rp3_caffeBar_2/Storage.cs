@@ -109,7 +109,7 @@ namespace rp3_caffeBar
         private void button_administracija_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var administration = new Administracija();
+            var administration = new Administration();
             administration.Show();
         }
 
