@@ -48,3 +48,4 @@ F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.DeleteProduct.resour
 F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.RestoreProduct.resources
 F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.Promet.resources
 F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.prometItem.resources
+F:\Anamaria\rp3-projekt\rp3_caffeBar\obj\Debug\rp3_caffeBar.HappyHour.resources
