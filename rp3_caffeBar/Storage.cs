@@ -52,8 +52,8 @@ namespace rp3_caffeBar
                                         "(SELECT PRODUCT_ID, HAPPY_HOUR_PRICE, BEGIN_TIME, END_TIME, USERNAME "+ 
                                         "FROM [HAPPY_HOUR] "+
                                         "JOIN [USER] ON [HAPPY_HOUR].CREATE_USER_ID =[USER].USER_ID "+
-                                        "WHERE CAST(END_TIME as Date)> CAST(getdate() AS Date) AND " +
-                                        "BEGIN_TIME = (SELECT MAX(BEGIN_TIME) FROM [HAPPY_HOUR] AS H2 WHERE [H2].PRODUCT_ID = PRODUCT_ID)) [HH] " +
+                                        "WHERE END_TIME > getdate() AND " +
+                                        "BEGIN_TIME = (SELECT MAX(BEGIN_TIME) FROM [HAPPY_HOUR] AS H2 WHERE [H2].PRODUCT_ID = [HAPPY_HOUR].PRODUCT_ID)) [HH] " +
                                     "ON [HH].PRODUCT_ID =[PRODUCT].PRODUCT_ID ";
                     SqlCommand command = new SqlCommand(query, connection);
                    // SqlCommand command2 = new SqlCommand(query2, connection);
@@ -161,6 +161,7 @@ namespace rp3_caffeBar
             this.Hide();
             var storage = new Storage();
             storage.Show();
+            refresh_storage();
         }
 
         private void button_happyHour_Click(object sender, EventArgs e)

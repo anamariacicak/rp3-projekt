@@ -65,12 +65,10 @@ namespace rp3_caffeBar
         {
             //treba provjeriti je li ispravno unesen datum te je li unesna hh cijena i je li ona niza od trenutne
 
-            var beginTime=dateTimePicker_begin.Text.ToString();
-            var endTime=dateTimePicker_end.Text.ToString();
             var hhCijena = Math.Round(decimal.Parse(textBox_hhCijena.Text.ToString()),2);
             var trenutnaCijena = Math.Round(decimal.Parse(textBox_trenutnaCijena.Text.ToString()),2);
 
-            if (string.Compare(beginTime,endTime)<0  && string.Compare(endTime,DateTime.Now.ToString())>0 
+            if (dateTimePicker_begin.Value<dateTimePicker_end.Value  && dateTimePicker_end.Value>DateTime.Now
                 && hhCijena<trenutnaCijena) //mora trajati u buducnosti, pocetak moze biti i u proslosti - no ako je pocetak manji od DateTime.now postavit ce se u tablici pocetak kada korisnik stisne gumb potvrdi - mozda mu se nije dalo mijenjati prvi picker
             {
                 //insert u tablicu happy hour 
@@ -109,7 +107,7 @@ namespace rp3_caffeBar
                             //parametri
                             var begin= DateTime.Now;
                             var end = dateTimePicker_end.Value;
-                            if(string.Compare(beginTime, DateTime.Now.ToString()) > 0)
+                            if(dateTimePicker_begin.Value>DateTime.Now)
                             {
                                 begin=dateTimePicker_begin.Value;
                             }
@@ -134,10 +132,12 @@ namespace rp3_caffeBar
 
 
             }
-            else if(string.Compare(beginTime, endTime) > 0 || string.Compare(endTime, DateTime.Now.ToString()) < 0)
+            else if(dateTimePicker_begin.Value>dateTimePicker_end.Value || dateTimePicker_end.Value < DateTime.Now) 
             {
                 MessageBox.Show("Neispravno unesena datumi!");
             }
+           
+
             else if(hhCijena >= trenutnaCijena)
             {
                 MessageBox.Show("Neispravna Happy Hour cijena!");
