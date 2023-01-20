@@ -106,6 +106,12 @@
     <Compile Include="HappyHour.Designer.cs">
       <DependentUpon>HappyHour.cs</DependentUpon>
     </Compile>
+    <Compile Include="NoviProizvod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoviProizvod.Designer.cs">
+      <DependentUpon>NoviProizvod.cs</DependentUpon>
+    </Compile>
     <Compile Include="Promet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HappyHour.resx">
       <DependentUpon>HappyHour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoviProizvod.resx">
+      <DependentUpon>NoviProizvod.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Promet.resx">
       <DependentUpon>Promet.cs</DependentUpon>

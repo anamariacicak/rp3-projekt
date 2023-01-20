@@ -347,6 +347,11 @@ namespace rp3_caffeBar
             var promet = new Promet();
             promet.Show();
         }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            // ako klikne, dobije popust ili besplatno
+        }
     }
 }
 

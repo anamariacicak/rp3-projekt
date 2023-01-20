@@ -170,5 +170,11 @@ namespace rp3_caffeBar
             var happyHour=new HappyHour();
             happyHour.Show();
         }
+
+        private void button_addProduct_Click(object sender, EventArgs e)
+        {
+            NoviProizvod Proizvod = new NoviProizvod(); 
+            Proizvod.Show();
+        }
     }
 }

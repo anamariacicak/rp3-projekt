@@ -38,12 +38,6 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.button_refresh = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button_edit = new System.Windows.Forms.Button();
-            this.button_delete = new System.Windows.Forms.Button();
-            this.button_storage = new System.Windows.Forms.Button();
-            this.button_hladnjak = new System.Windows.Forms.Button();
-            this.button_addProduct = new System.Windows.Forms.Button();
-            this.button_happyHour = new System.Windows.Forms.Button();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hladnjak = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +48,12 @@
             this.hhBegin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hhEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hhCreate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button_happyHour = new System.Windows.Forms.Button();
+            this.button_addProduct = new System.Windows.Forms.Button();
+            this.button_edit = new System.Windows.Forms.Button();
+            this.button_delete = new System.Windows.Forms.Button();
+            this.button_storage = new System.Windows.Forms.Button();
+            this.button_hladnjak = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -74,7 +74,7 @@
             this.Logout});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1067, 32);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -84,7 +84,7 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(63, 24);
+            this.toolStripButton1.Size = new System.Drawing.Size(80, 29);
             this.toolStripButton1.Text = "CaffeBar A";
             // 
             // button_blagajna
@@ -95,7 +95,7 @@
             this.button_blagajna.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.button_blagajna.Margin = new System.Windows.Forms.Padding(4);
             this.button_blagajna.Name = "button_blagajna";
-            this.button_blagajna.Size = new System.Drawing.Size(56, 19);
+            this.button_blagajna.Size = new System.Drawing.Size(71, 24);
             this.button_blagajna.Text = "Blagajna";
             this.button_blagajna.Click += new System.EventHandler(this.Blagajna_Click);
             // 
@@ -107,7 +107,7 @@
             this.button_skladiste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.button_skladiste.Margin = new System.Windows.Forms.Padding(4);
             this.button_skladiste.Name = "button_skladiste";
-            this.button_skladiste.Size = new System.Drawing.Size(57, 19);
+            this.button_skladiste.Size = new System.Drawing.Size(72, 24);
             this.button_skladiste.Text = "Skladište";
             this.button_skladiste.Click += new System.EventHandler(this.button_skladiste_Click);
             // 
@@ -119,7 +119,7 @@
             this.button_administracija.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.button_administracija.Margin = new System.Windows.Forms.Padding(4);
             this.button_administracija.Name = "button_administracija";
-            this.button_administracija.Size = new System.Drawing.Size(87, 19);
+            this.button_administracija.Size = new System.Drawing.Size(108, 24);
             this.button_administracija.Text = "Administracija";
             this.button_administracija.Click += new System.EventHandler(this.button_administracija_Click);
             // 
@@ -132,14 +132,15 @@
             this.Logout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Logout.Margin = new System.Windows.Forms.Padding(4);
             this.Logout.Name = "Logout";
-            this.Logout.Size = new System.Drawing.Size(49, 19);
+            this.Logout.Size = new System.Drawing.Size(60, 24);
             this.Logout.Text = "Logout";
             this.Logout.Click += new System.EventHandler(this.Logout_Click);
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 27);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 32);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -157,15 +158,17 @@
             this.splitContainer1.Panel2.Controls.Add(this.button_delete);
             this.splitContainer1.Panel2.Controls.Add(this.button_storage);
             this.splitContainer1.Panel2.Controls.Add(this.button_hladnjak);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 423);
-            this.splitContainer1.SplitterDistance = 675;
+            this.splitContainer1.Size = new System.Drawing.Size(1067, 522);
+            this.splitContainer1.SplitterDistance = 900;
+            this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 4;
             // 
             // button_refresh
             // 
-            this.button_refresh.Location = new System.Drawing.Point(3, 13);
+            this.button_refresh.Location = new System.Drawing.Point(4, 16);
+            this.button_refresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_refresh.Name = "button_refresh";
-            this.button_refresh.Size = new System.Drawing.Size(43, 27);
+            this.button_refresh.Size = new System.Drawing.Size(45, 33);
             this.button_refresh.TabIndex = 1;
             this.button_refresh.Text = "REFRESH";
             this.button_refresh.UseVisualStyleBackColor = true;
@@ -188,69 +191,11 @@
             this.hhCreate});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(675, 423);
+            this.dataGridView1.Size = new System.Drawing.Size(900, 522);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // button_edit
-            // 
-            this.button_edit.Location = new System.Drawing.Point(14, 142);
-            this.button_edit.Name = "button_edit";
-            this.button_edit.Size = new System.Drawing.Size(101, 41);
-            this.button_edit.TabIndex = 3;
-            this.button_edit.Text = "Promijeni naziv/cijenu";
-            this.button_edit.UseVisualStyleBackColor = true;
-            this.button_edit.Click += new System.EventHandler(this.button_edit_Click);
-            // 
-            // button_delete
-            // 
-            this.button_delete.Location = new System.Drawing.Point(14, 249);
-            this.button_delete.Name = "button_delete";
-            this.button_delete.Size = new System.Drawing.Size(100, 45);
-            this.button_delete.TabIndex = 2;
-            this.button_delete.Text = "Obriši proizvod";
-            this.button_delete.UseVisualStyleBackColor = true;
-            this.button_delete.Click += new System.EventHandler(this.button_delete_Click);
-            // 
-            // button_storage
-            // 
-            this.button_storage.Location = new System.Drawing.Point(14, 91);
-            this.button_storage.Name = "button_storage";
-            this.button_storage.Size = new System.Drawing.Size(101, 45);
-            this.button_storage.TabIndex = 1;
-            this.button_storage.Text = "Naruči proizvod";
-            this.button_storage.UseVisualStyleBackColor = true;
-            this.button_storage.Click += new System.EventHandler(this.button_storage_Click);
-            // 
-            // button_hladnjak
-            // 
-            this.button_hladnjak.Location = new System.Drawing.Point(13, 36);
-            this.button_hladnjak.Name = "button_hladnjak";
-            this.button_hladnjak.Size = new System.Drawing.Size(101, 49);
-            this.button_hladnjak.TabIndex = 0;
-            this.button_hladnjak.Text = "Napuni hladnjak";
-            this.button_hladnjak.UseVisualStyleBackColor = true;
-            this.button_hladnjak.Click += new System.EventHandler(this.button_hladnjak_Click);
-            // 
-            // button_addProduct
-            // 
-            this.button_addProduct.Location = new System.Drawing.Point(13, 198);
-            this.button_addProduct.Name = "button_addProduct";
-            this.button_addProduct.Size = new System.Drawing.Size(100, 45);
-            this.button_addProduct.TabIndex = 4;
-            this.button_addProduct.Text = "Dodaj proizvod";
-            this.button_addProduct.UseVisualStyleBackColor = true;
-            // 
-            // button_happyHour
-            // 
-            this.button_happyHour.Location = new System.Drawing.Point(13, 300);
-            this.button_happyHour.Name = "button_happyHour";
-            this.button_happyHour.Size = new System.Drawing.Size(100, 45);
-            this.button_happyHour.TabIndex = 5;
-            this.button_happyHour.Text = "Dodaj Happy Hour";
-            this.button_happyHour.UseVisualStyleBackColor = true;
-            this.button_happyHour.Click += new System.EventHandler(this.button_happyHour_Click);
             // 
             // Naziv
             // 
@@ -258,12 +203,15 @@
             this.Naziv.MinimumWidth = 6;
             this.Naziv.Name = "Naziv";
             this.Naziv.ReadOnly = true;
+            this.Naziv.Width = 125;
             // 
             // Cijena
             // 
             this.Cijena.HeaderText = "Cijena";
+            this.Cijena.MinimumWidth = 6;
             this.Cijena.Name = "Cijena";
             this.Cijena.ReadOnly = true;
+            this.Cijena.Width = 125;
             // 
             // Hladnjak
             // 
@@ -271,6 +219,7 @@
             this.Hladnjak.MinimumWidth = 6;
             this.Hladnjak.Name = "Hladnjak";
             this.Hladnjak.ReadOnly = true;
+            this.Hladnjak.Width = 125;
             // 
             // Skladište
             // 
@@ -278,16 +227,20 @@
             this.Skladište.MinimumWidth = 6;
             this.Skladište.Name = "Skladište";
             this.Skladište.ReadOnly = true;
+            this.Skladište.Width = 125;
             // 
             // promjena
             // 
             this.promjena.HeaderText = "Zadnju promjenu napravio";
+            this.promjena.MinimumWidth = 6;
             this.promjena.Name = "promjena";
             this.promjena.ReadOnly = true;
+            this.promjena.Width = 125;
             // 
             // vrijeme
             // 
             this.vrijeme.HeaderText = "Vrijeme zadnje promjene";
+            this.vrijeme.MinimumWidth = 6;
             this.vrijeme.Name = "vrijeme";
             this.vrijeme.ReadOnly = true;
             this.vrijeme.Width = 125;
@@ -295,12 +248,15 @@
             // hhPrice
             // 
             this.hhPrice.HeaderText = "Happy Hour Cijena";
+            this.hhPrice.MinimumWidth = 6;
             this.hhPrice.Name = "hhPrice";
             this.hhPrice.ReadOnly = true;
+            this.hhPrice.Width = 125;
             // 
             // hhBegin
             // 
             this.hhBegin.HeaderText = "Početak Happy Hour";
+            this.hhBegin.MinimumWidth = 6;
             this.hhBegin.Name = "hhBegin";
             this.hhBegin.ReadOnly = true;
             this.hhBegin.Width = 125;
@@ -308,6 +264,7 @@
             // hhEnd
             // 
             this.hhEnd.HeaderText = "Kraj Happy Hour";
+            this.hhEnd.MinimumWidth = 6;
             this.hhEnd.Name = "hhEnd";
             this.hhEnd.ReadOnly = true;
             this.hhEnd.Width = 125;
@@ -315,16 +272,85 @@
             // hhCreate
             // 
             this.hhCreate.HeaderText = "Happy Hour dodao";
+            this.hhCreate.MinimumWidth = 6;
             this.hhCreate.Name = "hhCreate";
             this.hhCreate.ReadOnly = true;
+            this.hhCreate.Width = 125;
+            // 
+            // button_happyHour
+            // 
+            this.button_happyHour.Location = new System.Drawing.Point(17, 369);
+            this.button_happyHour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_happyHour.Name = "button_happyHour";
+            this.button_happyHour.Size = new System.Drawing.Size(133, 55);
+            this.button_happyHour.TabIndex = 5;
+            this.button_happyHour.Text = "Dodaj Happy Hour";
+            this.button_happyHour.UseVisualStyleBackColor = true;
+            this.button_happyHour.Click += new System.EventHandler(this.button_happyHour_Click);
+            // 
+            // button_addProduct
+            // 
+            this.button_addProduct.Location = new System.Drawing.Point(17, 244);
+            this.button_addProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_addProduct.Name = "button_addProduct";
+            this.button_addProduct.Size = new System.Drawing.Size(133, 55);
+            this.button_addProduct.TabIndex = 4;
+            this.button_addProduct.Text = "Dodaj proizvod";
+            this.button_addProduct.UseVisualStyleBackColor = true;
+            this.button_addProduct.Click += new System.EventHandler(this.button_addProduct_Click);
+            // 
+            // button_edit
+            // 
+            this.button_edit.Location = new System.Drawing.Point(19, 175);
+            this.button_edit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_edit.Name = "button_edit";
+            this.button_edit.Size = new System.Drawing.Size(135, 50);
+            this.button_edit.TabIndex = 3;
+            this.button_edit.Text = "Promijeni naziv/cijenu";
+            this.button_edit.UseVisualStyleBackColor = true;
+            this.button_edit.Click += new System.EventHandler(this.button_edit_Click);
+            // 
+            // button_delete
+            // 
+            this.button_delete.Location = new System.Drawing.Point(19, 306);
+            this.button_delete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_delete.Name = "button_delete";
+            this.button_delete.Size = new System.Drawing.Size(133, 55);
+            this.button_delete.TabIndex = 2;
+            this.button_delete.Text = "Obriši proizvod";
+            this.button_delete.UseVisualStyleBackColor = true;
+            this.button_delete.Click += new System.EventHandler(this.button_delete_Click);
+            // 
+            // button_storage
+            // 
+            this.button_storage.Location = new System.Drawing.Point(19, 112);
+            this.button_storage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_storage.Name = "button_storage";
+            this.button_storage.Size = new System.Drawing.Size(135, 55);
+            this.button_storage.TabIndex = 1;
+            this.button_storage.Text = "Naruči proizvod";
+            this.button_storage.UseVisualStyleBackColor = true;
+            this.button_storage.Click += new System.EventHandler(this.button_storage_Click);
+            // 
+            // button_hladnjak
+            // 
+            this.button_hladnjak.Location = new System.Drawing.Point(17, 44);
+            this.button_hladnjak.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_hladnjak.Name = "button_hladnjak";
+            this.button_hladnjak.Size = new System.Drawing.Size(135, 60);
+            this.button_hladnjak.TabIndex = 0;
+            this.button_hladnjak.Text = "Napuni hladnjak";
+            this.button_hladnjak.UseVisualStyleBackColor = true;
+            this.button_hladnjak.Click += new System.EventHandler(this.button_hladnjak_Click);
             // 
             // Storage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Storage";
             this.Text = "Skladište";
             this.toolStrip1.ResumeLayout(false);
