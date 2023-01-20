@@ -11,7 +11,10 @@ STORAGE
 - button dodavanje proizvoda - andrea 
 - ikona forme - andrea
 - ikona za refresh - andrea
-- happy hour - ana 
+- happy hour - 
+--ako imamo dva ili vise happy houra uzima se najnovije dodani koji zadovoljava uvjete a to je da mu je endTiem veci od trenutnog vremena
+ 
+->PRIKAZUJEMO SAMO AKTIVNE //to do test
 
 //nice2have
 - statistika odredenog artikla u odrednemo vremenu -> najvise i najmanje narucuju - skupa
@@ -43,7 +46,7 @@ OPCENITO
 //TO DO PROCI SVE EXCEPTIONE
 //PROVJERI SVE GUMBE NA SVIM FORMAMA
 
-
+//PREIMENOVATI USER_ID U RECEIPT U CREATE_USER_ID
 
 //ana napomena
 //provjeriti sve SA ENABLE GUMBOM I DODATI OVO else 
@@ -54,13 +57,18 @@ OPCENITO
                     }				
 
 
+
+
 /////////////////////////////////////////////////////////////
 INSERT INTO [PRODUCT] (PRODUCT_NAME,PRICE,COOLER_QUANTITY,STORAGE_QUANTITY, LAST_MODIFY_USER) VALUES(TEST,1,10,10,10);
 
  /*dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.CustomFormat = "dd-MM-yyyy HH:mm:ss";
+            dateTimePicker1.CustomFormat = ;
             dateTimePicker2.Format = DateTimePickerFormat.Custom;
             dateTimePicker2.CustomFormat = "dd-MM-yyyy HH:mm:ss";*/
+
+
+
 
 
 
