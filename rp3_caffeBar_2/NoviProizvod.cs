@@ -28,13 +28,14 @@ namespace rp3_caffeBar
                 connection.Open();
 
                 //unesi u tablicu
-                String query = "INSERT INTO [PRODUCT] (PRODUCT_NAME,PRICE,STORAGE_QUANTITY) VALUES (@productName,@price,@storageQuantity)";
+                String query = "INSERT INTO [PRODUCT] (PRODUCT_NAME,PRICE,COOLER_QUANTITY,STORAGE_QUANTITY) VALUES (@productName,@price,@coolerQuantity,@storageQuantity)";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
 
                     //parametri
                     command.Parameters.AddWithValue("@productName", textBox1.Text);
                     command.Parameters.AddWithValue("@price", Int32.Parse(textBox2.Text)); //username: vlasnik password: vlasnik
+                    command.Parameters.AddWithValue("@coolerQuantity", 0);
                     command.Parameters.AddWithValue("@storageQuantity", Int32.Parse(textBox3.Text));
 
                     //execute
