@@ -94,6 +94,32 @@ namespace rp3_caffeBar
             button_delete.Enabled=false;
         }
 
-        
+        private void button_blagajna_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var blagajna=new Blagajna();
+            blagajna.Show();
+        }
+
+        private void button_skladiste_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var skladiste = new Storage();
+            skladiste.Show();
+        }
+
+        private void button_administracija_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var administracija = new Administration();
+            administracija.Show();
+        }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var login=new Login();
+            login.Show();
+        }
     }
 }

@@ -47,7 +47,7 @@ namespace rp3_caffeBar
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message.ToString());
             }
 
         }
