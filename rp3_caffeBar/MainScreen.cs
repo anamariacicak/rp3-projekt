@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -35,7 +36,17 @@ namespace rp3_caffeBar
                 using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM [PRODUCT]";
+                    string query = "SELECT [PRODUCT].PRODUCT_NAME, [PRODUCT].PRICE, [PRODUCT].COOLER_QUANTITY, " +
+                                        "COALESCE(CONVERT(VARCHAR(10),[HH].HAPPY_HOUR_PRICE),' ') " +
+                                    "FROM [PRODUCT] " +
+                                    "LEFT JOIN [USER] ON [PRODUCT].LAST_MODIFY_USER =[USER].USER_ID " +
+                                    "LEFT JOIN " +
+                                        "(SELECT PRODUCT_ID, HAPPY_HOUR_PRICE, BEGIN_TIME, END_TIME, USERNAME " +
+                                        "FROM [HAPPY_HOUR] " +
+                                        "JOIN [USER] ON [HAPPY_HOUR].CREATE_USER_ID =[USER].USER_ID " +
+                                        "WHERE CAST(END_TIME as Date)> CAST(getdate() AS Date) AND " +
+                                        "BEGIN_TIME = (SELECT MAX(BEGIN_TIME) FROM [HAPPY_HOUR] AS H2 WHERE [H2].PRODUCT_ID = PRODUCT_ID)) [HH] " +
+                                    "ON [HH].PRODUCT_ID =[PRODUCT].PRODUCT_ID ";
                     SqlCommand command = new SqlCommand(query, connection);
 
                     SqlDataReader reader = command.ExecuteReader();
@@ -44,17 +55,31 @@ namespace rp3_caffeBar
                         while (reader.Read())
                         {
                             var btn = new Button();
-                            btn.Text = reader.GetString(1).ToString();
+                            btn.Text = reader.GetString(0).ToString();
                             btn.Margin = new Padding(5, 5, 5, 5);
                             btn.Width = 210;
-                            var naziv = reader.GetString(1).ToString();
-                            var cijena = reader.GetDecimal(2).ToString();
-                            var cooler= reader.GetInt32(3);
+                            var cooler = reader.GetInt32(2);
+                            var naziv = reader.GetString(0).ToString();
+                            var productCijena = reader.GetDecimal(1);
 
+                            decimal hhCijena;
+                            if(reader.GetString(3)!=" ")
+                            {
+                               
+                                hhCijena =decimal.Parse(reader.GetString(3), CultureInfo.InvariantCulture);
+                               
+                                if (hhCijena < productCijena) {
+                                    productCijena = hhCijena;
+                                }
+                                
+                            }
+                            //moramo provjeriti postoji li hhcijena
+                            
                             btn.Click += (_sender, _e) =>
                             {
 
-                                dataGridView1.Rows.Add(naziv, 1, cijena, cijena);
+                                dataGridView1.Rows.Add(naziv, 1, productCijena.ToString(), productCijena.ToString());
+                                //dataGridView1.Rows.Add(naziv, 1," " , " ");
                             };
                             flowLayoutPanel1.Controls.Add(btn);
                             

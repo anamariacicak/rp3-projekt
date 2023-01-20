@@ -17,7 +17,7 @@ namespace rp3_caffeBar
         List<string> cijena = new List<string>();
         List<string> ukupno = new List<string>();
         int receiptId;
-        public Receipt(int receip_id, List<string> naziv_konstruktor, List<string> kolicina_konstruktor, List<string> cijena_konstruktor, List<string> ukupno_konstruktor, int iznos_racuna_konstruktor)
+        public Receipt(int receip_id, List<string> naziv_konstruktor, List<string> kolicina_konstruktor, List<string> cijena_konstruktor, List<string> ukupno_konstruktor, decimal iznos_racuna_konstruktor)
         {
             InitializeComponent();
             naziv = naziv_konstruktor;

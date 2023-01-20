@@ -62,7 +62,7 @@
             this.Logout});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 32);
+            this.toolStrip1.Size = new System.Drawing.Size(600, 27);
             this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -72,7 +72,7 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(80, 29);
+            this.toolStripButton1.Size = new System.Drawing.Size(63, 24);
             this.toolStripButton1.Text = "CaffeBar A";
             // 
             // button_blagajna
@@ -83,7 +83,7 @@
             this.button_blagajna.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.button_blagajna.Margin = new System.Windows.Forms.Padding(4);
             this.button_blagajna.Name = "button_blagajna";
-            this.button_blagajna.Size = new System.Drawing.Size(71, 24);
+            this.button_blagajna.Size = new System.Drawing.Size(56, 19);
             this.button_blagajna.Text = "Blagajna";
             // 
             // button_skladiste
@@ -94,7 +94,7 @@
             this.button_skladiste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.button_skladiste.Margin = new System.Windows.Forms.Padding(4);
             this.button_skladiste.Name = "button_skladiste";
-            this.button_skladiste.Size = new System.Drawing.Size(72, 24);
+            this.button_skladiste.Size = new System.Drawing.Size(57, 19);
             this.button_skladiste.Text = "Skladište";
             // 
             // button_administracija
@@ -105,7 +105,7 @@
             this.button_administracija.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.button_administracija.Margin = new System.Windows.Forms.Padding(4);
             this.button_administracija.Name = "button_administracija";
-            this.button_administracija.Size = new System.Drawing.Size(108, 24);
+            this.button_administracija.Size = new System.Drawing.Size(87, 19);
             this.button_administracija.Text = "Administracija";
             // 
             // Logout
@@ -117,14 +117,13 @@
             this.Logout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Logout.Margin = new System.Windows.Forms.Padding(4);
             this.Logout.Name = "Logout";
-            this.Logout.Size = new System.Drawing.Size(60, 24);
+            this.Logout.Size = new System.Drawing.Size(49, 19);
             this.Logout.Text = "Logout";
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 32);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 27);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -138,9 +137,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.button_refresh);
             this.splitContainer1.Panel2.Controls.Add(this.button_delete);
             this.splitContainer1.Panel2.Controls.Add(this.button_dodaj);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 414);
-            this.splitContainer1.SplitterDistance = 592;
-            this.splitContainer1.SplitterWidth = 5;
+            this.splitContainer1.Size = new System.Drawing.Size(600, 336);
+            this.splitContainer1.SplitterDistance = 444;
             this.splitContainer1.TabIndex = 7;
             // 
             // dataGridView1
@@ -152,11 +150,12 @@
             this.Sifra});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(592, 414);
+            this.dataGridView1.Size = new System.Drawing.Size(444, 336);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Naziv
             // 
@@ -175,30 +174,29 @@
             // 
             // button_refresh
             // 
-            this.button_refresh.Location = new System.Drawing.Point(17, 15);
-            this.button_refresh.Margin = new System.Windows.Forms.Padding(4);
+            this.button_refresh.Location = new System.Drawing.Point(13, 12);
             this.button_refresh.Name = "button_refresh";
-            this.button_refresh.Size = new System.Drawing.Size(57, 33);
+            this.button_refresh.Size = new System.Drawing.Size(43, 27);
             this.button_refresh.TabIndex = 1;
             this.button_refresh.Text = "REFRESH";
             this.button_refresh.UseVisualStyleBackColor = true;
+            this.button_refresh.Click += new System.EventHandler(this.button_refresh_Click);
             // 
             // button_delete
             // 
-            this.button_delete.Location = new System.Drawing.Point(39, 210);
-            this.button_delete.Margin = new System.Windows.Forms.Padding(4);
+            this.button_delete.Location = new System.Drawing.Point(29, 171);
             this.button_delete.Name = "button_delete";
-            this.button_delete.Size = new System.Drawing.Size(133, 55);
+            this.button_delete.Size = new System.Drawing.Size(100, 45);
             this.button_delete.TabIndex = 2;
             this.button_delete.Text = "Obriši";
             this.button_delete.UseVisualStyleBackColor = true;
+            this.button_delete.Click += new System.EventHandler(this.button_delete_Click);
             // 
             // button_dodaj
             // 
-            this.button_dodaj.Location = new System.Drawing.Point(39, 133);
-            this.button_dodaj.Margin = new System.Windows.Forms.Padding(4);
+            this.button_dodaj.Location = new System.Drawing.Point(29, 108);
             this.button_dodaj.Name = "button_dodaj";
-            this.button_dodaj.Size = new System.Drawing.Size(135, 57);
+            this.button_dodaj.Size = new System.Drawing.Size(101, 46);
             this.button_dodaj.TabIndex = 0;
             this.button_dodaj.Text = "Dodaj ";
             this.button_dodaj.UseVisualStyleBackColor = true;
@@ -206,11 +204,12 @@
             // 
             // Administracija
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Administracija";
             this.Text = "Administracija";
             this.toolStrip1.ResumeLayout(false);

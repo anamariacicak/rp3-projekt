@@ -39,6 +39,7 @@ OPCENITO
 - svugdje na formi ikone promijeniti - andrea	
 - promijeniti boje gumbova - andrea
 
+//TO DO dodati u Connection string klasu Sql konekciju
 //TO DO PROCI SVE EXCEPTIONE
 //PROVJERI SVE GUMBE NA SVIM FORMAMA
 
