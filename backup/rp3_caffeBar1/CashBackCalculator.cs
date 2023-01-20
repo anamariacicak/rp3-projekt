@@ -12,8 +12,8 @@ namespace rp3_caffeBar
 {
     public partial class CashBackCalculator : Form
     {
-        int total;
-        public CashBackCalculator(int ukupno)
+        decimal total;
+        public CashBackCalculator(decimal ukupno)
         {
             InitializeComponent();
             total= ukupno;
@@ -27,7 +27,7 @@ namespace rp3_caffeBar
                 MessageBox.Show("unesi primljeni novac"); //TO DO tu po defaultu mozemo staviti 0- mozda konobar ne zeli kalkulator
             }*/
 
-            int ostatak = int.Parse(textBox_primljeniNovac.Text) - int.Parse(textBox_iznosRacuna.Text);
+            decimal ostatak = decimal.Parse(textBox_primljeniNovac.Text) - decimal.Parse(textBox_iznosRacuna.Text);
             textBox_ostatak.Text=ostatak.ToString();
 
         }

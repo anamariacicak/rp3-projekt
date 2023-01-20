@@ -100,6 +100,24 @@
     <Compile Include="DeleteProduct.Designer.cs">
       <DependentUpon>DeleteProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="HappyHour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HappyHour.Designer.cs">
+      <DependentUpon>HappyHour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Promet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Promet.Designer.cs">
+      <DependentUpon>Promet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="prometItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="prometItem.Designer.cs">
+      <DependentUpon>prometItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="RestoreProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +180,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeleteProduct.resx">
       <DependentUpon>DeleteProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HappyHour.resx">
+      <DependentUpon>HappyHour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Promet.resx">
+      <DependentUpon>Promet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="prometItem.resx">
+      <DependentUpon>prometItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RestoreProduct.resx">
       <DependentUpon>RestoreProduct.cs</DependentUpon>

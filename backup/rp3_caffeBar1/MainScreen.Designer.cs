@@ -43,6 +43,7 @@
             this.Cijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ukupno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button_ispisPrometa = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -109,6 +110,7 @@
             this.button_administracija.Name = "button_administracija";
             this.button_administracija.Size = new System.Drawing.Size(87, 19);
             this.button_administracija.Text = "Administracija";
+            this.button_administracija.Click += new System.EventHandler(this.button_administracija_Click);
             // 
             // Logout
             // 
@@ -132,6 +134,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.splitContainer1.Panel1.Controls.Add(this.button_ispisPrometa);
             this.splitContainer1.Panel1.Controls.Add(this.button_izdajRacun);
             this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
             // 
@@ -139,7 +142,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel1);
             this.splitContainer1.Size = new System.Drawing.Size(800, 423);
-            this.splitContainer1.SplitterDistance = 551;
+            this.splitContainer1.SplitterDistance = 550;
             this.splitContainer1.TabIndex = 3;
             // 
             // button_izdajRacun
@@ -148,7 +151,7 @@
             this.button_izdajRacun.Dock = System.Windows.Forms.DockStyle.Top;
             this.button_izdajRacun.Location = new System.Drawing.Point(0, 316);
             this.button_izdajRacun.Name = "button_izdajRacun";
-            this.button_izdajRacun.Size = new System.Drawing.Size(551, 28);
+            this.button_izdajRacun.Size = new System.Drawing.Size(550, 28);
             this.button_izdajRacun.TabIndex = 1;
             this.button_izdajRacun.Text = "Izdaj Račun";
             this.button_izdajRacun.UseVisualStyleBackColor = false;
@@ -167,7 +170,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(551, 316);
+            this.dataGridView1.Size = new System.Drawing.Size(550, 316);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
@@ -209,8 +212,18 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(245, 423);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(246, 423);
             this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // button_ispisPrometa
+            // 
+            this.button_ispisPrometa.Location = new System.Drawing.Point(68, 366);
+            this.button_ispisPrometa.Name = "button_ispisPrometa";
+            this.button_ispisPrometa.Size = new System.Drawing.Size(75, 23);
+            this.button_ispisPrometa.TabIndex = 2;
+            this.button_ispisPrometa.Text = "Ispis prometa";
+            this.button_ispisPrometa.UseVisualStyleBackColor = true;
+            this.button_ispisPrometa.Click += new System.EventHandler(this.button_ispisPrometa_Click);
             // 
             // MainScreen
             // 
@@ -249,5 +262,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Količina;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cijena;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ukupno;
+        private System.Windows.Forms.Button button_ispisPrometa;
     }
 }

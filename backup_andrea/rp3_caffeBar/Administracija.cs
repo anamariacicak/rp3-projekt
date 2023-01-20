@@ -80,10 +80,10 @@ namespace rp3_caffeBar
                 command.Parameters.AddWithValue("@username", zaposlenik);
 
                 command.ExecuteNonQuery();
-                dataGridView1.Rows[indeks].Visible = false;
+                //dataGridView1.Rows[indeks].Visible = false;
                 connection.Close();
             }
-            button_delete.Enabled=false;
+           //button_delete.Enabled=false;
         }
     }
 }

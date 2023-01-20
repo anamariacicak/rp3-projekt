@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -35,7 +36,17 @@ namespace rp3_caffeBar
                 using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM [PRODUCT]";
+                    string query = "SELECT [PRODUCT].PRODUCT_NAME, [PRODUCT].PRICE, [PRODUCT].COOLER_QUANTITY, " +
+                                        "COALESCE(CONVERT(VARCHAR(10),[HH].HAPPY_HOUR_PRICE),' ') " +
+                                    "FROM [PRODUCT] " +
+                                    "LEFT JOIN [USER] ON [PRODUCT].LAST_MODIFY_USER =[USER].USER_ID " +
+                                    "LEFT JOIN " +
+                                        "(SELECT PRODUCT_ID, HAPPY_HOUR_PRICE, BEGIN_TIME, END_TIME, USERNAME " +
+                                        "FROM [HAPPY_HOUR] " +
+                                        "JOIN [USER] ON [HAPPY_HOUR].CREATE_USER_ID =[USER].USER_ID " +
+                                        "WHERE END_TIME > getdate()  AND " +
+                                        "BEGIN_TIME = (SELECT MAX(BEGIN_TIME) FROM [HAPPY_HOUR] AS H2 WHERE [H2].PRODUCT_ID = [HAPPY_HOUR].PRODUCT_ID)) [HH] " +
+                                    "ON [HH].PRODUCT_ID =[PRODUCT].PRODUCT_ID ";
                     SqlCommand command = new SqlCommand(query, connection);
 
                     SqlDataReader reader = command.ExecuteReader();
@@ -44,18 +55,46 @@ namespace rp3_caffeBar
                         while (reader.Read())
                         {
                             var btn = new Button();
-                            btn.Text = reader.GetString(1).ToString();
+                            btn.Text = reader.GetString(0).ToString();
                             btn.Margin = new Padding(5, 5, 5, 5);
                             btn.Width = 210;
-                            var naziv = reader.GetString(1).ToString();
-                            var cijena = reader.GetDecimal(2).ToString();
+                            var cooler = reader.GetInt32(2);
+                            var naziv = reader.GetString(0).ToString();
+                            var productCijena = reader.GetDecimal(1);
 
+                            decimal hhCijena;
+                            if(reader.GetString(3)!=" ")
+                            {
+                               
+                                hhCijena =decimal.Parse(reader.GetString(3), CultureInfo.InvariantCulture);
+                               
+                                if (hhCijena < productCijena) {
+                                    productCijena = hhCijena;
+                                }
+                                
+                            }
+                            //moramo provjeriti postoji li hhcijena
+                            
                             btn.Click += (_sender, _e) =>
                             {
 
-                                dataGridView1.Rows.Add(naziv, 1, cijena, cijena);
+                                dataGridView1.Rows.Add(naziv, 1, productCijena.ToString(), productCijena.ToString());
+                                //dataGridView1.Rows.Add(naziv, 1," " , " ");
                             };
                             flowLayoutPanel1.Controls.Add(btn);
+                            
+                            if (cooler < 1) //ako ga ima vise od jedan moze ga nuditi gostima //TO DO TEST
+                            {
+                                btn.Enabled=false;
+                            }
+                            
+                            if(cooler <= 2)
+                            {
+                                MessageBox.Show("U hladnjaku nedostaje " + naziv + ", molimo te nadopuni hladnjak!");
+                            }
+                            
+                           
+
 
                         }
                     }
@@ -71,10 +110,10 @@ namespace rp3_caffeBar
         {
 
             //Ima li racun stavki?
-            int iznos_racuna = 0;
+            decimal iznos_racuna = 0;
             for (int i = 0; i < dataGridView1.RowCount - 1; i++)//RowCount-1 jer zadnji redak je prazan u dataGrid
             {
-                iznos_racuna += int.Parse(dataGridView1[3, i].Value.ToString());
+                iznos_racuna += decimal.Parse(dataGridView1[3, i].Value.ToString());
             }
 
             if (iznos_racuna == 0) //racun nema stavki
@@ -82,7 +121,7 @@ namespace rp3_caffeBar
                 MessageBox.Show("Nemoguce izdati prazan racun");
             }
 
-            else //ako postoje stavke na racunu
+            else //ako postoje stavke na racunu // TO DO i ako ga ima dovoljno u hladnjaku
             {
                 /***********************KALKULATOR***********************/
                 CashBackCalculator kalkulator = new CashBackCalculator(iznos_racuna);
@@ -165,17 +204,15 @@ namespace rp3_caffeBar
                 {
                     for (int i = 0; i < naziv.Count; i++)
                     {
-                        int productId = -1;
+                        int productId = -1, coolerQuantity=-1;
 
                         //product id -> za insert u RECEIPT_ITEM
                         try
                         {
-                            String query = "SELECT PRODUCT_ID FROM [PRODUCT] WHERE PRODUCT_NAME=@productName";
+                            String query = "SELECT PRODUCT_ID, COOLER_QUANTITY FROM [PRODUCT] WHERE PRODUCT_NAME=@productName";
                             using (SqlCommand command = new SqlCommand(query, connection))
                             {
                                 connection.Open();
-                                //parametri
-                                //MessageBox.Show("naziv: " + naziv[i]);
                                 command.Parameters.AddWithValue("@productName", naziv[i]); //dohvati iz baze 
                                 SqlDataReader reader = command.ExecuteReader();
                                 //MessageBox.Show("naziv: " + productId);
@@ -183,6 +220,7 @@ namespace rp3_caffeBar
                                 {
                                     reader.Read();
                                     productId = reader.GetInt32(0);
+                                    coolerQuantity= reader.GetInt32(1);
 
                                 }
                                 reader.Close();
@@ -205,7 +243,7 @@ namespace rp3_caffeBar
                                 command.Parameters.AddWithValue("@receiptId", receiptId); //dohvati iz baze 
                                 command.Parameters.AddWithValue("@productId", productId); //dohvati iz baze
                                 command.Parameters.AddWithValue("@itemQuantity", int.Parse(kolicina[i]));
-                                command.Parameters.AddWithValue("@itemAmount", int.Parse(ukupno[i])); //username: vlasnik password: vlasnik
+                                command.Parameters.AddWithValue("@itemAmount", decimal.Parse(ukupno[i])); //username: vlasnik password: vlasnik
 
                                 command.ExecuteNonQuery();
 
@@ -218,8 +256,35 @@ namespace rp3_caffeBar
                             MessageBox.Show("gresak insert receipt");
                         }
 
+                        //naplati se makni se iz hladnjaka
+                        try
+                        {
+                            String query = "UPDATE [PRODUCT] SET COOLER_QUANTITY=@newCoolerQuantity WHERE PRODUCT_ID=@productId";
+                            using (SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                connection.Open();
+                                //parametri
+                                coolerQuantity = coolerQuantity - int.Parse(kolicina[i]);
+                                command.Parameters.AddWithValue("@newCoolerQuantity", coolerQuantity); //dohvati iz baze 
+                                command.Parameters.AddWithValue("@productId", productId); //dohvati iz baze
+                               
+
+                                command.ExecuteNonQuery();
+
+                                connection.Close();
+
+                            }
+                        }
+                        catch
+                        {
+                            MessageBox.Show("gresak update hladnjaka");
+                        }
+
                     }
-                    //poziv forme
+
+                    
+
+                    //racun
                     Receipt racun = new Receipt(receiptId, naziv, kolicina, cijena, ukupno, iznos_racuna);
                     racun.ShowDialog();
 
@@ -244,7 +309,7 @@ namespace rp3_caffeBar
             if (e.ColumnIndex == 1 && e.RowIndex >= 0)
             {
                 //da bi dobili cijenu po komadu trebam podijeliti sa najvecim mogucim brojem sto mogu 4 (3 ind) stupac sa 3 (ind2)
-                int cijena = int.Parse(dataGridView1[2, e.RowIndex].Value.ToString());
+                var  cijena = decimal.Parse(dataGridView1[2, e.RowIndex].Value.ToString());
                 int kolicina = int.Parse(dataGridView1[1, e.RowIndex].Value.ToString());
 
                 dataGridView1[3, e.RowIndex].Value = cijena * kolicina;
@@ -277,9 +342,10 @@ namespace rp3_caffeBar
             administracija.Show();
         }
 
-        private void MainScreen_Load(object sender, EventArgs e)
+        private void button_ispisPrometa_Click(object sender, EventArgs e)
         {
-
+            var promet = new Promet();
+            promet.Show();
         }
     }
 }
