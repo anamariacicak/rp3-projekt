@@ -17,7 +17,7 @@ namespace rp3_caffeBar
         List<string> cijena = new List<string>();
         List<string> ukupno = new List<string>();
         int receiptId;
-        public Receipt(int receip_id, List<string> naziv_konstruktor, List<string> kolicina_konstruktor, List<string> cijena_konstruktor, List<string> ukupno_konstruktor, decimal iznos_racuna_konstruktor)
+        public Receipt(int receip_id, List<string> naziv_konstruktor, List<string> kolicina_konstruktor, List<string> cijena_konstruktor, List<string> ukupno_konstruktor)
         {
             InitializeComponent();
             naziv = naziv_konstruktor;
@@ -46,8 +46,14 @@ namespace rp3_caffeBar
                 flowLayoutPanel1.Controls.Add(item);    
             }
 
+            decimal iznos_racuna = 0;
+            for(int i = 0; i < ukupno.Count; i++)
+            {
+                iznos_racuna += decimal.Parse(ukupno[i]);
+            }
+
             //postavljamo vrijednost textboxa za iznos racuna
-            textBox_ukupno.Text=iznos_racuna_konstruktor.ToString();
+            textBox_ukupno.Text= iznos_racuna.ToString();
             textBox_idRacuna.Text = receiptId.ToString();
             textBox_blagajnikId.Text = User.username.ToString();
             ResumeLayout();

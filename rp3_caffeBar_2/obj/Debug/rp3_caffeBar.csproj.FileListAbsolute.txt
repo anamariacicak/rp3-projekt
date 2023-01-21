@@ -107,3 +107,4 @@ C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar_2\obj\Debug\rp3_caffeBar.
 F:\Anamaria\rp3-projekt\rp3_caffeBar_2\obj\Debug\rp3_caffeBar.NoviProizvod.resources
 C:\Users\Dea\Documents\GitHub\rp3-projekt\rp3_caffeBar_2\obj\Debug\rp3_caffeBar.Administration.resources
 F:\Anamaria\rp3-projekt\rp3_caffeBar_2\obj\Debug\rp3_caffeBar.Administration.resources
+F:\Anamaria\rp3-projekt\rp3_caffeBar_2\obj\Debug\rp3_caffeBar.Statistics.resources
