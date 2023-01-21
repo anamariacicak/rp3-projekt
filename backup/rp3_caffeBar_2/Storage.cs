@@ -109,7 +109,7 @@ namespace rp3_caffeBar
         private void button_administracija_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var administration = new Administracija();
+            var administration = new Administration();
             administration.Show();
         }
 
@@ -169,6 +169,12 @@ namespace rp3_caffeBar
             //kliknuo je na gumb happy hour -> otvara se forma koja ga pita koji proizvod -> gumb na formi disable dok ne unese ispravno vrijeme i proizvod 
             var happyHour=new HappyHour();
             happyHour.Show();
+        }
+
+        private void button_addProduct_Click(object sender, EventArgs e)
+        {
+            NoviProizvod Proizvod = new NoviProizvod(); 
+            Proizvod.Show();
         }
     }
 }

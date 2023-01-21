@@ -28,7 +28,7 @@ namespace rp3_caffeBar
                 connection.Open();
 
                 //unesi u tablicu
-                String query = "INSERT INTO [USER] (USERNAME,PASSWORD) VALUES (@username,@password)";
+                String query = "INSERT INTO [USER] (USERNAME,PASSWORD,IS_OWNER ) VALUES (@username,@password,@isOwner)";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
 
@@ -44,6 +44,7 @@ namespace rp3_caffeBar
                     //parametri
                     command.Parameters.AddWithValue("@username", textBox1.Text);
                     command.Parameters.AddWithValue("@password", hash); //username: vlasnik password: vlasnik
+                    command.Parameters.AddWithValue("@isOwner", Int32.Parse(textBox3.Text));
 
                     //execute
                     command.ExecuteNonQuery();
@@ -56,6 +57,11 @@ namespace rp3_caffeBar
             {
                 
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

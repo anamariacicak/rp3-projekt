@@ -36,6 +36,10 @@
             this.button_administracija = new System.Windows.Forms.ToolStripButton();
             this.Logout = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton_konobar = new System.Windows.Forms.RadioButton();
+            this.radioButton_obicniKupac = new System.Windows.Forms.RadioButton();
+            this.button_ispisPrometa = new System.Windows.Forms.Button();
             this.button_izdajRacun = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,12 +47,13 @@
             this.Cijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ukupno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button_ispisPrometa = new System.Windows.Forms.Button();
+            this.button_statistika = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +66,8 @@
             this.button_blagajna,
             this.button_skladiste,
             this.button_administracija,
-            this.Logout});
+            this.Logout,
+            this.button_statistika});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 27);
@@ -134,6 +140,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel1.Controls.Add(this.button_ispisPrometa);
             this.splitContainer1.Panel1.Controls.Add(this.button_izdajRacun);
             this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
@@ -142,16 +149,58 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel1);
             this.splitContainer1.Size = new System.Drawing.Size(800, 423);
-            this.splitContainer1.SplitterDistance = 550;
+            this.splitContainer1.SplitterDistance = 549;
             this.splitContainer1.TabIndex = 3;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioButton_konobar);
+            this.groupBox1.Controls.Add(this.radioButton_obicniKupac);
+            this.groupBox1.Location = new System.Drawing.Point(26, 322);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(185, 47);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Tip kupca";
+            // 
+            // radioButton_konobar
+            // 
+            this.radioButton_konobar.AutoSize = true;
+            this.radioButton_konobar.Location = new System.Drawing.Point(99, 16);
+            this.radioButton_konobar.Name = "radioButton_konobar";
+            this.radioButton_konobar.Size = new System.Drawing.Size(65, 17);
+            this.radioButton_konobar.TabIndex = 1;
+            this.radioButton_konobar.TabStop = true;
+            this.radioButton_konobar.Text = "Konobar";
+            this.radioButton_konobar.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_obicniKupac
+            // 
+            this.radioButton_obicniKupac.AutoSize = true;
+            this.radioButton_obicniKupac.Location = new System.Drawing.Point(8, 16);
+            this.radioButton_obicniKupac.Name = "radioButton_obicniKupac";
+            this.radioButton_obicniKupac.Size = new System.Drawing.Size(88, 17);
+            this.radioButton_obicniKupac.TabIndex = 0;
+            this.radioButton_obicniKupac.TabStop = true;
+            this.radioButton_obicniKupac.Text = "Obični kupac";
+            this.radioButton_obicniKupac.UseVisualStyleBackColor = true;
+            // 
+            // button_ispisPrometa
+            // 
+            this.button_ispisPrometa.Location = new System.Drawing.Point(35, 388);
+            this.button_ispisPrometa.Name = "button_ispisPrometa";
+            this.button_ispisPrometa.Size = new System.Drawing.Size(98, 23);
+            this.button_ispisPrometa.TabIndex = 2;
+            this.button_ispisPrometa.Text = "Ispis prometa";
+            this.button_ispisPrometa.UseVisualStyleBackColor = true;
+            this.button_ispisPrometa.Click += new System.EventHandler(this.button_ispisPrometa_Click);
             // 
             // button_izdajRacun
             // 
             this.button_izdajRacun.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button_izdajRacun.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button_izdajRacun.Location = new System.Drawing.Point(0, 316);
+            this.button_izdajRacun.Location = new System.Drawing.Point(284, 338);
             this.button_izdajRacun.Name = "button_izdajRacun";
-            this.button_izdajRacun.Size = new System.Drawing.Size(550, 28);
+            this.button_izdajRacun.Size = new System.Drawing.Size(250, 71);
             this.button_izdajRacun.TabIndex = 1;
             this.button_izdajRacun.Text = "Izdaj Račun";
             this.button_izdajRacun.UseVisualStyleBackColor = false;
@@ -170,7 +219,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(550, 316);
+            this.dataGridView1.Size = new System.Drawing.Size(549, 316);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
@@ -212,18 +261,18 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(246, 423);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(247, 423);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // button_ispisPrometa
+            // button_statistika
             // 
-            this.button_ispisPrometa.Location = new System.Drawing.Point(68, 366);
-            this.button_ispisPrometa.Name = "button_ispisPrometa";
-            this.button_ispisPrometa.Size = new System.Drawing.Size(75, 23);
-            this.button_ispisPrometa.TabIndex = 2;
-            this.button_ispisPrometa.Text = "Ispis prometa";
-            this.button_ispisPrometa.UseVisualStyleBackColor = true;
-            this.button_ispisPrometa.Click += new System.EventHandler(this.button_ispisPrometa_Click);
+            this.button_statistika.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.button_statistika.Image = ((System.Drawing.Image)(resources.GetObject("button_statistika.Image")));
+            this.button_statistika.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.button_statistika.Name = "button_statistika";
+            this.button_statistika.Size = new System.Drawing.Size(58, 24);
+            this.button_statistika.Text = "Statistika";
+            this.button_statistika.Click += new System.EventHandler(this.button_statistika_Click);
             // 
             // MainScreen
             // 
@@ -240,6 +289,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -263,5 +314,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cijena;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ukupno;
         private System.Windows.Forms.Button button_ispisPrometa;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radioButton_konobar;
+        private System.Windows.Forms.RadioButton radioButton_obicniKupac;
+        private System.Windows.Forms.ToolStripButton button_statistika;
     }
 }
