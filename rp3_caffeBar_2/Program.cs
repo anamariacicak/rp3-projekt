@@ -17,7 +17,7 @@ namespace rp3_caffeBar
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new MainScreen());
-            Application.Run(new Statistics());
+            Application.Run(new Login());
         }
     }
 }
