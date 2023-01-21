@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="caffeBarConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="caffeBarConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.rp3_caffeBar.Properties.Settings.GlobalReference.Default.caffeBarConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PRODUCTTableAdapter" GeneratorDataComponentClassName="PRODUCTTableAdapter" Name="PRODUCT" UserDataComponentName="PRODUCTTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="caffeBarConnectionString (Settings)" DbObjectName="dbo.PRODUCT" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        PRODUCT.PRODUCT_NAME, SUM(RECEIPT_ITEM.ITEM_QUANTITY) AS ITEM_QUANTITY
+FROM            PRODUCT INNER JOIN
+                         RECEIPT_ITEM ON PRODUCT.PRODUCT_ID = RECEIPT_ITEM.PRODUCT_ID INNER JOIN
+                         RECEIPT ON RECEIPT_ITEM.RECEIPT_ID = RECEIPT.RECEIPT_ID
+GROUP BY PRODUCT.PRODUCT_NAME</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="PRODUCT_NAME" DataSetColumn="PRODUCT_NAME" />
+              <Mapping SourceColumn="ITEM_QUANTITY" DataSetColumn="ITEM_QUANTITY" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PRODUCT1TableAdapter" GeneratorDataComponentClassName="PRODUCT1TableAdapter" Name="PRODUCT1" UserDataComponentName="PRODUCT1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="caffeBarConnectionString (Settings)" DbObjectName="dbo.PRODUCT" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TOP (5) PRODUCT.PRODUCT_NAME, SUM(RECEIPT_ITEM.ITEM_QUANTITY) AS QUANTITY
+FROM            PRODUCT INNER JOIN
+                         RECEIPT_ITEM ON PRODUCT.PRODUCT_ID = RECEIPT_ITEM.PRODUCT_ID INNER JOIN
+                         RECEIPT ON RECEIPT_ITEM.RECEIPT_ID = RECEIPT.RECEIPT_ID
+GROUP BY PRODUCT.PRODUCT_NAME
+ORDER BY QUANTITY DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="PRODUCT_NAME" DataSetColumn="PRODUCT_NAME" />
+              <Mapping SourceColumn="QUANTITY" DataSetColumn="QUANTITY" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources>
+          <DbSource ConnectionRef="caffeBarConnectionString (Settings)" DbObjectName="dbo.PRODUCT" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="SumQuery" MethodsParameterType="CLR" Modifier="Public" Name="SumQuery" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="SumQuery">
+            <SelectCommand>
+              <DbCommand CommandType="Text" ModifiedByUser="true">
+                <CommandText>SELECT        PRODUCT.PRODUCT_NAME, SUM(RECEIPT_ITEM.ITEM_QUANTITY) AS QUANTITY
+FROM            PRODUCT INNER JOIN
+                         RECEIPT_ITEM ON PRODUCT.PRODUCT_ID = RECEIPT_ITEM.PRODUCT_ID INNER JOIN
+                         RECEIPT ON RECEIPT_ITEM.RECEIPT_ID = RECEIPT.RECEIPT_ID
+GROUP BY PRODUCT.PRODUCT_NAME</CommandText>
+                <Parameters />
+              </DbCommand>
+            </SelectCommand>
+          </DbSource>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="DataSet1" msprop:Generator_DataSetName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PRODUCT" msprop:Generator_RowEvHandlerName="PRODUCTRowChangeEventHandler" msprop:Generator_RowDeletedName="PRODUCTRowDeleted" msprop:Generator_RowDeletingName="PRODUCTRowDeleting" msprop:Generator_RowEvArgName="PRODUCTRowChangeEvent" msprop:Generator_TablePropName="PRODUCT" msprop:Generator_RowChangedName="PRODUCTRowChanged" msprop:Generator_RowChangingName="PRODUCTRowChanging" msprop:Generator_TableClassName="PRODUCTDataTable" msprop:Generator_RowClassName="PRODUCTRow" msprop:Generator_TableVarName="tablePRODUCT" msprop:Generator_UserTableName="PRODUCT">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PRODUCT_NAME" msprop:Generator_ColumnPropNameInRow="PRODUCT_NAME" msprop:Generator_ColumnPropNameInTable="PRODUCT_NAMEColumn" msprop:Generator_ColumnVarNameInTable="columnPRODUCT_NAME" msprop:Generator_UserColumnName="PRODUCT_NAME">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ITEM_QUANTITY" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="ITEM_QUANTITY" msprop:Generator_ColumnPropNameInTable="ITEM_QUANTITYColumn" msprop:Generator_ColumnVarNameInTable="columnITEM_QUANTITY" msprop:Generator_UserColumnName="ITEM_QUANTITY" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PRODUCT1" msprop:Generator_RowEvHandlerName="PRODUCT1RowChangeEventHandler" msprop:Generator_RowDeletedName="PRODUCT1RowDeleted" msprop:Generator_RowDeletingName="PRODUCT1RowDeleting" msprop:Generator_RowEvArgName="PRODUCT1RowChangeEvent" msprop:Generator_TablePropName="PRODUCT1" msprop:Generator_RowChangedName="PRODUCT1RowChanged" msprop:Generator_RowChangingName="PRODUCT1RowChanging" msprop:Generator_TableClassName="PRODUCT1DataTable" msprop:Generator_RowClassName="PRODUCT1Row" msprop:Generator_TableVarName="tablePRODUCT1" msprop:Generator_UserTableName="PRODUCT1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PRODUCT_NAME" msprop:Generator_ColumnPropNameInRow="PRODUCT_NAME" msprop:Generator_ColumnPropNameInTable="PRODUCT_NAMEColumn" msprop:Generator_ColumnVarNameInTable="columnPRODUCT_NAME" msprop:Generator_UserColumnName="PRODUCT_NAME">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="QUANTITY" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="QUANTITY" msprop:Generator_ColumnPropNameInTable="QUANTITYColumn" msprop:Generator_ColumnVarNameInTable="columnQUANTITY" msprop:Generator_UserColumnName="QUANTITY" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

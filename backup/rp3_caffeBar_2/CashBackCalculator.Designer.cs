@@ -41,7 +41,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(49, 105);
+            this.label1.Location = new System.Drawing.Point(59, 48);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 16);
@@ -51,7 +51,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(49, 164);
+            this.label2.Location = new System.Drawing.Point(59, 87);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 16);
@@ -60,25 +60,25 @@
             // 
             // textBox_primljeniNovac
             // 
-            this.textBox_primljeniNovac.Location = new System.Drawing.Point(176, 101);
-            this.textBox_primljeniNovac.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_primljeniNovac.Location = new System.Drawing.Point(188, 48);
+            this.textBox_primljeniNovac.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_primljeniNovac.Name = "textBox_primljeniNovac";
             this.textBox_primljeniNovac.Size = new System.Drawing.Size(132, 22);
             this.textBox_primljeniNovac.TabIndex = 2;
             // 
             // textBox_iznosRacuna
             // 
-            this.textBox_iznosRacuna.Location = new System.Drawing.Point(176, 155);
-            this.textBox_iznosRacuna.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_iznosRacuna.Location = new System.Drawing.Point(188, 87);
+            this.textBox_iznosRacuna.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_iznosRacuna.Name = "textBox_iznosRacuna";
             this.textBox_iznosRacuna.Size = new System.Drawing.Size(132, 22);
             this.textBox_iznosRacuna.TabIndex = 3;
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button1.Location = new System.Drawing.Point(53, 297);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button1.Location = new System.Drawing.Point(62, 186);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 28);
             this.button1.TabIndex = 4;
@@ -88,9 +88,9 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button2.Location = new System.Drawing.Point(199, 297);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button2.Location = new System.Drawing.Point(220, 186);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 28);
             this.button2.TabIndex = 5;
@@ -101,7 +101,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(53, 214);
+            this.label3.Location = new System.Drawing.Point(59, 126);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 16);
@@ -110,8 +110,8 @@
             // 
             // textBox_ostatak
             // 
-            this.textBox_ostatak.Location = new System.Drawing.Point(176, 214);
-            this.textBox_ostatak.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_ostatak.Location = new System.Drawing.Point(188, 126);
+            this.textBox_ostatak.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_ostatak.Name = "textBox_ostatak";
             this.textBox_ostatak.Size = new System.Drawing.Size(132, 22);
             this.textBox_ostatak.TabIndex = 7;
@@ -120,8 +120,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(399, 407);
+            this.BackColor = System.Drawing.SystemColors.Info;
+            this.ClientSize = new System.Drawing.Size(393, 238);
             this.Controls.Add(this.textBox_ostatak);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
@@ -130,8 +130,9 @@
             this.Controls.Add(this.textBox_primljeniNovac);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CashBackCalculator";
+            this.ShowIcon = false;
             this.Text = "Kalkulator za ostatak";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -63,6 +63,7 @@ namespace rp3_caffeBar
                             btn.Text = reader.GetString(0).ToString();
                             btn.Margin = new Padding(5, 5, 5, 5);
                             btn.Width = 210;
+                          
                             
                             var cooler = reader.GetInt32(2);
                             var naziv = reader.GetString(0).ToString();

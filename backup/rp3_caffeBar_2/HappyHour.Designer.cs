@@ -45,110 +45,126 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 117);
+            this.label1.Location = new System.Drawing.Point(27, 169);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 13);
+            this.label1.Size = new System.Drawing.Size(119, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Happy Hour cijena";
             // 
             // button_potvrdi
             // 
-            this.button_potvrdi.Location = new System.Drawing.Point(32, 263);
+            this.button_potvrdi.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button_potvrdi.Location = new System.Drawing.Point(30, 363);
+            this.button_potvrdi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_potvrdi.Name = "button_potvrdi";
-            this.button_potvrdi.Size = new System.Drawing.Size(75, 23);
+            this.button_potvrdi.Size = new System.Drawing.Size(100, 28);
             this.button_potvrdi.TabIndex = 1;
-            this.button_potvrdi.Text = "Potvrdi!";
-            this.button_potvrdi.UseVisualStyleBackColor = true;
+            this.button_potvrdi.Text = "Potvrdi";
+            this.button_potvrdi.UseVisualStyleBackColor = false;
             this.button_potvrdi.Click += new System.EventHandler(this.button_potvrdi_Click);
             // 
             // button_odustani
             // 
-            this.button_odustani.Location = new System.Drawing.Point(164, 263);
+            this.button_odustani.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button_odustani.Location = new System.Drawing.Point(230, 363);
+            this.button_odustani.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_odustani.Name = "button_odustani";
-            this.button_odustani.Size = new System.Drawing.Size(75, 23);
+            this.button_odustani.Size = new System.Drawing.Size(100, 28);
             this.button_odustani.TabIndex = 2;
             this.button_odustani.Text = "Odustani";
-            this.button_odustani.UseVisualStyleBackColor = true;
+            this.button_odustani.UseVisualStyleBackColor = false;
             this.button_odustani.Click += new System.EventHandler(this.button_odustani_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 152);
+            this.label2.Location = new System.Drawing.Point(27, 222);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.Size = new System.Drawing.Size(57, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "Početak";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 191);
+            this.label3.Location = new System.Drawing.Point(27, 275);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(25, 13);
+            this.label3.Size = new System.Drawing.Size(30, 16);
             this.label3.TabIndex = 4;
             this.label3.Text = "Kraj";
             // 
             // dateTimePicker_end
             // 
-            this.dateTimePicker_end.Location = new System.Drawing.Point(121, 185);
+            this.dateTimePicker_end.Location = new System.Drawing.Point(161, 275);
+            this.dateTimePicker_end.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTimePicker_end.Name = "dateTimePicker_end";
-            this.dateTimePicker_end.Size = new System.Drawing.Size(148, 20);
+            this.dateTimePicker_end.Size = new System.Drawing.Size(196, 22);
             this.dateTimePicker_end.TabIndex = 5;
             // 
             // dateTimePicker_begin
             // 
-            this.dateTimePicker_begin.Location = new System.Drawing.Point(121, 152);
+            this.dateTimePicker_begin.Location = new System.Drawing.Point(161, 222);
+            this.dateTimePicker_begin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTimePicker_begin.Name = "dateTimePicker_begin";
-            this.dateTimePicker_begin.Size = new System.Drawing.Size(148, 20);
+            this.dateTimePicker_begin.Size = new System.Drawing.Size(196, 22);
             this.dateTimePicker_begin.TabIndex = 6;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 45);
+            this.label4.Location = new System.Drawing.Point(27, 69);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 13);
+            this.label4.Size = new System.Drawing.Size(60, 16);
             this.label4.TabIndex = 7;
             this.label4.Text = "Proizvod";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 81);
+            this.label5.Location = new System.Drawing.Point(27, 118);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 13);
+            this.label5.Size = new System.Drawing.Size(99, 16);
             this.label5.TabIndex = 8;
             this.label5.Text = "Trenutna cijena";
             // 
             // textBox_proizvod
             // 
-            this.textBox_proizvod.Location = new System.Drawing.Point(121, 38);
+            this.textBox_proizvod.Location = new System.Drawing.Point(161, 69);
+            this.textBox_proizvod.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_proizvod.Name = "textBox_proizvod";
-            this.textBox_proizvod.Size = new System.Drawing.Size(148, 20);
+            this.textBox_proizvod.Size = new System.Drawing.Size(196, 22);
             this.textBox_proizvod.TabIndex = 9;
             this.textBox_proizvod.TextChanged += new System.EventHandler(this.textBox_proizvod_TextChanged);
             // 
             // textBox_trenutnaCijena
             // 
-            this.textBox_trenutnaCijena.Location = new System.Drawing.Point(121, 74);
+            this.textBox_trenutnaCijena.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox_trenutnaCijena.Location = new System.Drawing.Point(161, 118);
+            this.textBox_trenutnaCijena.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_trenutnaCijena.Name = "textBox_trenutnaCijena";
             this.textBox_trenutnaCijena.ReadOnly = true;
-            this.textBox_trenutnaCijena.Size = new System.Drawing.Size(148, 20);
+            this.textBox_trenutnaCijena.Size = new System.Drawing.Size(196, 22);
             this.textBox_trenutnaCijena.TabIndex = 10;
             // 
             // textBox_hhCijena
             // 
-            this.textBox_hhCijena.Location = new System.Drawing.Point(121, 114);
+            this.textBox_hhCijena.Location = new System.Drawing.Point(161, 169);
+            this.textBox_hhCijena.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_hhCijena.Name = "textBox_hhCijena";
-            this.textBox_hhCijena.Size = new System.Drawing.Size(148, 20);
+            this.textBox_hhCijena.Size = new System.Drawing.Size(196, 22);
             this.textBox_hhCijena.TabIndex = 11;
             // 
             // HappyHour
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(299, 331);
+            this.BackColor = System.Drawing.SystemColors.Info;
+            this.ClientSize = new System.Drawing.Size(379, 447);
             this.Controls.Add(this.textBox_hhCijena);
             this.Controls.Add(this.textBox_trenutnaCijena);
             this.Controls.Add(this.textBox_proizvod);
@@ -161,7 +177,9 @@
             this.Controls.Add(this.button_odustani);
             this.Controls.Add(this.button_potvrdi);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "HappyHour";
+            this.ShowIcon = false;
             this.Text = "HappyHour";
             this.ResumeLayout(false);
             this.PerformLayout();
