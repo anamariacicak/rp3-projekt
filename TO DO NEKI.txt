@@ -1,5 +1,5 @@
 MAIN SCREEN (BLAGAJNA)
-- tip kupca -> checkbox: konobar ili obicni -> dvije kave, jedan sok, nakon toga 20% - andrea?
+
 
 //nice2have
 - zavrsi // TO DO i ako ga ima dovoljno u hladnjaku -> smije dodavati na racun samo onoliko koliko ga ima u hladnjaku
@@ -20,18 +20,41 @@ gumbici napuni hladnjaku -> prozorcic -> oboje
 		uredi -> prozorcic koji proizvoda -> vlasnik
 
 
+//sakrivanje pojednih kontrola ako je user tipa konobar, tj. ako nije vlasnik // na svaku formu
+            if(User.isOwner == 0 ) { //konobar je
+                button_administracija.Visible= false; 
+                button_statistika.Visible= false;
+            }
+
 ADMINISTRATION 
 - provjeriti try catch - andrea
 
 
 
+STATISTICS 
+aplikacija nudi mogućnost računanja količine konzumacije određenog artikla 
+u određenom vremenu kako bi se što bolje moglo odrediti što gosti 
+najviše/najmanje naručuju. -> upit popraviti da moze u odredenom vremenu
+
+
+Aplikacija stalno prati stanje u skladištu i u hladnjaku 
+te konobara upozorava na male količine određenih artikala, odnosno treba li 
+naručiti neke artikle jer ih je malo u skladištu ili treba napuniti hladnjak. 
+
+
+
+
 OPCENITO
+//postaviti na showdialog vecinu formu, umjesto show na one koje iskacu a ne zatvaraju druge
 - svugdje na formi ikone promijeniti - andrea	
 - promijeniti boje gumbova - andrea
 
 //nice2have dodati u Connection string klasu Sql konekciju
 //TO DO PROCI SVE EXCEPTIONE
 //PROVJERI SVE GUMBE NA SVIM FORMAMA
+
+//dodati ime prezime kod konobara i u add nove korisnike
+//sve postaviti na show dialog
 
 //PREIMENOVATI USER_ID U RECEIPT U CREATE_USER_ID
 
