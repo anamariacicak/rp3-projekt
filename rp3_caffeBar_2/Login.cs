@@ -37,7 +37,8 @@ namespace rp3_caffeBar
                 using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT USER_ID, USERNAME, IS_OWNER FROM [USER] WHERE USERNAME=@username AND PASSWORD=@password";
+                    string query = "SELECT USER_ID, USERNAME, IS_OWNER FROM [USER] " +
+                                   "WHERE USERNAME=@username AND PASSWORD=@password AND [USER].IS_ACTIVE=1";
                     SqlCommand command = new SqlCommand(query, connection);
 
                     //hashiranje passworda 

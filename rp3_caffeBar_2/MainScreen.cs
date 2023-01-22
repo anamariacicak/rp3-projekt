@@ -46,7 +46,8 @@ namespace rp3_caffeBar
                                         "FROM [HAPPY_HOUR] " +
                                         "WHERE END_TIME > getdate()  AND " + //happy hour mora biti validan
                                         "BEGIN_TIME = (SELECT MAX(BEGIN_TIME) FROM [HAPPY_HOUR] AS H2 WHERE [H2].PRODUCT_ID = [HAPPY_HOUR].PRODUCT_ID)) [HH] " + //dohvacamo zadnji dodani happy hour za taj product -> zadnji je dodan, dakle najtocniji je 
-                                    "ON [HH].PRODUCT_ID =[PRODUCT].PRODUCT_ID ";
+                                    "ON [HH].PRODUCT_ID =[PRODUCT].PRODUCT_ID " +
+                                    "WHERE [PRODUCT].IS_VALID=1";
                     
                     SqlCommand command = new SqlCommand(query, connection);
                     SqlDataReader reader = command.ExecuteReader();
@@ -156,9 +157,10 @@ namespace rp3_caffeBar
                                        "JOIN [RECEIPT_ITEM] ON [PRODUCT].PRODUCT_ID=[RECEIPT_ITEM].PRODUCT_ID " +
                                        "JOIN [RECEIPT] ON [RECEIPT].RECEIPT_ID=[RECEIPT_ITEM].RECEIPT_ID " +
                                        "WHERE [PRODUCT].PRODUCT_NAME IN ('KAVA', 'PRIRODNI SOKOVI') " + //kave i prirodni sokovi
+                                       "AND [PRODUCT].IS_VALID=1" + 
                                        "AND CAST([RECEIPT].TIME AS DATE)=CAST(GETDATE() AS DATE) " + //danas
                                        "AND [RECEIPT].CUSTOMER_ID=[RECEIPT].USER_ID AND [RECEIPT].USER_ID=@userId " +
-                                       "GROUP BY [PRODUCT].PRODUCT_NAME"; //po produktu
+                                       "GROUP BY [PRODUCT].PRODUCT_NAME "; //po produktu
 
                         SqlCommand command = new SqlCommand(query, connection);
                         command.Parameters.AddWithValue("@userId", User.userId);
@@ -414,6 +416,12 @@ namespace rp3_caffeBar
 
 
         //gumbi toolStripa vode na novu formu
+        private void button_blagajna_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            var blagajna = new MainScreen();
+            blagajna.Show();
+        }
         private void Skladište_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -443,8 +451,7 @@ namespace rp3_caffeBar
 
         }
 
-
-
+        
     }
 }
 

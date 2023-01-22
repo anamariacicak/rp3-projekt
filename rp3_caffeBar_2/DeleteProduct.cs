@@ -28,7 +28,7 @@ namespace rp3_caffeBar
                 using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM [PRODUCT] WHERE PRODUCT_NAME=@productName";
+                    string query = "SELECT * FROM [PRODUCT] WHERE PRODUCT_NAME=@productName AND [PRODUCT].IS_VALID=1";
                     SqlCommand command = new SqlCommand(query, connection);
 
                     //parametri
@@ -57,12 +57,18 @@ namespace rp3_caffeBar
             if (button_delete.Enabled == true) 
             {
                 //obrisi
+                //prvo moramo napraviti update na tablicu receipt_item jer je on tamo fk
+                int productId=-1;
                 try
                 {
+                    
+
+
                     using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
                     {
                         connection.Open();
-                        string query = "DELETE FROM [PRODUCT] WHERE PRODUCT_NAME=@productName";
+                        string query = "UPDATE [PRODUCT] SET IS_VALID=0 WHERE PRODUCT_NAME=@productName"; 
+                        //radimo update na stupac is_valid jer dani product ne mozemo obrisati posto je strani kljuc u tablici RECEIPT_ITEM
                         SqlCommand command = new SqlCommand(query, connection);
 
                         //parametri
@@ -72,7 +78,7 @@ namespace rp3_caffeBar
                         connection.Close();
                     }
 
-                    this.Close(); //brisanje gototvo, zatvori
+                    this.Close(); //"brisanje" gototvo, zatvori
                 }
                 catch (Exception ex) { MessageBox.Show("DeleteProducts.cs - button_delete_Click: " + "\n" + ex.ToString()); } 
             }

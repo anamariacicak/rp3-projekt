@@ -35,6 +35,7 @@
             this.button_skladiste = new System.Windows.Forms.ToolStripButton();
             this.button_administracija = new System.Windows.Forms.ToolStripButton();
             this.Logout = new System.Windows.Forms.ToolStripButton();
+            this.button_statistika = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.button_refresh = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -54,7 +55,6 @@
             this.button_delete = new System.Windows.Forms.Button();
             this.button_storage = new System.Windows.Forms.Button();
             this.button_hladnjak = new System.Windows.Forms.Button();
-            this.button_statistika = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -137,6 +137,19 @@
             this.Logout.Size = new System.Drawing.Size(49, 19);
             this.Logout.Text = "Logout";
             this.Logout.Click += new System.EventHandler(this.Logout_Click);
+            // 
+            // button_statistika
+            // 
+            this.button_statistika.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button_statistika.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.button_statistika.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button_statistika.Image = ((System.Drawing.Image)(resources.GetObject("button_statistika.Image")));
+            this.button_statistika.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.button_statistika.Margin = new System.Windows.Forms.Padding(4);
+            this.button_statistika.Name = "button_statistika";
+            this.button_statistika.Size = new System.Drawing.Size(58, 19);
+            this.button_statistika.Text = "Statistika";
+            this.button_statistika.Click += new System.EventHandler(this.button_statistika_Click);
             // 
             // splitContainer1
             // 
@@ -343,19 +356,6 @@
             this.button_hladnjak.Text = "Napuni hladnjak";
             this.button_hladnjak.UseVisualStyleBackColor = false;
             this.button_hladnjak.Click += new System.EventHandler(this.button_hladnjak_Click);
-            // 
-            // button_statistika
-            // 
-            this.button_statistika.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button_statistika.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.button_statistika.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_statistika.Image = ((System.Drawing.Image)(resources.GetObject("button_statistika.Image")));
-            this.button_statistika.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.button_statistika.Margin = new System.Windows.Forms.Padding(4);
-            this.button_statistika.Name = "button_statistika";
-            this.button_statistika.Size = new System.Drawing.Size(58, 19);
-            this.button_statistika.Text = "Statistika";
-         
             // 
             // Storage
             // 

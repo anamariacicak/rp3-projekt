@@ -18,8 +18,6 @@ namespace rp3_caffeBar
         {
             InitializeComponent();
 
-           
-
             SuspendLayout();
             button_delete.Enabled = false; //nije kliknuo na celiju koju zeli obrisati
 
@@ -27,7 +25,7 @@ namespace rp3_caffeBar
             using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
             {
                 connection.Open();
-                string query = "SELECT * FROM [USER]";
+                string query = "SELECT * FROM [USER] WHERE IS_ACTIVE=1";
                 SqlCommand command = new SqlCommand(query, connection);
 
                 SqlDataReader reader = command.ExecuteReader();
@@ -108,20 +106,26 @@ namespace rp3_caffeBar
 
         private void button_delete_Click(object sender, EventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
+            try
             {
+                using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
+                {
 
-                connection.Open();
-                string query = "DELETE FROM [USER] WHERE USERNAME=@username";
+                    connection.Open();
+                    string query = "UPDATE [USER] SET IS_ACTIVE=0 WHERE USERNAME=@username";
 
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@username", zaposlenik);
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@username", zaposlenik);
 
-                command.ExecuteNonQuery();
-                dataGridView1.Rows[indeks].Visible = false;
-                connection.Close();
+                    command.ExecuteNonQuery();
+                    dataGridView1.Rows[indeks].Visible = false;
+
+                    connection.Close();
+                }
+
+                button_delete.Enabled = false;
             }
-            button_delete.Enabled = false;
+            catch(Exception ex) { MessageBox.Show("Administration.cs - button_delete_Click: " + "\n" + ex.Message.ToString()); }
         }
 
         //refresh button

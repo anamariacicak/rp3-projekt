@@ -51,7 +51,8 @@ namespace rp3_caffeBar
                                         "JOIN [USER] ON [HAPPY_HOUR].CREATE_USER_ID =[USER].USER_ID " +
                                         "WHERE END_TIME > getdate() AND " + //happy hour mora biti validan
                                         "BEGIN_TIME = (SELECT MAX(BEGIN_TIME) FROM [HAPPY_HOUR] AS H2 WHERE [H2].PRODUCT_ID = [HAPPY_HOUR].PRODUCT_ID)) [HH] " + //trazimo zadnji happy hour
-                                    "ON [HH].PRODUCT_ID =[PRODUCT].PRODUCT_ID ";
+                                    "ON [HH].PRODUCT_ID =[PRODUCT].PRODUCT_ID " +
+                                    "WHERE [PRODUCT].IS_VALID=1";
                     SqlCommand command = new SqlCommand(query, connection);
 
                     SqlDataReader reader = command.ExecuteReader();
@@ -97,6 +98,13 @@ namespace rp3_caffeBar
             this.Hide();
             var administration = new Administration();
             administration.Show();
+        }
+
+        private void button_statistika_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var stat = new Statistics();
+            stat.Show();
         }
 
         private void Logout_Click(object sender, EventArgs e)
@@ -156,10 +164,5 @@ namespace rp3_caffeBar
         }
 
        
-
-       
-
-        
-
     }
 }

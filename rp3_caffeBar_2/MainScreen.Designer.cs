@@ -93,6 +93,7 @@
             this.button_blagajna.Name = "button_blagajna";
             this.button_blagajna.Size = new System.Drawing.Size(56, 19);
             this.button_blagajna.Text = "Blagajna";
+            this.button_blagajna.Click += new System.EventHandler(this.button_blagajna_Click);
             // 
             // button_skladiste
             // 

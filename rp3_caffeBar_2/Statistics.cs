@@ -30,6 +30,7 @@ namespace rp3_caffeBar
             chart1.ChartAreas[0].AxisX.Title = "proizvodi";
             chart1.ChartAreas[0].AxisY.Title = "broj prodanih";
             chart1.Titles.Add("Top 5 prodanih");
+            chart1.Legends.Clear();
             chart1.DataBind();
 
             //drugi dijagram
@@ -43,6 +44,7 @@ namespace rp3_caffeBar
             chart2.ChartAreas[0].AxisX.Title = "proizvodi";
             chart2.ChartAreas[0].AxisY.Title = "broj prodanih";
             chart2.Titles.Add("Analiza");
+            chart2.Legends.Clear();
             chart2.DataBind();
 
 
@@ -54,7 +56,7 @@ namespace rp3_caffeBar
         private void button_blagajna_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var blagajna = new Blagajna();
+            var blagajna = new MainScreen();
             blagajna.Show();
         }
 
