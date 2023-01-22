@@ -17,24 +17,31 @@ namespace rp3_caffeBar
         List<string> cijena = new List<string>();
         List<string> ukupno = new List<string>();
         int receiptId;
-        public Receipt(int receip_id, List<string> naziv_konstruktor, List<string> kolicina_konstruktor, List<string> cijena_konstruktor, List<string> ukupno_konstruktor)
+        
+        public Receipt(int receipt_id, List<string> naziv_konstruktor, List<string> kolicina_konstruktor, List<string> cijena_konstruktor, List<string> ukupno_konstruktor)
         {
             InitializeComponent();
             naziv = naziv_konstruktor;
             kolicina = kolicina_konstruktor;
             cijena = cijena_konstruktor;
             ukupno = ukupno_konstruktor;
-            receiptId= receip_id;
-      
+            receiptId= receipt_id;
 
             SuspendLayout();
 
-            //postavljamo vrijednost textboxa za broj racuna -> textBox_idRacuna 
-            
+            decimal iznos_racuna = 0;
+            for (int i = 0; i < ukupno.Count; i++)
+            {
+                iznos_racuna += decimal.Parse(ukupno[i]);
+            }
 
+            //postavljamo vrijednost textboxa 
+            textBox_ukupno.Text = iznos_racuna.ToString();
+            textBox_idRacuna.Text = receiptId.ToString();
+            textBox_blagajnikId.Text = User.username.ToString();
 
             //dodajemo stavke racuna kao user controlu recepitItem
-            for(int i=0;i<naziv.Count;i++) 
+            for (int i=0;i<naziv.Count;i++) 
             {
                 var item = new recepitItem();
                 item.naziv= naziv[i];
@@ -46,25 +53,14 @@ namespace rp3_caffeBar
                 flowLayoutPanel1.Controls.Add(item);    
             }
 
-            decimal iznos_racuna = 0;
-            for(int i = 0; i < ukupno.Count; i++)
-            {
-                iznos_racuna += decimal.Parse(ukupno[i]);
-            }
-
-            //postavljamo vrijednost textboxa za iznos racuna
-            textBox_ukupno.Text= iznos_racuna.ToString();
-            textBox_idRacuna.Text = receiptId.ToString();
-            textBox_blagajnikId.Text = User.username.ToString();
             ResumeLayout();
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //Izlaz
         {
-            this.Close(); //to do koja je razlika izmedu hide i close
+            this.Close(); 
         }
 
-      
     }
 }

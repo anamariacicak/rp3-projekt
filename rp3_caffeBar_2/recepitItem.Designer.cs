@@ -38,27 +38,31 @@
             // 
             this.textBox_naziv.Location = new System.Drawing.Point(0, 0);
             this.textBox_naziv.Name = "textBox_naziv";
-            this.textBox_naziv.Size = new System.Drawing.Size(100, 20);
+            this.textBox_naziv.ReadOnly = true;
+            this.textBox_naziv.Size = new System.Drawing.Size(125, 20);
             this.textBox_naziv.TabIndex = 0;
             // 
             // textBox_kolicina
             // 
-            this.textBox_kolicina.Location = new System.Drawing.Point(97, 0);
+            this.textBox_kolicina.Location = new System.Drawing.Point(123, 0);
             this.textBox_kolicina.Name = "textBox_kolicina";
+            this.textBox_kolicina.ReadOnly = true;
             this.textBox_kolicina.Size = new System.Drawing.Size(100, 20);
             this.textBox_kolicina.TabIndex = 1;
             // 
             // textBox_ukupno
             // 
-            this.textBox_ukupno.Location = new System.Drawing.Point(291, 0);
+            this.textBox_ukupno.Location = new System.Drawing.Point(316, 0);
             this.textBox_ukupno.Name = "textBox_ukupno";
+            this.textBox_ukupno.ReadOnly = true;
             this.textBox_ukupno.Size = new System.Drawing.Size(100, 20);
             this.textBox_ukupno.TabIndex = 2;
             // 
             // textBox_cijena
             // 
-            this.textBox_cijena.Location = new System.Drawing.Point(193, 0);
+            this.textBox_cijena.Location = new System.Drawing.Point(220, 0);
             this.textBox_cijena.Name = "textBox_cijena";
+            this.textBox_cijena.ReadOnly = true;
             this.textBox_cijena.Size = new System.Drawing.Size(100, 20);
             this.textBox_cijena.TabIndex = 3;
             // 
@@ -71,7 +75,7 @@
             this.Controls.Add(this.textBox_kolicina);
             this.Controls.Add(this.textBox_naziv);
             this.Name = "recepitItem";
-            this.Size = new System.Drawing.Size(394, 22);
+            this.Size = new System.Drawing.Size(418, 22);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -61,14 +61,13 @@
             this.chart1.DataSource = this.dataSet1BindingSource;
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(195, 66);
-            this.chart1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chart1.Location = new System.Drawing.Point(184, 44);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(580, 246);
+            this.chart1.Size = new System.Drawing.Size(397, 176);
             this.chart1.TabIndex = 4;
             this.chart1.Text = "chart1";
             // 
@@ -95,7 +94,7 @@
             this.button_statistika});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1067, 32);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 27);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -105,7 +104,7 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(82, 29);
+            this.toolStripButton1.Size = new System.Drawing.Size(66, 24);
             this.toolStripButton1.Text = "CAFFE BAR";
             // 
             // button_blagajna
@@ -116,8 +115,9 @@
             this.button_blagajna.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.button_blagajna.Margin = new System.Windows.Forms.Padding(4);
             this.button_blagajna.Name = "button_blagajna";
-            this.button_blagajna.Size = new System.Drawing.Size(71, 24);
+            this.button_blagajna.Size = new System.Drawing.Size(56, 19);
             this.button_blagajna.Text = "Blagajna";
+            this.button_blagajna.Click += new System.EventHandler(this.button_blagajna_Click);
             // 
             // button_skladiste
             // 
@@ -127,8 +127,9 @@
             this.button_skladiste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.button_skladiste.Margin = new System.Windows.Forms.Padding(4);
             this.button_skladiste.Name = "button_skladiste";
-            this.button_skladiste.Size = new System.Drawing.Size(72, 24);
+            this.button_skladiste.Size = new System.Drawing.Size(57, 19);
             this.button_skladiste.Text = "Skladište";
+            this.button_skladiste.Click += new System.EventHandler(this.button_skladiste_Click);
             // 
             // button_administracija
             // 
@@ -138,8 +139,9 @@
             this.button_administracija.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.button_administracija.Margin = new System.Windows.Forms.Padding(4);
             this.button_administracija.Name = "button_administracija";
-            this.button_administracija.Size = new System.Drawing.Size(108, 24);
+            this.button_administracija.Size = new System.Drawing.Size(87, 19);
             this.button_administracija.Text = "Administracija";
+            this.button_administracija.Click += new System.EventHandler(this.button_administracija_Click);
             // 
             // Logout
             // 
@@ -150,7 +152,7 @@
             this.Logout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Logout.Margin = new System.Windows.Forms.Padding(4);
             this.Logout.Name = "Logout";
-            this.Logout.Size = new System.Drawing.Size(60, 24);
+            this.Logout.Size = new System.Drawing.Size(49, 19);
             this.Logout.Text = "Logout";
             this.Logout.Click += new System.EventHandler(this.Logout_Click);
             // 
@@ -162,7 +164,7 @@
             this.button_statistika.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.button_statistika.Margin = new System.Windows.Forms.Padding(4);
             this.button_statistika.Name = "button_statistika";
-            this.button_statistika.Size = new System.Drawing.Size(73, 24);
+            this.button_statistika.Size = new System.Drawing.Size(58, 19);
             this.button_statistika.Text = "Statistika";
             this.button_statistika.Click += new System.EventHandler(this.button_statistika_Click);
             // 
@@ -172,28 +174,28 @@
             this.chart2.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(88, 320);
-            this.chart2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chart2.Location = new System.Drawing.Point(101, 246);
             this.chart2.Name = "chart2";
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(825, 219);
+            this.chart2.Size = new System.Drawing.Size(584, 192);
             this.chart2.TabIndex = 6;
             this.chart2.Text = "chart2";
             // 
             // Statistics
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.BackColor = System.Drawing.SystemColors.Info;
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.chart1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Statistics";
-            this.Text = "Statistics";
+            this.ShowIcon = false;
+            this.Text = "Statistika";
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();

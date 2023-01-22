@@ -16,7 +16,6 @@ namespace rp3_caffeBar
         {
             InitializeComponent();
         }
-
         public string naziv
         {
             get { return textBox_naziv.Text; }

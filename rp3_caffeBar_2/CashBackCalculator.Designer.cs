@@ -41,46 +41,42 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(59, 48);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(44, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 16);
+            this.label1.Size = new System.Drawing.Size(78, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Primljeni novac";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(59, 87);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(44, 71);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 16);
+            this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Iznos računa";
             // 
             // textBox_primljeniNovac
             // 
-            this.textBox_primljeniNovac.Location = new System.Drawing.Point(188, 48);
-            this.textBox_primljeniNovac.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox_primljeniNovac.Location = new System.Drawing.Point(141, 39);
             this.textBox_primljeniNovac.Name = "textBox_primljeniNovac";
-            this.textBox_primljeniNovac.Size = new System.Drawing.Size(132, 22);
+            this.textBox_primljeniNovac.Size = new System.Drawing.Size(100, 20);
             this.textBox_primljeniNovac.TabIndex = 2;
             // 
             // textBox_iznosRacuna
             // 
-            this.textBox_iznosRacuna.Location = new System.Drawing.Point(188, 87);
-            this.textBox_iznosRacuna.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox_iznosRacuna.Location = new System.Drawing.Point(141, 71);
             this.textBox_iznosRacuna.Name = "textBox_iznosRacuna";
-            this.textBox_iznosRacuna.Size = new System.Drawing.Size(132, 22);
+            this.textBox_iznosRacuna.ReadOnly = true;
+            this.textBox_iznosRacuna.Size = new System.Drawing.Size(100, 20);
             this.textBox_iznosRacuna.TabIndex = 3;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button1.Location = new System.Drawing.Point(62, 186);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(46, 151);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 28);
+            this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 4;
             this.button1.Text = "Izračunaj";
             this.button1.UseVisualStyleBackColor = false;
@@ -89,10 +85,9 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button2.Location = new System.Drawing.Point(220, 186);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Location = new System.Drawing.Point(165, 151);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 28);
+            this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 5;
             this.button2.Text = "Izlaz";
             this.button2.UseVisualStyleBackColor = false;
@@ -101,27 +96,26 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(59, 126);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(44, 102);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 16);
+            this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Ostatak za vratiti";
             // 
             // textBox_ostatak
             // 
-            this.textBox_ostatak.Location = new System.Drawing.Point(188, 126);
-            this.textBox_ostatak.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox_ostatak.Location = new System.Drawing.Point(141, 102);
             this.textBox_ostatak.Name = "textBox_ostatak";
-            this.textBox_ostatak.Size = new System.Drawing.Size(132, 22);
+            this.textBox_ostatak.ReadOnly = true;
+            this.textBox_ostatak.Size = new System.Drawing.Size(100, 20);
             this.textBox_ostatak.TabIndex = 7;
             // 
             // CashBackCalculator
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(393, 238);
+            this.ClientSize = new System.Drawing.Size(295, 193);
             this.Controls.Add(this.textBox_ostatak);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
@@ -130,7 +124,6 @@
             this.Controls.Add(this.textBox_primljeniNovac);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CashBackCalculator";
             this.ShowIcon = false;
             this.Text = "Kalkulator za ostatak";

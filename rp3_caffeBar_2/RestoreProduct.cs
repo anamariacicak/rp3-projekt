@@ -18,13 +18,13 @@ namespace rp3_caffeBar
         {
             InitializeComponent();
 
-            if (coolerOrStorage == "storage")
+            if (coolerOrStorage == "storage") //reckliramo istu formu za hladnjak i skladiste
             {
                 button_dodaj.Text = "Naruči!";
                 label3.Text = "Količina za \nnaručiti: ";
             }
 
-            //nema ga dok ne unese ispravno ime
+            //nema gumba dodaj dok ne unese ispravno ime
             button_dodaj.Enabled= false;
             restoreType= coolerOrStorage;
 
@@ -39,7 +39,7 @@ namespace rp3_caffeBar
             textBox_skladiste.Text = "";
             try
             {
-                //prvo selectirajmo sva pica iz baze
+                //select stanja u hladnjaku i u skladistu
                 using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
                 {
                     connection.Open();
@@ -56,35 +56,36 @@ namespace rp3_caffeBar
                         reader.Read();
                         textBox_hladnjak.Text=reader.GetInt32(0).ToString();
                         textBox_skladiste.Text=reader.GetInt32(1).ToString();
-                        button_dodaj.Enabled = true;
+                        button_dodaj.Enabled = true; //ispravno je, omoguci gumb
 
                     }
+                    else { button_dodaj.Enabled = false; } //mozda je mijenjao text u texboxu
                     reader.Close();
                     connection.Close();
                 }
             }
             catch (Exception ex) { MessageBox.Show("CoolerRestore.cs - textBox_proizvod_TextChanged: " + "\n" + ex.ToString()); }
-
-            
+  
         }
 
         private void button_dodaj_Click(object sender, EventArgs e)
         {
-            if(textBox_proizvod.Text!="" && textBox_hladnjak.Text != "" && textBox_skladiste.Text != "" && textBox_dodati.Text!=""
-                && int.Parse(textBox_dodati.Text.ToString()) <= int.Parse(textBox_skladiste.Text.ToString()) && restoreType=="cooler")  //ako nesto pise i ispravno je
+            //ako nesto pise i ispravno je, te postoji dovoljna kolicina u skladistu za dodati u hladnjaku, ako se radi o punjanju hladnjaka
+            if (textBox_proizvod.Text!="" && textBox_hladnjak.Text != "" && textBox_skladiste.Text != "" && textBox_dodati.Text!=""
+                && int.Parse(textBox_dodati.Text.ToString()) <= int.Parse(textBox_skladiste.Text.ToString()) && restoreType=="cooler")  //hladnjak
             {
-                //radimo update u bazu na hladnjak
+                //radimo update u bazu na broj proizvoda u hladnjaku i skladistu
                 try
                 {
-                    //prvo selectirajmo sva pica iz baze
                     using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
                     {
                         connection.Open();
-                        string query = "UPDATE [PRODUCT] SET COOLER_QUANTITY=@newQuantityCooler, STORAGE_QUANTITY=@newQuantityStorage, LAST_MODIFY_USER=@userId, LAST_MODIFY_TIME=@modfiyTime WHERE PRODUCT_NAME=@productName";
+                        string query = "UPDATE [PRODUCT] SET COOLER_QUANTITY=@newQuantityCooler, STORAGE_QUANTITY=@newQuantityStorage, " +
+                                        "LAST_MODIFY_USER=@userId, LAST_MODIFY_TIME=@modfiyTime WHERE PRODUCT_NAME=@productName";
+                        
                         SqlCommand command = new SqlCommand(query, connection);
 
                         //parametri
-                        //if (int.Parse(textBox_dodati.Text.ToString()) <= int.Parse(textBox_skladiste.Text.ToString())){
                         int newQuantity = int.Parse(textBox_hladnjak.Text.ToString()) + int.Parse(textBox_dodati.Text.ToString());
                         int newQuantityStorage = int.Parse(textBox_skladiste.Text.ToString()) - int.Parse(textBox_dodati.Text.ToString());
                         var modfiyTime = DateTime.Now;
@@ -98,22 +99,15 @@ namespace rp3_caffeBar
                         command.ExecuteNonQuery();
 
                         connection.Close();
-                        //zatvori ovu formu otvori novu storage
+
                         this.Close();
-                        /*var storage=new Storage(); //to do sinkronizacija
-                        storage.Show();*/
-                        //}
-                        //else
-                        //{
-                       
-                        //}
                     }
   
                 }
                 catch (Exception ex) { MessageBox.Show("CoolerRestore.cs - button_dodaj_Click: " + "\n" + ex.ToString()); }
             }
             else if (textBox_proizvod.Text != "" && textBox_hladnjak.Text != "" && textBox_skladiste.Text != "" && textBox_dodati.Text != ""
-                && restoreType == "storage")  //ako nesto pise i ispravno je
+                && restoreType == "storage")  //storage
             {
                 //radimo update u bazu na storage
                 try
@@ -122,11 +116,10 @@ namespace rp3_caffeBar
                     using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
                     {
                         connection.Open();
-                        string query = "UPDATE [PRODUCT] SET STORAGE_QUANTITY=@newQuantityStorage, LAST_MODIFY_USER=@userId, LAST_MODIFY_TIME=@modfiyTime WHERE PRODUCT_NAME=@productName";
+                        string query = "UPDATE [PRODUCT] SET STORAGE_QUANTITY=@newQuantityStorage, " +
+                                        "LAST_MODIFY_USER=@userId, LAST_MODIFY_TIME=@modfiyTime WHERE PRODUCT_NAME=@productName";
                         SqlCommand command = new SqlCommand(query, connection);
 
-                        //parametri
-                        //if (int.Parse(textBox_dodati.Text.ToString()) <= int.Parse(textBox_skladiste.Text.ToString())){
                         int newQuantityStorage = int.Parse(textBox_skladiste.Text.ToString()) + int.Parse(textBox_dodati.Text.ToString());
                         var modfiyTime = DateTime.Now;
                         var productName = textBox_proizvod.Text.ToString();
@@ -139,7 +132,6 @@ namespace rp3_caffeBar
 
                         connection.Close();
                         
-                        //zatvori ovu formu otvori novu storage
                         this.Close();
                    
                     }

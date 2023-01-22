@@ -20,19 +20,15 @@ namespace rp3_caffeBar
             textBox_iznosRacuna.Text = total.ToString();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //Izracunaj
         {
-            /*if (textBox_primljeniNovac.Text == "")
-            {
-                MessageBox.Show("unesi primljeni novac"); //TO DO tu po defaultu mozemo staviti 0- mozda konobar ne zeli kalkulator
-            }*/
-
-            decimal ostatak = decimal.Parse(textBox_primljeniNovac.Text) - decimal.Parse(textBox_iznosRacuna.Text);
-            textBox_ostatak.Text=ostatak.ToString();
+            if (textBox_primljeniNovac.Text != "") { 
+                decimal ostatak = decimal.Parse(textBox_primljeniNovac.Text) - decimal.Parse(textBox_iznosRacuna.Text);
+                textBox_ostatak.Text = ostatak.ToString();
+            }
 
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //Izlaz
         {
             this.Close();
         }

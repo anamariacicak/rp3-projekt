@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="caffeBarModelStoreContainer" CdmEntityContainer="caffeBarEntities">
+    <EntitySetMapping Name="HAPPY_HOUR">
+      <EntityTypeMapping TypeName="caffeBarModel.HAPPY_HOUR">
+        <MappingFragment StoreEntitySet="HAPPY_HOUR">
+          <ScalarProperty Name="HAPPY_HOUR_ID" ColumnName="HAPPY_HOUR_ID" />
+          <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="HAPPY_HOUR_PRICE" ColumnName="HAPPY_HOUR_PRICE" />
+          <ScalarProperty Name="CREATE_USER_ID" ColumnName="CREATE_USER_ID" />
+          <ScalarProperty Name="BEGIN_TIME" ColumnName="BEGIN_TIME" />
+          <ScalarProperty Name="END_TIME" ColumnName="END_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCT">
+      <EntityTypeMapping TypeName="caffeBarModel.PRODUCT">
+        <MappingFragment StoreEntitySet="PRODUCT">
+          <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="COOLER_QUANTITY" ColumnName="COOLER_QUANTITY" />
+          <ScalarProperty Name="STORAGE_QUANTITY" ColumnName="STORAGE_QUANTITY" />
+          <ScalarProperty Name="LAST_MODIFY_USER" ColumnName="LAST_MODIFY_USER" />
+          <ScalarProperty Name="LAST_MODIFY_TIME" ColumnName="LAST_MODIFY_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RECEIPT">
+      <EntityTypeMapping TypeName="caffeBarModel.RECEIPT">
+        <MappingFragment StoreEntitySet="RECEIPT">
+          <ScalarProperty Name="RECEIPT_ID" ColumnName="RECEIPT_ID" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="TOTAL_AMOUNT" ColumnName="TOTAL_AMOUNT" />
+          <ScalarProperty Name="TIME" ColumnName="TIME" />
+          <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RECEIPT_ITEM">
+      <EntityTypeMapping TypeName="caffeBarModel.RECEIPT_ITEM">
+        <MappingFragment StoreEntitySet="RECEIPT_ITEM">
+          <ScalarProperty Name="RECEIPT_ITEM_ID" ColumnName="RECEIPT_ITEM_ID" />
+          <ScalarProperty Name="RECEIPT_ID" ColumnName="RECEIPT_ID" />
+          <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="ITEM_QUANTITY" ColumnName="ITEM_QUANTITY" />
+          <ScalarProperty Name="ITEM_AMOUNT" ColumnName="ITEM_AMOUNT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER">
+      <EntityTypeMapping TypeName="caffeBarModel.USER">
+        <MappingFragment StoreEntitySet="USER">
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="IS_OWNER" ColumnName="IS_OWNER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

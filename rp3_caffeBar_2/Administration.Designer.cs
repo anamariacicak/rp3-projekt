@@ -35,13 +35,14 @@
             this.button_skladiste = new System.Windows.Forms.ToolStripButton();
             this.button_administracija = new System.Windows.Forms.ToolStripButton();
             this.Logout = new System.Windows.Forms.ToolStripButton();
+            this.button_statistika = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.button_refresh = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sifra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button_delete = new System.Windows.Forms.Button();
             this.button_dodaj = new System.Windows.Forms.Button();
+            this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sifra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -59,10 +60,11 @@
             this.button_blagajna,
             this.button_skladiste,
             this.button_administracija,
-            this.Logout});
+            this.Logout,
+            this.button_statistika});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 32);
+            this.toolStrip1.Size = new System.Drawing.Size(600, 27);
             this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -72,7 +74,7 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(82, 29);
+            this.toolStripButton1.Size = new System.Drawing.Size(66, 24);
             this.toolStripButton1.Text = "CAFFE BAR";
             // 
             // button_blagajna
@@ -83,7 +85,7 @@
             this.button_blagajna.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.button_blagajna.Margin = new System.Windows.Forms.Padding(4);
             this.button_blagajna.Name = "button_blagajna";
-            this.button_blagajna.Size = new System.Drawing.Size(71, 24);
+            this.button_blagajna.Size = new System.Drawing.Size(56, 19);
             this.button_blagajna.Text = "Blagajna";
             this.button_blagajna.Click += new System.EventHandler(this.button_blagajna_Click);
             // 
@@ -95,7 +97,7 @@
             this.button_skladiste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.button_skladiste.Margin = new System.Windows.Forms.Padding(4);
             this.button_skladiste.Name = "button_skladiste";
-            this.button_skladiste.Size = new System.Drawing.Size(72, 24);
+            this.button_skladiste.Size = new System.Drawing.Size(57, 19);
             this.button_skladiste.Text = "Skladište";
             this.button_skladiste.Click += new System.EventHandler(this.button_skladiste_Click);
             // 
@@ -107,7 +109,7 @@
             this.button_administracija.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.button_administracija.Margin = new System.Windows.Forms.Padding(4);
             this.button_administracija.Name = "button_administracija";
-            this.button_administracija.Size = new System.Drawing.Size(108, 24);
+            this.button_administracija.Size = new System.Drawing.Size(87, 19);
             this.button_administracija.Text = "Administracija";
             this.button_administracija.Click += new System.EventHandler(this.button_administracija_Click);
             // 
@@ -120,15 +122,26 @@
             this.Logout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Logout.Margin = new System.Windows.Forms.Padding(4);
             this.Logout.Name = "Logout";
-            this.Logout.Size = new System.Drawing.Size(60, 24);
+            this.Logout.Size = new System.Drawing.Size(49, 19);
             this.Logout.Text = "Logout";
             this.Logout.Click += new System.EventHandler(this.Logout_Click);
+            // 
+            // button_statistika
+            // 
+            this.button_statistika.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button_statistika.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.button_statistika.Image = ((System.Drawing.Image)(resources.GetObject("button_statistika.Image")));
+            this.button_statistika.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.button_statistika.Margin = new System.Windows.Forms.Padding(4);
+            this.button_statistika.Name = "button_statistika";
+            this.button_statistika.Size = new System.Drawing.Size(58, 19);
+            this.button_statistika.Text = "Statistika";
+            this.button_statistika.Click += new System.EventHandler(this.button_statistika_Click);
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 32);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 27);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -142,20 +155,20 @@
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.splitContainer1.Panel2.Controls.Add(this.button_delete);
             this.splitContainer1.Panel2.Controls.Add(this.button_dodaj);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 414);
-            this.splitContainer1.SplitterDistance = 592;
-            this.splitContainer1.SplitterWidth = 5;
+            this.splitContainer1.Size = new System.Drawing.Size(600, 336);
+            this.splitContainer1.SplitterDistance = 444;
             this.splitContainer1.TabIndex = 7;
             // 
             // button_refresh
             // 
-            this.button_refresh.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button_refresh.Location = new System.Drawing.Point(4, 4);
-            this.button_refresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_refresh.BackColor = System.Drawing.SystemColors.Control;
+            this.button_refresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_refresh.BackgroundImage")));
+            this.button_refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button_refresh.Image = ((System.Drawing.Image)(resources.GetObject("button_refresh.Image")));
+            this.button_refresh.Location = new System.Drawing.Point(3, 3);
             this.button_refresh.Name = "button_refresh";
-            this.button_refresh.Size = new System.Drawing.Size(45, 32);
-            this.button_refresh.TabIndex = 1;
-            this.button_refresh.Text = "REFRESH";
+            this.button_refresh.Size = new System.Drawing.Size(44, 29);
+            this.button_refresh.TabIndex = 2;
             this.button_refresh.UseVisualStyleBackColor = false;
             this.button_refresh.Click += new System.EventHandler(this.button_refresh_Click);
             // 
@@ -168,13 +181,34 @@
             this.Sifra});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(592, 414);
+            this.dataGridView1.Size = new System.Drawing.Size(444, 336);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // button_delete
+            // 
+            this.button_delete.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button_delete.Location = new System.Drawing.Point(29, 170);
+            this.button_delete.Name = "button_delete";
+            this.button_delete.Size = new System.Drawing.Size(101, 45);
+            this.button_delete.TabIndex = 2;
+            this.button_delete.Text = "Obriši";
+            this.button_delete.UseVisualStyleBackColor = false;
+            this.button_delete.Click += new System.EventHandler(this.button_delete_Click);
+            // 
+            // button_dodaj
+            // 
+            this.button_dodaj.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button_dodaj.Location = new System.Drawing.Point(29, 108);
+            this.button_dodaj.Name = "button_dodaj";
+            this.button_dodaj.Size = new System.Drawing.Size(101, 45);
+            this.button_dodaj.TabIndex = 0;
+            this.button_dodaj.Text = "Dodaj ";
+            this.button_dodaj.UseVisualStyleBackColor = false;
+            this.button_dodaj.Click += new System.EventHandler(this.button_dodaj_Click);
             // 
             // Naziv
             // 
@@ -189,40 +223,17 @@
             this.Sifra.HeaderText = "Šifra";
             this.Sifra.MinimumWidth = 6;
             this.Sifra.Name = "Sifra";
+            this.Sifra.ReadOnly = true;
             this.Sifra.Width = 125;
-            // 
-            // button_delete
-            // 
-            this.button_delete.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button_delete.Location = new System.Drawing.Point(39, 209);
-            this.button_delete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button_delete.Name = "button_delete";
-            this.button_delete.Size = new System.Drawing.Size(135, 55);
-            this.button_delete.TabIndex = 2;
-            this.button_delete.Text = "Obriši";
-            this.button_delete.UseVisualStyleBackColor = false;
-            this.button_delete.Click += new System.EventHandler(this.button_delete_Click);
-            // 
-            // button_dodaj
-            // 
-            this.button_dodaj.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button_dodaj.Location = new System.Drawing.Point(39, 133);
-            this.button_dodaj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button_dodaj.Name = "button_dodaj";
-            this.button_dodaj.Size = new System.Drawing.Size(135, 55);
-            this.button_dodaj.TabIndex = 0;
-            this.button_dodaj.Text = "Dodaj ";
-            this.button_dodaj.UseVisualStyleBackColor = false;
-            this.button_dodaj.Click += new System.EventHandler(this.button_dodaj_Click);
             // 
             // Administration
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Administration";
             this.ShowIcon = false;
             this.Text = "Administracija";
@@ -248,10 +259,11 @@
         private System.Windows.Forms.ToolStripButton Logout;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Sifra;
-        private System.Windows.Forms.Button button_refresh;
         private System.Windows.Forms.Button button_delete;
         private System.Windows.Forms.Button button_dodaj;
+        private System.Windows.Forms.Button button_refresh;
+        private System.Windows.Forms.ToolStripButton button_statistika;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sifra;
     }
 }

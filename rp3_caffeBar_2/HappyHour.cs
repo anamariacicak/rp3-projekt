@@ -16,7 +16,8 @@ namespace rp3_caffeBar
         public HappyHour()
         {
             InitializeComponent();
-            button_potvrdi.Enabled = false;
+            button_potvrdi.Enabled = false; //na pocetku disable gumb potvrdi sve dok nije uneseno ime proizvoda te hh cijena
+            //format datum
             dateTimePicker_begin.Format = DateTimePickerFormat.Custom;
             dateTimePicker_begin.CustomFormat = "dd.MM.yyyy. HH:mm:ss";
             dateTimePicker_end.Format = DateTimePickerFormat.Custom;
@@ -26,11 +27,12 @@ namespace rp3_caffeBar
         private void textBox_proizvod_TextChanged(object sender, EventArgs e)
         {
             //utipkao je tekst u textbox->provjerimo je li ispravan, ako je ispravan, onda mu napunimo druga dva tekxtboxa
+            //->trenutna cijena i deafultna cijena hh (20%) niza 
             var productName = "";
             textBox_trenutnaCijena.Text = "";
             try
             {
-                //prvo selectirajmo sva pica iz baze
+                //prvo selctirajmo trenutnu cijenu proizvoda za unesneo ime
                 using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
                 {
                     connection.Open();
@@ -41,7 +43,6 @@ namespace rp3_caffeBar
                         //parametri
                         productName = textBox_proizvod.Text.ToString();
                         command.Parameters.AddWithValue("@productName", productName);
-
                         SqlDataReader reader = command.ExecuteReader();
                         if (reader.HasRows) //tocno jedan redak bi trebao imati
                         {
@@ -50,7 +51,7 @@ namespace rp3_caffeBar
                             decimal hhCijena = Math.Round((decimal)0.8 * trenutnaCijena, 2); //automatski mu ispunjava sa cijenom nizom od 0.2
                             textBox_trenutnaCijena.Text = trenutnaCijena.ToString();
                             textBox_hhCijena.Text = hhCijena.ToString();
-                            button_potvrdi.Enabled = true;
+                            button_potvrdi.Enabled = true; //omoguci gumb potvrdi
 
                         }
                         reader.Close();
@@ -69,7 +70,8 @@ namespace rp3_caffeBar
             var trenutnaCijena = Math.Round(decimal.Parse(textBox_trenutnaCijena.Text.ToString()),2);
 
             if (dateTimePicker_begin.Value<dateTimePicker_end.Value  && dateTimePicker_end.Value>DateTime.Now
-                && hhCijena<trenutnaCijena) //mora trajati u buducnosti, pocetak moze biti i u proslosti - no ako je pocetak manji od DateTime.now postavit ce se u tablici pocetak kada korisnik stisne gumb potvrdi - mozda mu se nije dalo mijenjati prvi picker
+                && hhCijena<trenutnaCijena) //mora trajati u buducnosti, pocetak moze biti i u proslosti
+                                            //- no ako je pocetak manji od DateTime.now postavit ce se u tablici pocetak kada korisnik stisne gumb potvrdi - mozda mu se nije dalo mijenjati prvi picker
             {
                 //insert u tablicu happy hour 
                 SqlConnection connection = new SqlConnection(ConnectionString.connectionString);
@@ -77,7 +79,7 @@ namespace rp3_caffeBar
                 {
                     connection.Open();
 
-                    //dohvat potrebnog product idja
+                    //dohvat potrebnog product ida
                     int productId = -1;
                     string query = "SELECT PRODUCT_ID FROM [PRODUCT] WHERE PRODUCT_NAME=@productName";
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -91,8 +93,6 @@ namespace rp3_caffeBar
                         {
                             reader.Read();
                             productId = reader.GetInt32(0);
-                            //MessageBox.Show("usao " + productId.ToString());
-
                         }
                         reader.Close();
                     }
@@ -121,30 +121,27 @@ namespace rp3_caffeBar
                             command.ExecuteNonQuery();
                         }
                     }
+                    
                     connection.Close();
-                    this.Close();
+                    this.Close(); //sve je uspjesno, zatvori HappyHour formu
 
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("button_potvrdi_Click: " + ex.Message);
-                }
-
-
+                catch (Exception ex) { MessageBox.Show("button_potvrdi_Click: " + "\n" + ex.Message); }
             }
-            else if(dateTimePicker_begin.Value>dateTimePicker_end.Value || dateTimePicker_end.Value < DateTime.Now) 
+            
+            else if(dateTimePicker_begin.Value>dateTimePicker_end.Value || dateTimePicker_end.Value < DateTime.Now) //neispravno odabran datum
             {
-                MessageBox.Show("Neispravno unesena datumi!");
+                MessageBox.Show("Neispravno odabrani datumi!");
             }
            
 
-            else if(hhCijena >= trenutnaCijena)
+            else if(hhCijena >= trenutnaCijena)  //neispravno unesena cijena
             {
                 MessageBox.Show("Neispravna Happy Hour cijena!");
             }
         }
 
-        private void button_odustani_Click(object sender, EventArgs e)
+        private void button_odustani_Click(object sender, EventArgs e) //izlaz
         {
             this.Close();
         }

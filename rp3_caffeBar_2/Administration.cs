@@ -18,9 +18,10 @@ namespace rp3_caffeBar
         {
             InitializeComponent();
 
-            SuspendLayout();
+           
 
-            button_delete.Enabled = true;  
+            SuspendLayout();
+            button_delete.Enabled = false; //nije kliknuo na celiju koju zeli obrisati
 
             //prikažimo sve zaposlenike  koji se nalaze u bazi
             using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
@@ -36,44 +37,73 @@ namespace rp3_caffeBar
                     var ime = reader.GetString(1).ToString();
                     var sifra = reader.GetString(2).ToString();
 
-                    dataGridView1.Rows.Add(ime, sifra);
-
-                    
+                    dataGridView1.Rows.Add(ime, sifra); 
                 }
                 
-                reader.Close(); ResumeLayout();
+                reader.Close(); 
             }
+            
+            ResumeLayout();
         }
 
-        
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //toolStrip button
+        private void button_blagajna_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var blagajna = new MainScreen();
+            blagajna.Show();
+
+        }
+
+        private void button_skladiste_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var skladiste = new Storage();
+            skladiste.Show();
+        }
+
+        private void button_administracija_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var administracija = new Administration();
+            administracija.Show();
+        }
+        private void button_statistika_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var stat = new Statistics();
+            stat.Show();
+        }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var login = new Login();
+            login.Show();
+        }
+
+        //ADD USER
+        private void button_dodaj_Click(object sender, EventArgs e)
+        {
+            //dodajemo novog korisnika, otvara se nova forma
+            NewUser novi = new NewUser();
+            novi.ShowDialog();
+        }
+
+
+        //DELETE USER
+        //da bismo odabrali usera kojeg zelimo obrisati prvo ga trebamo oznaciti u tablici
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) //klikom brise zaposlenike
         {
             button_delete.Enabled = true;
-
             zaposlenik = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            MessageBox.Show(zaposlenik);
-            indeks = e.RowIndex;
+            indeks = e.RowIndex; //koji redak treba obrisati
         }
        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             button_delete.Enabled = true;
             zaposlenik = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            MessageBox.Show(zaposlenik);
-            indeks = e.RowIndex;
-        }
-
-        private void button_dodaj_Click(object sender, EventArgs e)
-        {
-            //dodajemo novog korisnika, otvara se nova forma
-            NoviKorisnik novi = new NoviKorisnik();
-            novi.Show();
-        }
-
-        private void button_refresh_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var administracija = new Administration();
-            administracija.Show();
+            indeks = e.RowIndex;  //koji redak treba obrisati 
         }
 
         private void button_delete_Click(object sender, EventArgs e)
@@ -91,35 +121,16 @@ namespace rp3_caffeBar
                 dataGridView1.Rows[indeks].Visible = false;
                 connection.Close();
             }
-            button_delete.Enabled=false;
+            button_delete.Enabled = false;
         }
 
-        private void button_blagajna_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var blagajna=new Blagajna();
-            blagajna.Show();
-        }
-
-        private void button_skladiste_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var skladiste = new Storage();
-            skladiste.Show();
-        }
-
-        private void button_administracija_Click(object sender, EventArgs e)
+        //refresh button
+        private void button_refresh_Click(object sender, EventArgs e)
         {
             this.Hide();
             var administracija = new Administration();
             administracija.Show();
         }
 
-        private void Logout_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var login=new Login();
-            login.Show();
-        }
     }
 }

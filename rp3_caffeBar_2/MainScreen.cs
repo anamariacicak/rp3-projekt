@@ -17,8 +17,6 @@ namespace rp3_caffeBar
 
     public partial class MainScreen : Form
     {
-        
-
         public MainScreen()
         {
             InitializeComponent();
@@ -32,24 +30,22 @@ namespace rp3_caffeBar
             //defaultna vrijednost radio buttona u group boxu za tip kupca je Običan kupac
             radioButton_obicniKupac.Checked = true;
 
-            //dodavanje buttona pica -> na blagajna1.flowLayout1
+            //dodavanje buttona pica -> desni flowLayout1
             SuspendLayout();
             try
             {
-                //prvo selectirajmo sva pica iz baze, sprpadajucim cijenama, ukljucujuci i happy hour cijenu
+                //prvo selectirajmo sva pica iz baze, s prpadajucim cijenama, ukljucujuci i happy hour cijenu
                 using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
                 {
                     connection.Open();
                     string query = "SELECT [PRODUCT].PRODUCT_NAME, [PRODUCT].PRICE, [PRODUCT].COOLER_QUANTITY, " +
                                         "COALESCE(CONVERT(VARCHAR(10),[HH].HAPPY_HOUR_PRICE),' ') " +
                                     "FROM [PRODUCT] " +
-                                    "LEFT JOIN [USER] ON [PRODUCT].LAST_MODIFY_USER =[USER].USER_ID " +
                                     "LEFT JOIN " +
-                                        "(SELECT PRODUCT_ID, HAPPY_HOUR_PRICE, BEGIN_TIME, END_TIME, USERNAME " +
+                                        "(SELECT PRODUCT_ID, HAPPY_HOUR_PRICE, BEGIN_TIME, END_TIME " + 
                                         "FROM [HAPPY_HOUR] " +
-                                        "JOIN [USER] ON [HAPPY_HOUR].CREATE_USER_ID =[USER].USER_ID " +
-                                        "WHERE END_TIME > getdate()  AND " +
-                                        "BEGIN_TIME = (SELECT MAX(BEGIN_TIME) FROM [HAPPY_HOUR] AS H2 WHERE [H2].PRODUCT_ID = [HAPPY_HOUR].PRODUCT_ID)) [HH] " +
+                                        "WHERE END_TIME > getdate()  AND " + //happy hour mora biti validan
+                                        "BEGIN_TIME = (SELECT MAX(BEGIN_TIME) FROM [HAPPY_HOUR] AS H2 WHERE [H2].PRODUCT_ID = [HAPPY_HOUR].PRODUCT_ID)) [HH] " + //dohvacamo zadnji dodani happy hour za taj product -> zadnji je dodan, dakle najtocniji je 
                                     "ON [HH].PRODUCT_ID =[PRODUCT].PRODUCT_ID ";
                     
                     SqlCommand command = new SqlCommand(query, connection);
@@ -64,7 +60,6 @@ namespace rp3_caffeBar
                             btn.Margin = new Padding(5, 5, 5, 5);
                             btn.Width = 210;
                           
-                            
                             var cooler = reader.GetInt32(2);
                             var naziv = reader.GetString(0).ToString();
                             var productCijena = reader.GetDecimal(1);
@@ -87,12 +82,12 @@ namespace rp3_caffeBar
                             //dodavanje buttona
                             flowLayoutPanel1.Controls.Add(btn);
                             
-                            if (cooler < 1) //ako ga ima vise od jedan moze ga nuditi gostima //TO DO TEST
+                            if (cooler < 1) //ako ga barem jedan moze ga nuditi gostima 
                             {
                                 btn.Enabled=false;
                             }
                             
-                            if(cooler <= 2)
+                            if(cooler <= 2) //ako je u hladnjaku manje od dva pica te vrste
                             {
                                 MessageBox.Show("U hladnjaku nedostaje " + naziv + ", molimo te nadopuni hladnjak!");
                             }
@@ -101,28 +96,34 @@ namespace rp3_caffeBar
                     reader.Close();
                 }
             }
-            catch (Exception ex) { MessageBox.Show("MainScreen.cs - proizvodi i cijena: " + "\n" + ex.Message.ToString()); }
+            catch (Exception ex) { MessageBox.Show("MainScreen.cs - MainScreen(): " + "\n" + ex.Message.ToString()); }
             ResumeLayout();
         }
 
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e) //azuriranje dataGrida ako je konobar upisao kolicinu direktno u stupac
+        {
+            if (e.ColumnIndex == 1 && e.RowIndex >= 0)
+            {
+                var cijena = decimal.Parse(dataGridView1[2, e.RowIndex].Value.ToString());
+                int kolicina = int.Parse(dataGridView1[1, e.RowIndex].Value.ToString());
 
+                dataGridView1[3, e.RowIndex].Value = cijena * kolicina;
+            }
+        }
         private void button_izdajRacun_Click(object sender, EventArgs e) //izdaj racun gumb
         {
 
             //Ima li racun stavki?
-           
-
             if (dataGridView1.RowCount - 1 <= 0) //racun nema stavki
             {
                 MessageBox.Show("Nemoguce izdati prazan racun");
             }
 
-            else //ako postoje stavke na racunu // TO DO i ako ga ima dovoljno u hladnjaku
+            else //ako postoje stavke na racunu 
             {
 
-
-
-                //napravit cemo 4 liste za 4 stupca naseg racuna koje cemo poslati formi racun
+                //napravit cemo 4 liste za 4 stupca naseg racuna koje cemo poslati formi Racun koja ce prikazati Racun
+                //koristit cemo ih i pri izracunu popusta ovisno o kupcu
                 List<string> naziv = new List<string>();
                 List<string> kolicina = new List<string>();
                 List<string> cijena = new List<string>();
@@ -135,38 +136,37 @@ namespace rp3_caffeBar
                     ukupno.Add(dataGridView1[3, i].Value.ToString());
                 }
 
+                                    /***********************konekcija za upite***********************/
                 SqlConnection connection = new SqlConnection(ConnectionString.connectionString);
 
-                //treba na popust u slucaj da je kupac konobar 
-                //1. je li kupac konobar 2. da, provjeri koliko je kava i cijedenih sokova danas popio, odvojeno
+                                    /***********************IZRACUN POPUSTA ZA KONOBARA***********************/
+                //treba nam popust u slucaj da je kupac konobar 
+                //1. je li kupac konobar
+                //2. da, provjeri koliko je kava i cijedenih sokova danas popio, odvojeno
                 //3. daj mu popust na onoliko kava koliko ih nije popio i eventualno na 1 sok, inace daj mu popust 20%
-
-                int kavaCnt = 0, sokCnt = 0; //koliko ih je popio
+                
+                int kavaCnt = 0, sokCnt = 0; //koliko ih je popio -> pretpostavimo 0
                 if (radioButton_konobar.Checked == true) //konobar //gledamo gdje je user id == customer_id 
                 {
-     
                     try
                     {
                         connection.Open();
-                        string query = "SELECT [PRODUCT].PRODUCT_NAME, SUM([RECEIPT_ITEM].ITEM_QUANTITY) " +
+                        string query = "SELECT [PRODUCT].PRODUCT_NAME, SUM([RECEIPT_ITEM].ITEM_QUANTITY) " + //ispisi ime proizvoda i sumu od danas
                                        "FROM [PRODUCT] " +
                                        "JOIN [RECEIPT_ITEM] ON [PRODUCT].PRODUCT_ID=[RECEIPT_ITEM].PRODUCT_ID " +
                                        "JOIN [RECEIPT] ON [RECEIPT].RECEIPT_ID=[RECEIPT_ITEM].RECEIPT_ID " +
-                                       "WHERE [PRODUCT].PRODUCT_NAME IN ('KAVA', 'PRIRODNI SOKOVI') " +
-                                       "AND CAST([RECEIPT].TIME AS DATE)=CAST(GETDATE() AS DATE) " +
+                                       "WHERE [PRODUCT].PRODUCT_NAME IN ('KAVA', 'PRIRODNI SOKOVI') " + //kave i prirodni sokovi
+                                       "AND CAST([RECEIPT].TIME AS DATE)=CAST(GETDATE() AS DATE) " + //danas
                                        "AND [RECEIPT].CUSTOMER_ID=[RECEIPT].USER_ID AND [RECEIPT].USER_ID=@userId " +
-                                       "GROUP BY [PRODUCT].PRODUCT_NAME";
+                                       "GROUP BY [PRODUCT].PRODUCT_NAME"; //po produktu
 
                         SqlCommand command = new SqlCommand(query, connection);
                         command.Parameters.AddWithValue("@userId", User.userId);
                         SqlDataReader reader = command.ExecuteReader();
-
-
                         if (reader.HasRows)
                         {
                             while (reader.Read())
                             {
-                                //MessageBox.Show("usao cnt" + reader.GetInt32(1).ToString());
                                 if (reader.GetString(0) == "KAVA")
                                 {
                                     kavaCnt = reader.GetInt32(1);
@@ -180,30 +180,29 @@ namespace rp3_caffeBar
                         reader.Close();
                         connection.Close();
                     }
-                    catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
+                    catch (Exception ex) { MessageBox.Show("MainScreen.cs - POPUST ZA KONOBARA: " + "\n" + ex.Message.ToString()); }
 
-                    //koliko je kava  i cijedenih sokova dns popio 
-                    //smanji iznos racuna za onoliko koliko je potrebno -> prikazi kao popust
-                    int cnt = naziv.Count;
-                    for (int i = 0; i < cnt; i++)
+                    
+                    //smanji iznos racuna za onoliko koliko je potrebno -> prikazi kao novu stavku na formi racun
+                    int cnt = naziv.Count; //dinamicki se mijenja zbog minus stavki za popust, stoga ga moramo pospremiti
+                    for (int i = 0; i < cnt; i++) //prodi kroz sve stavke racuna
                     {
-                        if (naziv[i] == "KAVA" && kavaCnt < 2)
+                        if (naziv[i] == "KAVA" && kavaCnt < 2) //ima pravo na besplatnu kavu, samo je pitanje na koliko njih
                         {
-                            //kolika je kolicina //cijena i ukupno
-                            if (int.Parse(kolicina[i]) <= 2 - kavaCnt)
+                            if (int.Parse(kolicina[i]) <= 2 - kavaCnt) //moze dobiti popust za cijelu kolicinu navedene stavke racuna
                             {
+                                //dodaj u racun, ali sa MINUS CIJENOM
                                 naziv.Add(naziv[i]);
                                 kolicina.Add(kolicina[i]);
                                 cijena.Add(cijena[i]);
 
+                                //POPUST -> minus cijena
                                 decimal popust = decimal.Parse(kolicina[i]) * decimal.Parse(cijena[i]) * decimal.Parse("-1");
                                 ukupno.Add(popust.ToString());
-
-                                kavaCnt += int.Parse(kolicina[i]);
-
-                               
+                                
+                                //azuriraj kavaCnt
+                                kavaCnt += int.Parse(kolicina[i]);  
                             }
-
                             else if (int.Parse(kolicina[i]) > 2 - kavaCnt && kavaCnt < 2) //dodajem popust za 2-kavaCnt
                             {
                                 int popustCnt = 2 - kavaCnt;
@@ -219,26 +218,21 @@ namespace rp3_caffeBar
                             }
 
                         }
-
-                        else if (naziv[i] == "KAVA" && kavaCnt >= 2)
+                        else if (naziv[i] == "KAVA" && kavaCnt >= 2) //ima pravo samo na popust za kavu
                         {
-
-
                             naziv.Add(naziv[i]);
                             kolicina.Add(kolicina[i]);
                             cijena.Add(cijena[i]);
 
                             decimal popust = decimal.Multiply(decimal.Multiply(decimal.Parse(kolicina[i]) , decimal.Parse(cijena[i])) , decimal.Parse("-2"))/10;
-                            //MessageBox.Show("usao" + popust.ToString());
                             ukupno.Add(popust.ToString());
 
                             kavaCnt += int.Parse(kolicina[i]);
                         }
 
-                       if (naziv[i] == "PRIRODNI SOKOVI" && sokCnt < 1)
+                        if (naziv[i] == "PRIRODNI SOKOVI" && sokCnt < 1) //besplatan jedan sok
                         {
-
-                            int popustCnt = 1;
+                            int popustCnt = 1; //samo jedan sok
 
                             naziv.Add(naziv[i]);
                             kolicina.Add(popustCnt.ToString());
@@ -250,9 +244,8 @@ namespace rp3_caffeBar
                             sokCnt = 1;
                         }
 
-                        else if (naziv[i] == "PRIRODNI SOKOVI" && sokCnt >= 1)
+                        else if (naziv[i] == "PRIRODNI SOKOVI" && sokCnt >= 1) //popust za sok samo
                         {
-
                             naziv.Add(naziv[i]);
                             kolicina.Add(kolicina[i]);
                             cijena.Add(cijena[i]);
@@ -264,14 +257,14 @@ namespace rp3_caffeBar
                         }
 
                     }
-
-
                 }
 
+                            /***********************insert u tablicu RECEIPT i RECEIPT ITEM***********************/
                 //radimo insert u tablicu RECEIPT i RECEIPT ITEM kako bismo dodali stavke racuna
-                //insert into RECEIPT
+                
+                //[RECEIPT] insert
                 decimal iznos_racuna = 0;
-                for (int i = 0; i < ukupno.Count; i++)//RowCount-1 jer zadnji redak je prazan u dataGrid
+                for (int i = 0; i < ukupno.Count; i++) //RowCount-1 jer zadnji redak je prazan u dataGrid
                 {
                     iznos_racuna += decimal.Parse(ukupno[i]);
                 }
@@ -279,8 +272,6 @@ namespace rp3_caffeBar
                 try
                 {
                     connection.Open();
-
-                    //unesi u tablicu
                     String query = "INSERT INTO [RECEIPT] (USER_ID,TOTAL_AMOUNT, CUSTOMER_ID) VALUES (@userId,@totalAmount, @customerId)";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -298,20 +289,16 @@ namespace rp3_caffeBar
                     connection.Close();
 
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("prvi upit - INSERT INTO [RECEIPT]: " + ex.Message);
-                }
+                catch (Exception ex){   MessageBox.Show("MainScreen.cs - prvi upit - INSERT INTO [RECEIPT]: " + "\n" + ex.Message.ToString()); }
 
-                //dohvati id upravo uneseno racuna -> treba nam za insert u RECEIPT_ITEM
+                //dohvati id upravo unesena racuna -> treba nam za insert u RECEIPT_ITEM
                 int receiptId = -1;
                 try
                 {
-                    String query = "SELECT MAX(RECEIPT_ID) FROM [RECEIPT]";
+                    String query = "SELECT MAX(RECEIPT_ID) FROM [RECEIPT]"; //to je zadnji racun
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         connection.Open();
-
                         SqlDataReader reader = command.ExecuteReader();
                         if (reader.HasRows)
                         {
@@ -319,168 +306,121 @@ namespace rp3_caffeBar
                             receiptId = reader.GetInt32(0);
                         }
                         reader.Close();
-
                         connection.Close();
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("select from receipt: " + ex.Message);
-                }
+                catch (Exception ex){ MessageBox.Show("MainScreen.cs - drugi upit: " + "\n" + ex.Message.ToString()); }
 
-                if (receiptId != -1)
+
+                
+                for (int i = 0; i < naziv.Count; i++)
                 {
-                    for (int i = 0; i < naziv.Count; i++)
+                    int productId = -1, coolerQuantity = -1; //product id -> za insert u RECEIPT_ITEM, collerQuantity -> za update [PRODUCT] tablice, tj. micanje pica iz hladnjaka
+
+                    try
                     {
-                        int productId = -1, coolerQuantity = -1;
-
-                        //product id -> za insert u RECEIPT_ITEM
-                        try
+                        String query = "SELECT PRODUCT_ID, COOLER_QUANTITY FROM [PRODUCT] WHERE PRODUCT_NAME=@productName";
+                        using (SqlCommand command = new SqlCommand(query, connection))
                         {
-                            String query = "SELECT PRODUCT_ID, COOLER_QUANTITY FROM [PRODUCT] WHERE PRODUCT_NAME=@productName";
-                            using (SqlCommand command = new SqlCommand(query, connection))
+                            connection.Open();
+                            command.Parameters.AddWithValue("@productName", naziv[i]); 
+                            SqlDataReader reader = command.ExecuteReader();
+                            if (reader.HasRows)
                             {
-                                connection.Open();
-                                command.Parameters.AddWithValue("@productName", naziv[i]); //dohvati iz baze 
-                                SqlDataReader reader = command.ExecuteReader();
-                                //MessageBox.Show("naziv: " + productId);
-                                if (reader.HasRows)
-                                {
-                                    reader.Read();
-                                    productId = reader.GetInt32(0);
-                                    coolerQuantity = reader.GetInt32(1);
-
-                                }
-                                reader.Close();
-
-                                connection.Close();
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("greska select product: " + ex.ToString());
-                        }
-
-                        try
-                        {
-                            String query = "INSERT INTO [RECEIPT_ITEM] (RECEIPT_ID,PRODUCT_ID, ITEM_QUANTITY, ITEM_AMOUNT) VALUES (@receiptId,@productId, @itemQuantity, @itemAmount)";
-                            using (SqlCommand command = new SqlCommand(query, connection))
-                            {
-                                connection.Open();
-                                //parametri
-                                command.Parameters.AddWithValue("@receiptId", receiptId); //dohvati iz baze 
-                                command.Parameters.AddWithValue("@productId", productId); //dohvati iz baze
-                                command.Parameters.AddWithValue("@itemQuantity", int.Parse(kolicina[i]));
-                                command.Parameters.AddWithValue("@itemAmount", decimal.Parse(ukupno[i])); //username: vlasnik password: vlasnik
-
-                                command.ExecuteNonQuery();
-
-                                connection.Close();
+                                reader.Read();
+                                productId = reader.GetInt32(0);
+                                coolerQuantity = reader.GetInt32(1);
 
                             }
+                            reader.Close();
+
+                            connection.Close();
                         }
-                        catch
-                        {
-                            MessageBox.Show("gresak insert receipt");
-                        }
-
-                        //naplati se makni se iz hladnjaka
-                        try
-                        {
-                            String query = "UPDATE [PRODUCT] SET COOLER_QUANTITY=@newCoolerQuantity WHERE PRODUCT_ID=@productId";
-                            using (SqlCommand command = new SqlCommand(query, connection))
-                            {
-                                connection.Open();
-                                //parametri
-                                coolerQuantity = coolerQuantity - int.Parse(kolicina[i]);
-                                command.Parameters.AddWithValue("@newCoolerQuantity", coolerQuantity); //dohvati iz baze 
-                                command.Parameters.AddWithValue("@productId", productId); //dohvati iz baze
-
-
-                                command.ExecuteNonQuery();
-
-                                connection.Close();
-
-                            }
-                        }
-                        catch
-                        {
-                            MessageBox.Show("gresak update hladnjaka");
-                        }
-
                     }
+                    catch (Exception ex) { MessageBox.Show("MainScreen.cs - treci upit: " + "\n" + ex.Message.ToString()); }
 
-                    /***********************KALKULATOR***********************/
-                    CashBackCalculator kalkulator = new CashBackCalculator(iznos_racuna);
-                    kalkulator.ShowDialog();
+                    //[RECEIPT ITEM] insert
+                    try
+                    {
+                        String query = "INSERT INTO [RECEIPT_ITEM] (RECEIPT_ID,PRODUCT_ID, ITEM_QUANTITY, ITEM_AMOUNT) VALUES (@receiptId,@productId, @itemQuantity, @itemAmount)";
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            connection.Open();
+                            //parametri
+                            command.Parameters.AddWithValue("@receiptId", receiptId); //dohvati iz baze 
+                            command.Parameters.AddWithValue("@productId", productId); //dohvati iz baze
+                            command.Parameters.AddWithValue("@itemQuantity", int.Parse(kolicina[i]));
+                            command.Parameters.AddWithValue("@itemAmount", decimal.Parse(ukupno[i])); //username: vlasnik password: vlasnik
 
-                    //prikaz racuna prema korisniku i update racuna u tablicu //TO DO
-                    //prvo treba pozvati formu za ispis racuna kojoj cemo slati sve sto pise u dataGridu + ukupno iznos racuna -> konstruktor te frome
-                    //treba napraviti formu za ispis racuna-> svaka stavka racuna moze biti user kontrola - i onda to dodajemo na racun
-                    //prikazujemo kao show dialog
+                            command.ExecuteNonQuery();
 
+                            connection.Close();
 
-                    /***********************RAČUN FORMA***********************/
+                        }
+                    }
+                    catch(Exception ex) { MessageBox.Show("MainScreen.cs - cetvrti upit - INSERT INTO [RECEIPT_ITEM]: " + "\n" + ex.Message.ToString()); }
 
-                    //racun
-                    Receipt racun = new Receipt(receiptId, naziv, kolicina, cijena, ukupno);
-                    racun.ShowDialog();
+                                /***********************update tablice PRODUCT***********************/
+                    //naplati -> makni iz hladnjaka -> update kolicine producta u hladnjaku
+                    try
+                    {
+                        String query = "UPDATE [PRODUCT] SET COOLER_QUANTITY=@newCoolerQuantity WHERE PRODUCT_ID=@productId";
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            connection.Open();
+                            //parametri
+                            coolerQuantity = coolerQuantity - int.Parse(kolicina[i]); 
+                            command.Parameters.AddWithValue("@newCoolerQuantity", coolerQuantity); //dohvati iz baze 
+                            command.Parameters.AddWithValue("@productId", productId); //dohvati iz baze
+                            command.ExecuteNonQuery();
+                            connection.Close();
+                        }
+                    }
+                    catch (Exception ex) { MessageBox.Show("MainScreen.cs - peti upit - UPDATE [PRODUCT]: " + "\n" + ex.Message.ToString()); }
 
-                    //na kraju ocisti sve iz dataGrid
-                    dataGridView1.DataSource = null;
-                    dataGridView1.Rows.Clear();
-
-                    //radio button
-                    radioButton_obicniKupac.Checked = true;
                 }
 
-                else
-                {
-                    MessageBox.Show("greska u dohvatu receipt id else");
-                }
+                                        
+                                                   /***********************KALKULATOR***********************/
+                CashBackCalculator kalkulator = new CashBackCalculator(iznos_racuna);
+                kalkulator.ShowDialog();
 
+                //prvo treba pozvati formu za ispis racuna kojoj cemo slati sve sto pise u dataGridu + popusti
+                //-> saljemo liste naziv, kolicina, cije, ukupno (tu su spremljene i stavke popust za konobara, ako ih ima)
+                //treba napraviti formu za ispis racuna-> svaka stavka racuna moze biti user kontrola - i onda to dodajemo na racun
+                //prikazujemo kao show dialog
 
+                                                    /***********************RAČUN FORMA***********************/
+                Receipt racun = new Receipt(receiptId, naziv, kolicina, cijena, ukupno);
+                racun.ShowDialog();
 
-               
+                //na kraju ocisti sve iz dataGrid
+                dataGridView1.DataSource = null;
+                dataGridView1.Rows.Clear();
 
-
-            }
-
-            
-        }
-
-    
-
-        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 1 && e.RowIndex >= 0)
-            {
-                //da bi dobili cijenu po komadu trebam podijeliti sa najvecim mogucim brojem sto mogu 4 (3 ind) stupac sa 3 (ind2)
-                var  cijena = decimal.Parse(dataGridView1[2, e.RowIndex].Value.ToString());
-                int kolicina = int.Parse(dataGridView1[1, e.RowIndex].Value.ToString());
-
-                dataGridView1[3, e.RowIndex].Value = cijena * kolicina;
+                //radio button na defaultnu vrijednost
+                radioButton_obicniKupac.Checked = true;
 
             }
+ 
         }
 
-        private void Logout_Click(object sender, EventArgs e)
+        //ispis Prometa gumb
+        private void button_ispisPrometa_Click(object sender, EventArgs e)
         {
-            this.Close();
-            var login=new Login();
-            login.Show();
-
+            var promet = new PrintPromet();
+            promet.Show();
         }
 
+
+        //gumbi toolStripa vode na novu formu
         private void Skladište_Click(object sender, EventArgs e)
         {
-            //TO DO treba li provjeriti je li iznos 0 racuna
             this.Close();
             //skladiste forma
             var storage=new Storage();
             storage.Show();
         }
-
         private void button_administracija_Click(object sender, EventArgs e)
         {
             // ulaz u novu formu administracija
@@ -488,19 +428,6 @@ namespace rp3_caffeBar
             var administracija = new Administration();
             administracija.Show();
         }
-
-        private void button_ispisPrometa_Click(object sender, EventArgs e)
-        {
-            var promet = new Promet();
-            promet.Show();
-        }
-
-     
-
-       
-
-    
-
         private void button_statistika_Click(object sender, EventArgs e)
         {
             //ekran statistika
@@ -508,13 +435,18 @@ namespace rp3_caffeBar
             var stat = new Statistics();
             stat.Show();
         }
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            var login = new Login();
+            login.Show();
+
+        }
+
+
+
     }
 }
 
-//TO DO 
-// postaviti neke stupce u dataGridView na read only
-//connection string
-//connection open
-//try exceptione
 
 

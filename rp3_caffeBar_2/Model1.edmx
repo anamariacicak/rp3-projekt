@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="caffeBarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="HAPPY_HOUR">
+          <Key>
+            <PropertyRef Name="HAPPY_HOUR_ID" />
+          </Key>
+          <Property Name="HAPPY_HOUR_ID" Type="int" Nullable="false" />
+          <Property Name="PRODUCT_ID" Type="int" Nullable="false" />
+          <Property Name="HAPPY_HOUR_PRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CREATE_USER_ID" Type="int" Nullable="false" />
+          <Property Name="BEGIN_TIME" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="END_TIME" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="int" Nullable="false" />
+          <Property Name="PRODUCT_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PRICE" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="COOLER_QUANTITY" Type="int" Nullable="false" />
+          <Property Name="STORAGE_QUANTITY" Type="int" Nullable="false" />
+          <Property Name="LAST_MODIFY_USER" Type="int" />
+          <Property Name="LAST_MODIFY_TIME" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="RECEIPT">
+          <Key>
+            <PropertyRef Name="RECEIPT_ID" />
+          </Key>
+          <Property Name="RECEIPT_ID" Type="int" Nullable="false" />
+          <Property Name="USER_ID" Type="int" Nullable="false" />
+          <Property Name="TOTAL_AMOUNT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TIME" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RECEIPT_ITEM">
+          <Key>
+            <PropertyRef Name="RECEIPT_ITEM_ID" />
+          </Key>
+          <Property Name="RECEIPT_ITEM_ID" Type="int" Nullable="false" />
+          <Property Name="RECEIPT_ID" Type="int" Nullable="false" />
+          <Property Name="PRODUCT_ID" Type="int" Nullable="false" />
+          <Property Name="ITEM_QUANTITY" Type="int" Nullable="false" />
+          <Property Name="ITEM_AMOUNT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="int" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="IS_OWNER" Type="int" />
+        </EntityType>
+        <Association Name="FK_HAPPY_HOUR_PRODUCT">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="HAPPY_HOUR" Type="Self.HAPPY_HOUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="HAPPY_HOUR">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HAPPY_HOUR_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="HAPPY_HOUR" Type="Self.HAPPY_HOUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="HAPPY_HOUR">
+              <PropertyRef Name="CREATE_USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RECEIPT_PRODUCT_PRODUCT">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="RECEIPT_ITEM" Type="Self.RECEIPT_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="RECEIPT_ITEM">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RECEIPT_PRODUCT_RECEIPT">
+          <End Role="RECEIPT" Type="Self.RECEIPT" Multiplicity="1" />
+          <End Role="RECEIPT_ITEM" Type="Self.RECEIPT_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RECEIPT">
+              <PropertyRef Name="RECEIPT_ID" />
+            </Principal>
+            <Dependent Role="RECEIPT_ITEM">
+              <PropertyRef Name="RECEIPT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RECEIPT_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="RECEIPT" Type="Self.RECEIPT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="RECEIPT">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="caffeBarModelStoreContainer">
+          <EntitySet Name="HAPPY_HOUR" EntityType="Self.HAPPY_HOUR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCT" EntityType="Self.PRODUCT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RECEIPT" EntityType="Self.RECEIPT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RECEIPT_ITEM" EntityType="Self.RECEIPT_ITEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_HAPPY_HOUR_PRODUCT" Association="Self.FK_HAPPY_HOUR_PRODUCT">
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+            <End Role="HAPPY_HOUR" EntitySet="HAPPY_HOUR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HAPPY_HOUR_USER" Association="Self.FK_HAPPY_HOUR_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="HAPPY_HOUR" EntitySet="HAPPY_HOUR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RECEIPT_PRODUCT_PRODUCT" Association="Self.FK_RECEIPT_PRODUCT_PRODUCT">
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+            <End Role="RECEIPT_ITEM" EntitySet="RECEIPT_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RECEIPT_PRODUCT_RECEIPT" Association="Self.FK_RECEIPT_PRODUCT_RECEIPT">
+            <End Role="RECEIPT" EntitySet="RECEIPT" />
+            <End Role="RECEIPT_ITEM" EntitySet="RECEIPT_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RECEIPT_USER" Association="Self.FK_RECEIPT_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="RECEIPT" EntitySet="RECEIPT" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="caffeBarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="HAPPY_HOUR">
+          <Key>
+            <PropertyRef Name="HAPPY_HOUR_ID" />
+          </Key>
+          <Property Name="HAPPY_HOUR_ID" Type="Int32" Nullable="false" />
+          <Property Name="PRODUCT_ID" Type="Int32" Nullable="false" />
+          <Property Name="HAPPY_HOUR_PRICE" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CREATE_USER_ID" Type="Int32" Nullable="false" />
+          <Property Name="BEGIN_TIME" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="END_TIME" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK_HAPPY_HOUR_PRODUCT" FromRole="HAPPY_HOUR" ToRole="PRODUCT" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_HAPPY_HOUR_USER" FromRole="HAPPY_HOUR" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="Int32" Nullable="false" />
+          <Property Name="PRODUCT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRICE" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="COOLER_QUANTITY" Type="Int32" Nullable="false" />
+          <Property Name="STORAGE_QUANTITY" Type="Int32" Nullable="false" />
+          <Property Name="LAST_MODIFY_USER" Type="Int32" />
+          <Property Name="LAST_MODIFY_TIME" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="HAPPY_HOUR" Relationship="Self.FK_HAPPY_HOUR_PRODUCT" FromRole="PRODUCT" ToRole="HAPPY_HOUR" />
+          <NavigationProperty Name="RECEIPT_ITEM" Relationship="Self.FK_RECEIPT_PRODUCT_PRODUCT" FromRole="PRODUCT" ToRole="RECEIPT_ITEM" />
+        </EntityType>
+        <EntityType Name="RECEIPT">
+          <Key>
+            <PropertyRef Name="RECEIPT_ID" />
+          </Key>
+          <Property Name="RECEIPT_ID" Type="Int32" Nullable="false" />
+          <Property Name="USER_ID" Type="Int32" Nullable="false" />
+          <Property Name="TOTAL_AMOUNT" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TIME" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CUSTOMER_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="RECEIPT_ITEM" Relationship="Self.FK_RECEIPT_PRODUCT_RECEIPT" FromRole="RECEIPT" ToRole="RECEIPT_ITEM" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_RECEIPT_USER" FromRole="RECEIPT" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="RECEIPT_ITEM">
+          <Key>
+            <PropertyRef Name="RECEIPT_ITEM_ID" />
+          </Key>
+          <Property Name="RECEIPT_ITEM_ID" Type="Int32" Nullable="false" />
+          <Property Name="RECEIPT_ID" Type="Int32" Nullable="false" />
+          <Property Name="PRODUCT_ID" Type="Int32" Nullable="false" />
+          <Property Name="ITEM_QUANTITY" Type="Int32" Nullable="false" />
+          <Property Name="ITEM_AMOUNT" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK_RECEIPT_PRODUCT_PRODUCT" FromRole="RECEIPT_ITEM" ToRole="PRODUCT" />
+          <NavigationProperty Name="RECEIPT" Relationship="Self.FK_RECEIPT_PRODUCT_RECEIPT" FromRole="RECEIPT_ITEM" ToRole="RECEIPT" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="Int32" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IS_OWNER" Type="Int32" />
+          <NavigationProperty Name="HAPPY_HOUR" Relationship="Self.FK_HAPPY_HOUR_USER" FromRole="USER" ToRole="HAPPY_HOUR" />
+          <NavigationProperty Name="RECEIPT" Relationship="Self.FK_RECEIPT_USER" FromRole="USER" ToRole="RECEIPT" />
+        </EntityType>
+        <Association Name="FK_HAPPY_HOUR_PRODUCT">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="HAPPY_HOUR" Type="Self.HAPPY_HOUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="HAPPY_HOUR">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HAPPY_HOUR_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="HAPPY_HOUR" Type="Self.HAPPY_HOUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="HAPPY_HOUR">
+              <PropertyRef Name="CREATE_USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RECEIPT_PRODUCT_PRODUCT">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="RECEIPT_ITEM" Type="Self.RECEIPT_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="RECEIPT_ITEM">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RECEIPT_PRODUCT_RECEIPT">
+          <End Role="RECEIPT" Type="Self.RECEIPT" Multiplicity="1" />
+          <End Role="RECEIPT_ITEM" Type="Self.RECEIPT_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RECEIPT">
+              <PropertyRef Name="RECEIPT_ID" />
+            </Principal>
+            <Dependent Role="RECEIPT_ITEM">
+              <PropertyRef Name="RECEIPT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RECEIPT_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="RECEIPT" Type="Self.RECEIPT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="RECEIPT">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="caffeBarEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="HAPPY_HOUR" EntityType="Self.HAPPY_HOUR" />
+          <EntitySet Name="PRODUCT" EntityType="Self.PRODUCT" />
+          <EntitySet Name="RECEIPT" EntityType="Self.RECEIPT" />
+          <EntitySet Name="RECEIPT_ITEM" EntityType="Self.RECEIPT_ITEM" />
+          <EntitySet Name="USER" EntityType="Self.USER" />
+          <AssociationSet Name="FK_HAPPY_HOUR_PRODUCT" Association="Self.FK_HAPPY_HOUR_PRODUCT">
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+            <End Role="HAPPY_HOUR" EntitySet="HAPPY_HOUR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HAPPY_HOUR_USER" Association="Self.FK_HAPPY_HOUR_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="HAPPY_HOUR" EntitySet="HAPPY_HOUR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RECEIPT_PRODUCT_PRODUCT" Association="Self.FK_RECEIPT_PRODUCT_PRODUCT">
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+            <End Role="RECEIPT_ITEM" EntitySet="RECEIPT_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RECEIPT_PRODUCT_RECEIPT" Association="Self.FK_RECEIPT_PRODUCT_RECEIPT">
+            <End Role="RECEIPT" EntitySet="RECEIPT" />
+            <End Role="RECEIPT_ITEM" EntitySet="RECEIPT_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RECEIPT_USER" Association="Self.FK_RECEIPT_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="RECEIPT" EntitySet="RECEIPT" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="caffeBarModelStoreContainer" CdmEntityContainer="caffeBarEntities">
+          <EntitySetMapping Name="HAPPY_HOUR">
+            <EntityTypeMapping TypeName="caffeBarModel.HAPPY_HOUR">
+              <MappingFragment StoreEntitySet="HAPPY_HOUR">
+                <ScalarProperty Name="HAPPY_HOUR_ID" ColumnName="HAPPY_HOUR_ID" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="HAPPY_HOUR_PRICE" ColumnName="HAPPY_HOUR_PRICE" />
+                <ScalarProperty Name="CREATE_USER_ID" ColumnName="CREATE_USER_ID" />
+                <ScalarProperty Name="BEGIN_TIME" ColumnName="BEGIN_TIME" />
+                <ScalarProperty Name="END_TIME" ColumnName="END_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCT">
+            <EntityTypeMapping TypeName="caffeBarModel.PRODUCT">
+              <MappingFragment StoreEntitySet="PRODUCT">
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="COOLER_QUANTITY" ColumnName="COOLER_QUANTITY" />
+                <ScalarProperty Name="STORAGE_QUANTITY" ColumnName="STORAGE_QUANTITY" />
+                <ScalarProperty Name="LAST_MODIFY_USER" ColumnName="LAST_MODIFY_USER" />
+                <ScalarProperty Name="LAST_MODIFY_TIME" ColumnName="LAST_MODIFY_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RECEIPT">
+            <EntityTypeMapping TypeName="caffeBarModel.RECEIPT">
+              <MappingFragment StoreEntitySet="RECEIPT">
+                <ScalarProperty Name="RECEIPT_ID" ColumnName="RECEIPT_ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="TOTAL_AMOUNT" ColumnName="TOTAL_AMOUNT" />
+                <ScalarProperty Name="TIME" ColumnName="TIME" />
+                <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RECEIPT_ITEM">
+            <EntityTypeMapping TypeName="caffeBarModel.RECEIPT_ITEM">
+              <MappingFragment StoreEntitySet="RECEIPT_ITEM">
+                <ScalarProperty Name="RECEIPT_ITEM_ID" ColumnName="RECEIPT_ITEM_ID" />
+                <ScalarProperty Name="RECEIPT_ID" ColumnName="RECEIPT_ID" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="ITEM_QUANTITY" ColumnName="ITEM_QUANTITY" />
+                <ScalarProperty Name="ITEM_AMOUNT" ColumnName="ITEM_AMOUNT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER">
+            <EntityTypeMapping TypeName="caffeBarModel.USER">
+              <MappingFragment StoreEntitySet="USER">
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="IS_OWNER" ColumnName="IS_OWNER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

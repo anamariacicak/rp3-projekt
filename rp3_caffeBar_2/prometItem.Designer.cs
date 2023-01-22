@@ -38,6 +38,7 @@
             // 
             this.textBox_cijena.Location = new System.Drawing.Point(193, 3);
             this.textBox_cijena.Name = "textBox_cijena";
+            this.textBox_cijena.ReadOnly = true;
             this.textBox_cijena.Size = new System.Drawing.Size(100, 20);
             this.textBox_cijena.TabIndex = 7;
             // 
@@ -45,13 +46,15 @@
             // 
             this.textBox_vrijeme.Location = new System.Drawing.Point(291, 3);
             this.textBox_vrijeme.Name = "textBox_vrijeme";
-            this.textBox_vrijeme.Size = new System.Drawing.Size(100, 20);
+            this.textBox_vrijeme.ReadOnly = true;
+            this.textBox_vrijeme.Size = new System.Drawing.Size(107, 20);
             this.textBox_vrijeme.TabIndex = 6;
             // 
             // textBox_username
             // 
             this.textBox_username.Location = new System.Drawing.Point(97, 3);
             this.textBox_username.Name = "textBox_username";
+            this.textBox_username.ReadOnly = true;
             this.textBox_username.Size = new System.Drawing.Size(100, 20);
             this.textBox_username.TabIndex = 5;
             // 
@@ -59,6 +62,7 @@
             // 
             this.textBox_brRacuna.Location = new System.Drawing.Point(0, 3);
             this.textBox_brRacuna.Name = "textBox_brRacuna";
+            this.textBox_brRacuna.ReadOnly = true;
             this.textBox_brRacuna.Size = new System.Drawing.Size(100, 20);
             this.textBox_brRacuna.TabIndex = 4;
             // 
@@ -71,7 +75,7 @@
             this.Controls.Add(this.textBox_username);
             this.Controls.Add(this.textBox_brRacuna);
             this.Name = "prometItem";
-            this.Size = new System.Drawing.Size(391, 25);
+            this.Size = new System.Drawing.Size(401, 25);
             this.ResumeLayout(false);
             this.PerformLayout();
 

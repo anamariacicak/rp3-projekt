@@ -15,16 +15,11 @@ namespace rp3_caffeBar
     {
         public Statistics()
         {
-            InitializeComponent();
-
-            //sakrivanje pojednih kontrola ako je user tipa konobar, tj. ako nije vlasnik
-            if (User.isOwner == 0)
-            { //konobar je
-                button_administracija.Visible = false;
-                button_statistika.Visible = false;
-            }
+            InitializeComponent();         
 
             SuspendLayout();
+
+            //prvi dijagram
             DataSet1TableAdapters.PRODUCT1TableAdapter adapter = new DataSet1TableAdapters.PRODUCT1TableAdapter();
             DataTable tablica = adapter.GetData();
 
@@ -37,7 +32,7 @@ namespace rp3_caffeBar
             chart1.Titles.Add("Top 5 prodanih");
             chart1.DataBind();
 
-
+            //drugi dijagram
             DataSet1TableAdapters.PRODUCTTableAdapter adapter2 = new DataSet1TableAdapters.PRODUCTTableAdapter();
             DataTable tablica2 = adapter2.GetData();
 
@@ -55,6 +50,7 @@ namespace rp3_caffeBar
 
         }
 
+        //toolstrip buttoni
         private void button_blagajna_Click(object sender, EventArgs e)
         {
             this.Hide();

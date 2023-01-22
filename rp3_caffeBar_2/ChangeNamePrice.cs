@@ -17,18 +17,17 @@ namespace rp3_caffeBar
         {
             InitializeComponent();
 
-            button_primjeni.Enabled = false; //nema ga dok 
+            button_primjeni.Enabled = false; //nema gumba primjeni nisu uneseni ispravni podaci 
         }
 
         private void textBox_proizvodStari_TextChanged(object sender, EventArgs e)
         {
 
-            //utipkao je tekst u textbox->provjerimo je li ispravan, ako je ispravan, onda mu napunimo druga dva tekxtboxa
+            //utipkao je tekst u textbox->provjerimo je li ispravanxa
             var productName = "";
             textBox_cijenaStara.Text = "";
             try
             {
-                //prvo selectirajmo sva pica iz baze
                 using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
                 {
                     connection.Open();
@@ -44,9 +43,10 @@ namespace rp3_caffeBar
                     {
                         reader.Read();
                         textBox_cijenaStara.Text = reader.GetDecimal(0).ToString();
-                        button_primjeni.Enabled = true;
+                        button_primjeni.Enabled = true; //enable
 
                     }
+                    else { button_primjeni.Enabled = false; } //mozda je mijenjao text u texboxu
                     reader.Close();
                     connection.Close();
                 }
@@ -69,13 +69,13 @@ namespace rp3_caffeBar
                 //radimo update u bazu na storage
                 try
                 {
-                    //prvo selectirajmo sva pica iz baze
                     using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
                     {
                         connection.Open();
                         string query = "UPDATE [PRODUCT] SET PRODUCT_NAME=@productNewName, PRICE=@price, LAST_MODIFY_USER=@userId, LAST_MODIFY_TIME=@modfiyTime WHERE PRODUCT_NAME=@productOldName";
                         SqlCommand command = new SqlCommand(query, connection);
 
+                        //parametri
                         var productNewName = textBox_proizvodNovi.Text.ToString();
                         decimal price = decimal.Parse(textBox_cijenaNova.Text.ToString());
                         var modfiyTime = DateTime.Now;
@@ -86,16 +86,13 @@ namespace rp3_caffeBar
                         command.Parameters.AddWithValue("@modfiyTime", modfiyTime);
                         command.Parameters.AddWithValue("@productOldName", productOldName);
 
-
                         command.ExecuteNonQuery();
 
                         connection.Close();
 
                         //zatvori ovu formu 
                         this.Close();
-
                     }
-
                 }
                 catch (Exception ex) { MessageBox.Show("chaneNamePrice.cs - button_primjeni_Click: " + "\n" + ex.ToString()); }
             }

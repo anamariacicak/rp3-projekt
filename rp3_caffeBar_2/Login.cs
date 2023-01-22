@@ -20,8 +20,8 @@ namespace rp3_caffeBar
         public Login()
         {
             InitializeComponent();
-        }
 
+        }
         private void login_button_Click(object sender, EventArgs e) //klik na gumb Login
         {
             //je li unio username/password
@@ -40,11 +40,10 @@ namespace rp3_caffeBar
                     string query = "SELECT USER_ID, USERNAME, IS_OWNER FROM [USER] WHERE USERNAME=@username AND PASSWORD=@password";
                     SqlCommand command = new SqlCommand(query, connection);
 
-
-                    //hashiranje passworda //TO DO u fju
+                    //hashiranje passworda 
                     byte[] data = Encoding.UTF8.GetBytes(textBox_password.Text.ToString());
                     byte[] result;
-                    using (SHA256 sha256Hash = SHA256.Create()) //generia char(64)
+                    using (SHA256 sha256Hash = SHA256.Create()) //generia char(64) -> stupac username u tablici USER varchar(64)
                     {
                         result = sha256Hash.ComputeHash(data);
                     }
@@ -54,53 +53,39 @@ namespace rp3_caffeBar
                     command.Parameters.AddWithValue("@username", textBox_username.Text.ToString());
                     command.Parameters.AddWithValue("@password", hash);
 
-                    
                     SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
+                    if (reader.HasRows) //upit je vratio nesto -> nalazi se u bazi
                     {
-                        this.Hide(); //sakrij ovu formu //TO DO 
-                        
-                        reader.Read(); //procitaj
+                        //procitaj
+                        reader.Read(); 
                
-                        //User
+                        //pospremi podatke za usera
                         User.userId = reader.GetInt32(0);
                         User.username = reader.GetString(1);
                         User.isOwner = reader.GetInt32(2);
 
-                        //main Screen Forma
+                        //sakrij ovu formu 
+                        this.Hide(); 
+                        //prikazi mainScreenForma -> froma koja se prikazuje nakon ulogiravnja, na njoj se prvotno nalazi blagajna
                         var mainScreen = new MainScreen();
-                        mainScreen.Show();
-                       
+                        mainScreen.Show();   
                     }
-                    else
+                    else //upit nije vratio nista -> upozorenje
                     {
                         MessageBox.Show("Neispravno uneseni podaci!");
                     }
                    
+                    connection.Close();
                     reader.Close();
                 }
 
             }
             catch (Exception ex) 
             {
-                MessageBox.Show("greska: " + ex.ToString());
+                MessageBox.Show("Login.cs: " + "\n"+ ex.Message.ToString());
             }
            
         }
 
-        private void Login_Load(object sender, EventArgs e)
-        {
- 
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

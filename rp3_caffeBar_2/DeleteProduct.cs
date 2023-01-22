@@ -21,12 +21,10 @@ namespace rp3_caffeBar
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            //provjeriti je li upisan ispravan naziv
-            //utipkao je tekst u textbox->provjerimo je li ispravan, ako je ispravan, onda mu napunimo druga dva tekxtboxa
+            //provjeriti je li upisan ispravan naziv proizvoda
             var productName = "";
             try
             {
-                //prvo selectirajmo sva pica iz baze
                 using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
                 {
                     connection.Open();
@@ -38,13 +36,11 @@ namespace rp3_caffeBar
                     command.Parameters.AddWithValue("@productName", productName);
 
                     SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
+                    if (reader.HasRows) //upit je vratio nesto -> ispravan naziv proizvoda
                     {
-                        //reader.Read(); //to do makni
-
                         button_delete.Enabled = true;
                     }
-                    else 
+                    else  //mozda je obrisao nesto iz textBoxa pa treba onemoguciti opet gumb za potvrdu brisanja
                     {
                         button_delete.Enabled = false;
                     }
@@ -58,12 +54,11 @@ namespace rp3_caffeBar
         private void button_delete_Click(object sender, EventArgs e)
         {
             //kliknuo je na button delete
-            if (button_delete.Enabled == true) //to do dodati jos provjera
+            if (button_delete.Enabled == true) 
             {
                 //obrisi
                 try
                 {
-                    //prvo selectirajmo sva pica iz baze
                     using (SqlConnection connection = new SqlConnection(ConnectionString.connectionString))
                     {
                         connection.Open();
@@ -77,15 +72,13 @@ namespace rp3_caffeBar
                         connection.Close();
                     }
 
-                    this.Close();
+                    this.Close(); //brisanje gototvo, zatvori
                 }
-                catch (Exception ex) { MessageBox.Show("DeleteProducts.cs - button_delete_Click: " + "\n" + ex.ToString()); }
-
-               
+                catch (Exception ex) { MessageBox.Show("DeleteProducts.cs - button_delete_Click: " + "\n" + ex.ToString()); } 
             }
         }
 
-        private void button_cancel_Click(object sender, EventArgs e)
+        private void button_cancel_Click(object sender, EventArgs e) //odbaci
         {
             this.Close();
         }

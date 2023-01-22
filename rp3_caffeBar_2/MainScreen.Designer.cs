@@ -70,7 +70,7 @@
             this.button_statistika});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1067, 32);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -80,7 +80,7 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(82, 29);
+            this.toolStripButton1.Size = new System.Drawing.Size(66, 24);
             this.toolStripButton1.Text = "CAFFE BAR";
             // 
             // button_blagajna
@@ -91,7 +91,7 @@
             this.button_blagajna.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.button_blagajna.Margin = new System.Windows.Forms.Padding(4);
             this.button_blagajna.Name = "button_blagajna";
-            this.button_blagajna.Size = new System.Drawing.Size(71, 24);
+            this.button_blagajna.Size = new System.Drawing.Size(56, 19);
             this.button_blagajna.Text = "Blagajna";
             // 
             // button_skladiste
@@ -102,7 +102,7 @@
             this.button_skladiste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.button_skladiste.Margin = new System.Windows.Forms.Padding(4);
             this.button_skladiste.Name = "button_skladiste";
-            this.button_skladiste.Size = new System.Drawing.Size(72, 24);
+            this.button_skladiste.Size = new System.Drawing.Size(57, 19);
             this.button_skladiste.Text = "Skladište";
             this.button_skladiste.Click += new System.EventHandler(this.Skladište_Click);
             // 
@@ -114,7 +114,7 @@
             this.button_administracija.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.button_administracija.Margin = new System.Windows.Forms.Padding(4);
             this.button_administracija.Name = "button_administracija";
-            this.button_administracija.Size = new System.Drawing.Size(108, 24);
+            this.button_administracija.Size = new System.Drawing.Size(87, 19);
             this.button_administracija.Text = "Administracija";
             this.button_administracija.Click += new System.EventHandler(this.button_administracija_Click);
             // 
@@ -127,7 +127,7 @@
             this.Logout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Logout.Margin = new System.Windows.Forms.Padding(4);
             this.Logout.Name = "Logout";
-            this.Logout.Size = new System.Drawing.Size(60, 24);
+            this.Logout.Size = new System.Drawing.Size(49, 19);
             this.Logout.Text = "Logout";
             this.Logout.Click += new System.EventHandler(this.Logout_Click);
             // 
@@ -139,15 +139,14 @@
             this.button_statistika.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.button_statistika.Margin = new System.Windows.Forms.Padding(4);
             this.button_statistika.Name = "button_statistika";
-            this.button_statistika.Size = new System.Drawing.Size(73, 24);
+            this.button_statistika.Size = new System.Drawing.Size(58, 19);
             this.button_statistika.Text = "Statistika";
             this.button_statistika.Click += new System.EventHandler(this.button_statistika_Click);
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 32);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 27);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -161,20 +160,17 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1067, 522);
-            this.splitContainer1.SplitterDistance = 732;
-            this.splitContainer1.SplitterWidth = 5;
+            this.splitContainer1.Size = new System.Drawing.Size(800, 423);
+            this.splitContainer1.SplitterDistance = 548;
             this.splitContainer1.TabIndex = 3;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.radioButton_konobar);
             this.groupBox1.Controls.Add(this.radioButton_obicniKupac);
-            this.groupBox1.Location = new System.Drawing.Point(35, 396);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Location = new System.Drawing.Point(26, 322);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(247, 58);
+            this.groupBox1.Size = new System.Drawing.Size(185, 47);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tip kupca";
@@ -182,10 +178,9 @@
             // radioButton_konobar
             // 
             this.radioButton_konobar.AutoSize = true;
-            this.radioButton_konobar.Location = new System.Drawing.Point(132, 20);
-            this.radioButton_konobar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton_konobar.Location = new System.Drawing.Point(99, 16);
             this.radioButton_konobar.Name = "radioButton_konobar";
-            this.radioButton_konobar.Size = new System.Drawing.Size(79, 20);
+            this.radioButton_konobar.Size = new System.Drawing.Size(65, 17);
             this.radioButton_konobar.TabIndex = 1;
             this.radioButton_konobar.TabStop = true;
             this.radioButton_konobar.Text = "Konobar";
@@ -194,10 +189,9 @@
             // radioButton_obicniKupac
             // 
             this.radioButton_obicniKupac.AutoSize = true;
-            this.radioButton_obicniKupac.Location = new System.Drawing.Point(11, 20);
-            this.radioButton_obicniKupac.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton_obicniKupac.Location = new System.Drawing.Point(8, 16);
             this.radioButton_obicniKupac.Name = "radioButton_obicniKupac";
-            this.radioButton_obicniKupac.Size = new System.Drawing.Size(106, 20);
+            this.radioButton_obicniKupac.Size = new System.Drawing.Size(88, 17);
             this.radioButton_obicniKupac.TabIndex = 0;
             this.radioButton_obicniKupac.TabStop = true;
             this.radioButton_obicniKupac.Text = "Obični kupac";
@@ -206,10 +200,9 @@
             // button_ispisPrometa
             // 
             this.button_ispisPrometa.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button_ispisPrometa.Location = new System.Drawing.Point(94, 470);
-            this.button_ispisPrometa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_ispisPrometa.Location = new System.Drawing.Point(70, 382);
             this.button_ispisPrometa.Name = "button_ispisPrometa";
-            this.button_ispisPrometa.Size = new System.Drawing.Size(137, 33);
+            this.button_ispisPrometa.Size = new System.Drawing.Size(103, 27);
             this.button_ispisPrometa.TabIndex = 2;
             this.button_ispisPrometa.Text = "Ispis prometa";
             this.button_ispisPrometa.UseVisualStyleBackColor = false;
@@ -218,10 +211,9 @@
             // button_izdajRacun
             // 
             this.button_izdajRacun.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button_izdajRacun.Location = new System.Drawing.Point(370, 416);
-            this.button_izdajRacun.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_izdajRacun.Location = new System.Drawing.Point(278, 338);
             this.button_izdajRacun.Name = "button_izdajRacun";
-            this.button_izdajRacun.Size = new System.Drawing.Size(327, 87);
+            this.button_izdajRacun.Size = new System.Drawing.Size(245, 71);
             this.button_izdajRacun.TabIndex = 1;
             this.button_izdajRacun.Text = "IZDAJ RAČUN";
             this.button_izdajRacun.UseVisualStyleBackColor = false;
@@ -238,10 +230,9 @@
             this.Ukupno});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(732, 389);
+            this.dataGridView1.Size = new System.Drawing.Size(548, 316);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
@@ -282,21 +273,21 @@
             this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(330, 522);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(248, 423);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // MainScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainScreen";
-            this.Text = "OwnerMain";
+            this.ShowIcon = false;
+            this.Text = "Blagajna";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
