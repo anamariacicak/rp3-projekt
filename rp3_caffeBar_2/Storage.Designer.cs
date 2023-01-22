@@ -365,6 +365,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "Storage";
+            this.ShowIcon = false;
             this.Text = "Skladište";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

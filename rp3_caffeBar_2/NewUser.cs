@@ -53,10 +53,8 @@ namespace rp3_caffeBar
                 connection.Close();
                 this.Close();
             }
-            catch (Exception ex)
-            {
-                
-            }
+            catch (Exception ex) { MessageBox.Show("NewUser.cs: " + "\n" + ex.Message); }
+            
         }
 
         private void button2_Click(object sender, EventArgs e)

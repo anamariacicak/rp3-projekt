@@ -20,6 +20,7 @@ namespace rp3_caffeBar
 
             if (coolerOrStorage == "storage") //reckliramo istu formu za hladnjak i skladiste
             {
+                this.Text = "Narudžba";
                 button_dodaj.Text = "Naruči!";
                 label3.Text = "Količina za \nnaručiti: ";
             }
